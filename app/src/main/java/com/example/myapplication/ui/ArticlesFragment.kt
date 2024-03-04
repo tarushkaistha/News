@@ -14,7 +14,6 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout.OnRefreshListener
 import com.example.myapplication.R
 import com.example.myapplication.articlesViewModel.ArticlesViewModel
 import com.example.myapplication.databinding.FragmentArticlesBinding
-import com.example.myapplication.utils.ResultOf
 import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.GoogleApiAvailability
 import com.google.firebase.messaging.FirebaseMessaging
@@ -94,33 +93,24 @@ class ArticlesFragment : Fragment() {
 
 
         articlesViewModel.newsResponse.observe(viewLifecycleOwner) { result ->
-            binding.loading.root.visibility = View.GONE
-            when (result) {
-                is ResultOf.Loading -> {
-                    binding.newsRv.visibility = View.GONE
-                    binding.noInternet.root.visibility = View.GONE
-                    binding.loading.shimmerFl.startShimmer()
-                    binding.loading.root.visibility = View.VISIBLE
-                    binding.breakingNewsTv.visibility = View.GONE
-                    binding.sendNotificationBtn.visibility = View.GONE
-                }
+            binding.loading.root.visibility = View.VISIBLE
 
-                is ResultOf.Success -> {
-                    newsAdapter.updateNews(result.value?.articles ?: listOf())
-                    binding.swipeRefreshContainer.isRefreshing = false
-                    binding.loading.root.visibility = View.GONE
-                    binding.noInternet.root.visibility = View.GONE
-                    binding.newsRv.visibility = View.VISIBLE
-                    binding.sendNotificationBtn.visibility = View.VISIBLE
-                    binding.breakingNewsTv.visibility = View.VISIBLE
-                }
+            if (result?.articles != null) {
 
-                is ResultOf.Failure -> {
-                    binding.swipeRefreshContainer.isRefreshing = false
-                    binding.newsRv.visibility = View.GONE
-                    binding.noInternet.root.visibility = View.VISIBLE
-                    binding.breakingNewsTv.visibility = View.GONE
-                }
+                newsAdapter.updateNews(result.articles)
+                binding.swipeRefreshContainer.isRefreshing = false
+                binding.noInternet.root.visibility = View.GONE
+                binding.loading.root.visibility = View.GONE
+                binding.newsRv.visibility = View.VISIBLE
+                binding.sendNotificationBtn.visibility = View.VISIBLE
+                binding.breakingNewsTv.visibility = View.VISIBLE
+            } else {
+                binding.swipeRefreshContainer.isRefreshing = false
+                binding.newsRv.visibility = View.GONE
+                binding.noInternet.root.visibility = View.VISIBLE
+                binding.sendNotificationBtn.visibility = View.GONE
+                binding.loading.root.visibility = View.GONE
+                binding.breakingNewsTv.visibility = View.GONE
             }
 
         }

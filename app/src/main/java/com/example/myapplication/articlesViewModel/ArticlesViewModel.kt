@@ -1,15 +1,14 @@
 package com.example.myapplication.articlesViewModel
 
 import android.util.Log
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.myapplication.articlesModel.NewsResponse
-import com.example.myapplication.utils.ResultOf
 import com.google.gson.Gson
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import java.io.BufferedReader
 import java.io.IOException
 import java.io.InputStreamReader
@@ -18,19 +17,18 @@ import java.net.URL
 
 class ArticlesViewModel : ViewModel() {
 
-    val newsResponse: MutableLiveData<ResultOf<NewsResponse?>> = MutableLiveData()
+    private var _newsResponse: MutableLiveData<NewsResponse?> = MutableLiveData()
+
+    val newsResponse: LiveData<NewsResponse?> = _newsResponse
 
     fun getAllArticles() {
-        newsResponse.value = ResultOf.Loading()
         viewModelScope.launch(Dispatchers.IO) {
             var httpURLConnection: HttpURLConnection? = null
             try {
                 val url =
                     URL("https://candidate-test-data-moengage.s3.amazonaws.com/Android/news-api-feed/staticResponse.json")
 
-                httpURLConnection = withContext(Dispatchers.IO) {
-                    url.openConnection()
-                } as HttpURLConnection
+                httpURLConnection = url.openConnection() as HttpURLConnection
 
                 if (httpURLConnection.responseCode == 200) {
 
@@ -42,9 +40,7 @@ class ArticlesViewModel : ViewModel() {
                         val resultantJsonString = StringBuilder()
 
                         while (true) {
-                            val inputStream = withContext(Dispatchers.IO) {
-                                bufferedReader.readLine()
-                            } ?: break
+                            val inputStream = bufferedReader.readLine() ?: break
                             resultantJsonString.append(inputStream)
 
                             Log.d("viewModel", "getAllArticles in Json: $resultantJsonString")
@@ -53,17 +49,17 @@ class ArticlesViewModel : ViewModel() {
 
 
                     } else {
-                        newsResponse.postValue(ResultOf.Failure(null))
+                        _newsResponse.postValue(null)
                         throw IOException("incorrect json stream: ${httpURLConnection.errorStream}")
                     }
                 } else {
-                    newsResponse.postValue(ResultOf.Failure(null))
+                    _newsResponse.postValue(null)
                     throw IOException("incorrect response code: ${httpURLConnection.responseCode}")
                 }
 
 
             } catch (ioException: IOException) {
-                newsResponse.postValue(ResultOf.Failure(null))
+                _newsResponse.postValue(null)
                 Log.e("viewModel", "makeGetHttpRequest status: ${ioException.message}")
             } finally {
                 httpURLConnection?.disconnect()
@@ -72,14 +68,13 @@ class ArticlesViewModel : ViewModel() {
     }
 
     private fun getNewsResults(resultantJsonString: StringBuilder) {
-        viewModelScope.launch(Dispatchers.Main) {
+        viewModelScope.launch(Dispatchers.IO) {
             val newsResult = Gson().fromJson(
                 resultantJsonString.toString(), NewsResponse::class.java
             )
-            Log.d("viewModel", "newsResponse: $newsResult")
+            Log.d("viewModel", "_newsResponse: $newsResult")
 
-//            newsResponse.value = newsResult
-            newsResponse.postValue(ResultOf.Success(newsResult))
+            _newsResponse.postValue(newsResult)
         }
     }
 
