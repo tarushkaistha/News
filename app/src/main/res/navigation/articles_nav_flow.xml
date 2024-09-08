@@ -13,6 +13,15 @@
         <action
             android:id="@+id/action_articlesFragment_to_articleDetailFragment"
             app:destination="@id/articleDetailFragment" />
+        <action
+            android:id="@+id/action_articlesFragment_to_f1"
+            app:destination="@id/f1" />
+        <action
+            android:id="@+id/action_articlesFragment_to_f2"
+            app:destination="@id/f2" />
+        <action
+            android:id="@+id/action_articlesFragment_to_f32"
+            app:destination="@id/f3" />
     </fragment>
     <fragment
         android:id="@+id/articleDetailFragment"
@@ -23,4 +32,19 @@
             android:name="articleUrl"
             app:argType="string" />
     </fragment>
+    <fragment
+        android:id="@+id/f1"
+        android:name="com.example.myapplication.ui.F1"
+        android:label="fragment_f1"
+        tools:layout="@layout/fragment_f1" />
+    <fragment
+        android:id="@+id/f2"
+        android:name="com.example.myapplication.ui.F2"
+        android:label="fragment_f2"
+        tools:layout="@layout/fragment_f2" />
+    <fragment
+        android:id="@+id/f3"
+        android:name="com.example.myapplication.ui.F3"
+        android:label="fragment_f3"
+        tools:layout="@layout/fragment_f3" />
 </navigation>

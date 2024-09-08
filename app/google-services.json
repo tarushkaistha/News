@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "793355495966",
-    "project_id": "newsapp-91d9a",
-    "storage_bucket": "newsapp-91d9a.appspot.com"
+    "project_number": "773823191130",
+    "project_id": "test-dc683",
+    "storage_bucket": "test-dc683.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:793355495966:android:e6815337327cdb1a8d5c0f",
+        "mobilesdk_app_id": "1:773823191130:android:a2da460efb0eaa2d70e063",
         "android_client_info": {
           "package_name": "com.example.myapplication"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyBzVOJrdn8hZ0cEvoySjB2R3oH1ojGJsVo"
+          "current_key": "AIzaSyBdfFojnmBSdWP2GAT443X8z50vxDxzQ9A"
         }
       ],
       "services": {

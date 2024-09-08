@@ -11,4 +11,7 @@
     <string name="latestNews">News: Old to New</string>
     <string name="oldNews">News: New to Old</string>
     <string name="splash_image">splash image</string>
+    <string name="moe_inbox_notification_title">My Inbox</string>
+    <string name="moe_card_feed_title">Cards Feed</string>
+    <string name="my_card_inbox">My Cards Feed</string>
 </resources>

@@ -21,6 +21,16 @@ class ArticlesViewModel : ViewModel() {
 
     val newsResponse: LiveData<NewsResponse?> = _newsResponse
 
+//    private var _inboxMessages: MutableLiveData<MyInbox?> = MutableLiveData()
+//
+//    val inboxMessages: LiveData<MyInbox?> = _inboxMessages
+//
+//    fun getAllInboxMessages() {
+//        viewModelScope.launch(Dispatchers.IO) {
+//
+//        }
+//    }
+
     fun getAllArticles() {
         viewModelScope.launch(Dispatchers.IO) {
             var httpURLConnection: HttpURLConnection? = null

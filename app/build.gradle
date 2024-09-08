@@ -8,21 +8,27 @@ plugins {
 
 android {
     namespace 'com.example.myapplication'
-    compileSdk 33
+    compileSdk 34
 
     defaultConfig {
         applicationId "com.example.myapplication"
         minSdk 21
-        targetSdk 33
-        versionCode 1
-        versionName "1.0"
+        targetSdk 34
+        versionCode 3
+        versionName "1.45"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        signingConfig signingConfigs.debug
     }
 
     buildTypes {
+        debug {
+//            buildConfigField("int","versionCode","2")
+            debuggable true
+        }
         release {
             minifyEnabled false
+//            debuggable false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -35,23 +41,27 @@ android {
     }
     buildFeatures {
         viewBinding = true
+        buildConfig true
     }
 
 }
 
 dependencies {
 
-    implementation 'androidx.core:core-ktx:1.8.0'
-    implementation 'androidx.appcompat:appcompat:1.4.1'
-    implementation 'com.google.android.material:material:1.5.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
+
+    implementation 'com.github.bumptech.glide:glide:4.16.0'
+    //implementation 'androidx.core:core-ktx:1.8.0'
+    //implementation 'androidx.appcompat:appcompat:1.4.1'
+    implementation('com.google.android.material:material:1.5.0')
+    implementation('androidx.constraintlayout:constraintlayout:2.1.3')
+    implementation('androidx.activity:activity:1.8.0')
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
     implementation 'com.google.code.gson:gson:2.10.1'
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
     implementation("androidx.recyclerview:recyclerview:1.3.2")
-    implementation 'com.github.bumptech.glide:glide:4.16.0'
+
     implementation("androidx.activity:activity-ktx:1.7.0")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.0")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.5.0")
@@ -64,4 +74,18 @@ dependencies {
     implementation("com.google.firebase:firebase-crashlytics")
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.0.0")
     implementation 'com.facebook.shimmer:shimmer:0.5.0'
+    implementation(moengage.core)
+    implementation(moengage.richNotification)
+    implementation(moengage.inapp)
+    implementation("com.google.android.gms:play-services-ads-identifier:18.0.1")
+    implementation 'com.google.android.gms:play-services-location:21.3.0'
+    implementation(moengage.integrationVerifier)
+    implementation(moengage.inboxUi)
+    implementation(moengage.inboxCore)
+    implementation(moengage.geofence)
+    implementation(moengage.cardsUi)
+    implementation(moengage.cardsCore)
+    implementation("androidx.core:core:1.9.0")
+    implementation("androidx.appcompat:appcompat:1.6.1")
+    implementation("androidx.lifecycle:lifecycle-process:2.7.0")
 }

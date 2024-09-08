@@ -5,10 +5,12 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
+//import com.bumptech.glide.Glide
 import com.example.myapplication.R
 import com.example.myapplication.articlesModel.Article
 import com.example.myapplication.databinding.SingleNewsItemBinding
+import com.moengage.core.Properties
+import com.moengage.core.analytics.MoEAnalyticsHelper
 import java.text.SimpleDateFormat
 import java.util.Locale
 
@@ -38,7 +40,7 @@ class NewsAdapter(private var onItemClicked: ((article: Article) -> Unit)) :
 
         fun bind(article: Article) {
             binding.newsTitle.text = article.title
-            Glide.with(binding.root.context).load(article.urlToImage).into(binding.img)
+//            Glide.with(binding.root.context).load(article.urlToImage).into(binding.img)
 
             binding.newsSourceTv.text = article.source.name
             binding.root.setOnClickListener {
@@ -56,6 +58,7 @@ class NewsAdapter(private var onItemClicked: ((article: Article) -> Unit)) :
                     binding.root.context, R.drawable.time_drawable
                 ), null, null, null
             )
+
         }
 
     }

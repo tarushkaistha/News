@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingTop="@dimen/moe_inbox_margin_vertical">
+
+    <TextView
+        android:id="@+id/moeTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="@dimen/moe_inbox_margin_vertical"
+        android:layout_marginBottom="@dimen/moe_inbox_margin_title_margin_bottom"
+        android:layout_toStartOf="@+id/moeDelBtn"
+        android:textColor="#ED1313" />
+
+    <TextView
+        android:id="@+id/moeMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/moeTitle"
+        android:layout_alignStart="@+id/moeTitle"
+        android:layout_alignEnd="@+id/moeTitle"
+        android:layout_marginBottom="@dimen/moe_inbox_margin_horizontal"
+        android:layout_toStartOf="@+id/moeDelBtn"
+        android:textColor="#269B2B" />
+
+    <Button
+        android:id="@+id/moeDelBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="@dimen/moe_inbox_margin_vertical"
+        android:layout_marginLeft="@dimen/moe_inbox_margin_vertical"
+        android:layout_marginEnd="@dimen/moe_inbox_margin_vertical"
+        android:layout_marginRight="@dimen/moe_inbox_margin_vertical"
+        android:text="Delete" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/moe_inbox_divider_height"
+        android:layout_below="@id/moeMessage"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="@dimen/moe_inbox_margin_horizontal"
+        android:background="@color/black" />
+</RelativeLayout>

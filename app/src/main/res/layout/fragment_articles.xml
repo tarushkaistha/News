@@ -31,28 +31,17 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/mt_toolbar" />
 
-        <include
-            android:id="@+id/loading"
-            layout="@layout/shimmer_loading"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:visibility="visible"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/mt_toolbar" />
-
         <TextView
             android:id="@+id/breaking_news_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
             android:layout_marginTop="20dp"
-            android:visibility="gone"
             android:text="@string/breaking_news"
             android:textColor="#000000"
             android:textSize="25sp"
             android:textStyle="bold"
+            android:visibility="gone"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/mt_toolbar" />
 
@@ -65,18 +54,142 @@
             android:layout_marginEnd="15dp"
             android:text="SEND"
             android:textColor="#335F12"
-            android:visibility="gone"
+            android:visibility="visible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/mt_toolbar" />
+
+
+        <Button
+            android:id="@+id/track_purchase_event"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="track purchase event"
+            android:textColor="#335F12"
+            app:layout_constraintStart_toEndOf="@id/breaking_news_tv"
+            app:layout_constraintTop_toBottomOf="@id/mt_toolbar"
+            tools:layout_editor_absoluteX="139dp" />
+
+        <Button
+            android:id="@+id/def_inbox_btn"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="default inbox btn"
+            android:textColor="#335F12"
+            app:layout_constraintEnd_toStartOf="@+id/send_notification_btn"
+            app:layout_constraintStart_toEndOf="@+id/track_purchase_event"
+            app:layout_constraintTop_toBottomOf="@id/mt_toolbar" />
+
+        <Button
+            android:id="@+id/show_inApp_btn"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="click to show in app"
+            android:textColor="#335F12"
+            app:layout_constraintEnd_toStartOf="@+id/send_f2_btn"
+            app:layout_constraintStart_toEndOf="@+id/send_f1_btn"
+            app:layout_constraintTop_toBottomOf="@id/def_inbox_btn" />
+
+        <Button
+            android:id="@+id/show_html_inApp_btn"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:padding="5dp"
+            android:text="click to show html in app"
+            android:textColor="#335F12"
+            app:layout_constraintEnd_toStartOf="@+id/open_inbox_activity_btn"
+            app:layout_constraintStart_toEndOf="@+id/send_f3_btn"
+            app:layout_constraintTop_toBottomOf="@id/show_inApp_btn" />
+
+
+        <Button
+            android:id="@+id/send_f1_btn"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="f1"
+            android:textColor="#335F12"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/track_purchase_event"
+            tools:layout_editor_absoluteX="139dp" />
+
+        <Button
+            android:id="@+id/send_f2_btn"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="f2"
+            android:textColor="#335F12"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/send_notification_btn"
+            tools:layout_editor_absoluteX="139dp" />
+
+        <Button
+            android:id="@+id/send_f3_btn"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="f3"
+            android:textColor="#335F12"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/send_f2_btn"
+            tools:layout_editor_absoluteX="139dp" />
+
+        <Button
+            android:id="@+id/open_inbox_activity_btn"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="inbox activity btn"
+            android:textColor="#335F12"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/send_f2_btn"
+            tools:layout_editor_absoluteX="139dp" />
+
+        <Button
+            android:id="@+id/open_card_activity_btn"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="logout btn"
+            android:textColor="#335F12"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/send_f3_btn"
+            tools:layout_editor_absoluteX="139dp" />
+
+        <Button
+            android:id="@+id/open_my_card_activity_btn"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="my card activity btn"
+            android:textColor="#335F12"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/send_f3_btn"
+            tools:layout_editor_absoluteX="139dp" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/news_rv"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginTop="10dp"
+            android:visibility="gone"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/breaking_news_tv"
+            app:layout_constraintTop_toBottomOf="@id/open_card_activity_btn"
             tools:itemCount="3"
             tools:listitem="@layout/single_news_item" />
 
