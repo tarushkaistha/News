@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".NewsFragment">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/mt_news_tb"
+        android:background="#A079C7"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="News" />
+
+    <View
+        android:id="@+id/hz_line"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#2d2d2d"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/mt_news_tb" />
+
+    <Button
+        android:id="@+id/login_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="login button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/hz_line" />
+
+    <Button
+        android:id="@+id/custom_cat_act"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="custom categ act"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/login_btn" />
+
+    <Button
+        android:id="@+id/logout_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="logout btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/custom_cat_act" />
+
+    <Button
+        android:id="@+id/customWebView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Custom Web View Act"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/logout_btn" />
+
+    <Button
+        android:id="@+id/defMoeInbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Moe def Inbox Act"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/customWebView" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

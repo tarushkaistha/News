@@ -1,54 +1,86 @@
 package com.example.myapplication
 
+//import com.example.myapplication.ui.CustomPushMessageListener
+//import com.moengage.core.config.MoEngageEnvironmentConfig
+//import com.moengage.core.config.MoEngageEnvironmentConfig
+//import com.moengage.core.model.environment.MoEngageEnvironment
 import android.app.Application
-import android.graphics.Color
-import androidx.core.content.ContextCompat
-import com.example.myapplication.ui.CustomPushMessageListener
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.media.AudioAttributes
+import android.net.Uri
+import android.os.Build
+import android.util.Log
+import androidx.annotation.RequiresApi
+import androidx.lifecycle.LifecycleObserver
 import com.moengage.core.DataCenter
 import com.moengage.core.LogLevel
 import com.moengage.core.MoEngage
 import com.moengage.core.config.FcmConfig
 import com.moengage.core.config.LogConfig
-import com.moengage.core.config.MoEngageEnvironmentConfig
 import com.moengage.core.config.NotificationConfig
-import com.moengage.core.model.environment.MoEngageEnvironment
-import com.moengage.pushbase.MoEPushHelper
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import com.moengage.core.config.StorageEncryptionConfig
+import com.moengage.core.config.StorageSecurityConfig
+import kotlinx.coroutines.DelicateCoroutinesApi
 
-class MyApplication : Application() {
+//import com.moengage.core.model.environment.MoEngageEnvironment
+
+
+class MyApplication : Application(), LifecycleObserver {
+
+    @OptIn(DelicateCoroutinesApi::class)
     override fun onCreate() {
         super.onCreate()
 
-        val moEngage = MoEngage.Builder(this, "Z1UDNSWJALFR3UTPWWMCSF5Z", DataCenter.DATA_CENTER_1)
+
+        initMoEngage()
+
+    }
+
+    fun initMoEngage() {
+        val moEngage = MoEngage.Builder(this, "Z1UDNSWJALFR3UTPWWMCSF5Z")
+            .setDataCenter(DataCenter.DATA_CENTER_1)
             .configureLogs(LogConfig(LogLevel.VERBOSE, true)).configureNotificationMetaData(
                 NotificationConfig(
                     R.drawable.ic_launcher_foreground,
-                    R.drawable.ic_launcher_background
+                    R.drawable.ic_launcher_foreground,
+                    notificationColor = R.color.moe_rich_push_progress_bar_background_color,
+                    true,
+                    false,
+                    false
                 )
-        )
+            )
+//            .configureMoEngageEnvironment(MoEngageEnvironmentConfig(MoEngageEnvironment.TEST))
+            .configureFcm(FcmConfig(true)).build()
 
-            .configureMoEngageEnvironment(MoEngageEnvironmentConfig(MoEngageEnvironment.TEST))
-        .configureFcm(FcmConfig(false)).build()
 
         MoEngage.initialiseDefaultInstance(moEngage)
 
 
-//        MoEPushHelper.getInstance().registerMessageListener(CustomPushMessageListener())
-
-//        val pref = getSharedPreferences("default", 0);
-//        if(!pref.contains("version")){
-//            // install
-//            pref.edit().putInt("version", BuildConfig.VERSION_CODE).apply()
-//            MoEAnalyticsHelper.setAppStatus(this, AppStatus.INSTALL)
-//        } else if(pref.getInt("version", 0) != BuildConfig.VERSION_CODE) { // pref contains a version
-//            MoEAnalyticsHelper.setAppStatus(this, AppStatus.UPDATE)
-//            pref.edit().putInt("version", BuildConfig.VERSION_CODE).apply()
-//        }
+    }
 
 
+//    companion object {
+//        lateinit var moEngage: MoEngage
+//    }
+
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun createCustomNotificationChannel(channelId: String, channelName: String) {
+        val channel =
+            NotificationChannel(channelId, channelName, NotificationManager.IMPORTANCE_HIGH)
+
+        val soundUri: Uri =
+            Uri.parse("android.resource://" + packageName + "/" + R.raw.livechat_notify)
+
+
+        Log.d("my sound uri", "sound uri: $soundUri")
+
+        val audioAttributes =
+            AudioAttributes.Builder().setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
+                .setUsage(AudioAttributes.USAGE_NOTIFICATION).build()
+        channel.setSound(soundUri, audioAttributes)
+        val manager = getSystemService(NOTIFICATION_SERVICE) as NotificationManager
+        manager.createNotificationChannel(channel)
     }
 }

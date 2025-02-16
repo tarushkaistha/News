@@ -2,7 +2,7 @@
 
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    style="@style/MoECardStyle"
+
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="10dp"
@@ -18,14 +18,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_begin="@dimen/moe_card_vertical_start_guide" />
+            />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideHorizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_begin="@dimen/basic_card_horizontal_start_guide" />
+             />
 
 
         <ImageView
@@ -41,10 +41,9 @@
 
         <TextView
             android:id="@+id/header"
-            style="@style/MoECardHeaderTextStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/moe_card_basic_image_spacing"
+
             app:layout_constraintEnd_toEndOf="@id/textGuideEnd"
             app:layout_constraintLeft_toRightOf="@id/imageView"
             app:layout_constraintStart_toEndOf="@id/imageView"
@@ -53,11 +52,9 @@
 
         <TextView
             android:id="@+id/message"
-            style="@style/MoECardMessageTextStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/moe_card_basic_image_spacing"
-            android:layout_marginTop="@dimen/moe_card_message_line_spacing"
+
             app:layout_constraintEnd_toEndOf="@id/textGuideEnd"
             app:layout_constraintLeft_toRightOf="@id/imageView"
             app:layout_constraintStart_toEndOf="@id/imageView"
@@ -70,69 +67,43 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_end="@dimen/moe_card_vertical_end_guide" />
+/>
+<!--        <com.moengage.cards.ui.widgets.MoEUnClickedIndicator-->
+<!--            android:id="@+id/unClickedIndicator"-->
+<!--            android:layout_width="@dimen/moe_card_un_clicked_indicator_size"-->
+<!--            android:layout_height="@dimen/moe_card_un_clicked_indicator_size"-->
+<!--            android:layout_alignParentEnd="true"-->
+<!--            android:visibility="gone"-->
+<!--            app:indicatorColor="@color/moe_card_unclicked_indicator_color"-->
+<!--            app:layout_constraintRight_toRightOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent" />-->
 
-        <com.moengage.cards.ui.widgets.MoEUnClickedIndicator
-            android:id="@+id/unClickedIndicator"
-            android:layout_width="@dimen/moe_card_un_clicked_indicator_size"
-            android:layout_height="@dimen/moe_card_un_clicked_indicator_size"
-            android:layout_alignParentEnd="true"
-            android:visibility="gone"
-            app:indicatorColor="@color/moe_card_unclicked_indicator_color"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/pin"
-            android:layout_width="@dimen/moe_card_pin_width"
-            android:layout_height="@dimen/moe_card_pin_height"
-            android:layout_marginEnd="@dimen/moe_card_pin_margin"
-            android:layout_marginRight="@dimen/moe_card_pin_margin"
-            android:src="@drawable/moe_card_pin"
-            android:visibility="gone"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/unClickedIndicator"
-            app:layout_goneMarginTop="@dimen/moe_card_pin_margin_top" />
+<!--        <TextView-->
+<!--            android:id="@+id/time"-->
+<!--            style="@style/MoECardTimeTextStyle"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:paddingTop="@dimen/moe_card_vertical_spacing_time"-->
+<!--            android:paddingBottom="@dimen/moe_card_vertical_spacing_time"-->
+<!--            app:layout_constraintStart_toStartOf="@id/guideStart"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/separator" />-->
 
-        <View
-            android:id="@+id/separator"
-            style="@style/MoECardSeparatorStyle"
-            android:layout_width="0dp"
-            android:layout_height="@dimen/moe_card_separator_height"
-            android:layout_marginStart="@dimen/moe_card_separator_margin"
-            android:layout_marginLeft="@dimen/moe_card_separator_margin"
-            android:layout_marginTop="@dimen/moe_card_separator_top_margin"
-            android:layout_marginEnd="@dimen/moe_card_separator_margin"
-            android:layout_marginRight="@dimen/moe_card_separator_margin"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/barrier" />
-
-        <TextView
-            android:id="@+id/time"
-            style="@style/MoECardTimeTextStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingTop="@dimen/moe_card_vertical_spacing_time"
-            android:paddingBottom="@dimen/moe_card_vertical_spacing_time"
-            app:layout_constraintStart_toStartOf="@id/guideStart"
-            app:layout_constraintTop_toBottomOf="@id/separator" />
-
-        <Button
-            android:id="@+id/ctaButton"
-            style="@style/MoECardCtaStyle"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:gravity="center_horizontal"
-            android:paddingLeft="@dimen/moe_card_horizontal_spacing_cta"
-            android:paddingTop="@dimen/moe_card_vertical_spacing_time"
-            android:paddingRight="@dimen/moe_card_horizontal_spacing_cta"
-            android:paddingBottom="@dimen/moe_card_vertical_spacing_time"
-            android:textAlignment="center"
-            app:layout_constraintEnd_toStartOf="@+id/textGuideEnd"
-            app:layout_constraintLeft_toRightOf="@id/time"
-            app:layout_constraintTop_toBottomOf="@+id/separator"
-            app:layout_constraintWidth_max="@dimen/moe_card_max_button_width" />
+<!--        <Button-->
+<!--            android:id="@+id/ctaButton"-->
+<!--            style="@style/MoECardCtaStyle"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:gravity="center_horizontal"-->
+<!--            android:paddingLeft="@dimen/moe_card_horizontal_spacing_cta"-->
+<!--            android:paddingTop="@dimen/moe_card_vertical_spacing_time"-->
+<!--            android:paddingRight="@dimen/moe_card_horizontal_spacing_cta"-->
+<!--            android:paddingBottom="@dimen/moe_card_vertical_spacing_time"-->
+<!--            android:textAlignment="center"-->
+<!--            app:layout_constraintEnd_toStartOf="@+id/textGuideEnd"-->
+<!--            app:layout_constraintLeft_toRightOf="@id/time"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/separator"-->
+<!--            app:layout_constraintWidth_max="@dimen/moe_card_max_button_width" />-->
 
 
         <androidx.constraintlayout.widget.Barrier

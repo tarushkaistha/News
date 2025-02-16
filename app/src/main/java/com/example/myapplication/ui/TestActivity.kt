@@ -1,19 +1,19 @@
 package com.example.myapplication.ui
 
-import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.util.Log
-import android.webkit.WebView
-import android.webkit.WebViewClient
 import androidx.appcompat.app.AppCompatActivity
-import com.example.myapplication.Utils
+import com.example.myapplication.R
 import com.example.myapplication.databinding.TestActivityBinding
+import com.moengage.core.DataCenter
 import com.moengage.core.LogLevel
-import com.moengage.core.internal.global.GlobalCache
-import com.moengage.core.internal.logger.Logger
-import com.moengage.core.internal.rest.SCHEME_HTTP
-import com.moengage.core.internal.rest.SCHEME_HTTPS
+import com.moengage.core.MoEngage
+import com.moengage.core.config.FcmConfig
+import com.moengage.core.config.LogConfig
+//import com.moengage.core.config.MoEngageEnvironmentConfig
+import com.moengage.core.config.NotificationConfig
+//import com.moengage.core.model.environment.MoEngageEnvironment
+import com.moengage.inapp.MoEInAppHelper
 
 
 class TestActivity() : AppCompatActivity() {
@@ -27,37 +27,7 @@ class TestActivity() : AppCompatActivity() {
         binding = TestActivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        try {
-            val webView = binding.myWebView
-            webView.loadUrl("https://shop.unifi.com.my/slof/register-interest?utm_source=myunifi&utm_medium=myunifi&utm_campaign=unifi_202404_hebat&utm_content=3months_waiver")
-            webView.settings.javaScriptEnabled = GlobalCache.jsConfig.isJavaScriptEnabled
-            webView.settings.builtInZoomControls = true
-            webView.webViewClient = object : WebViewClient() {
-                @Deprecated("Deprecated in Java")
-                override fun shouldOverrideUrlLoading(view: WebView, url: String): Boolean {
-                    try {
-                        Logger.print { "${Utils.MOENGAGE_TAG} shouldOverrideUrlLoading() : Url: $url" }
-                        val uri = Uri.parse(url)
-                        val scheme = uri.scheme
-                        if ((SCHEME_HTTP == scheme || SCHEME_HTTPS == scheme)) {
-                            return false
-                        }
-                        val intent = Intent(Intent.ACTION_VIEW, uri)
-                        startActivity(intent)
-                        return true
-                    } catch (t: Throwable) {
-                        Logger.print(
-                            LogLevel.ERROR, t
-                        ) { "${Utils.MOENGAGE_TAG} shouldOverrideUrlLoading() : " }
-                    }
-                    return false
-                }
-            }
-        } catch (t: Throwable) {
-            Log.d(Utils.MOENGAGE_TAG, "onCreate:  ")
-            Log.d(Utils.MOENGAGE_TAG, "onCreate: could not load web view ")
-            finish()
-        }
+        Log.d("testact", "onCreate my data ${intent.data}: ")
 
 
 //        MoECardHelper.setSyncCompleteListener(object : SyncCompleteListener {
@@ -106,15 +76,32 @@ class TestActivity() : AppCompatActivity() {
 
     }
 
-//    override fun onStart() {
-//        super.onStart()
-//        MoEInAppHelper.getInstance().setInAppContext(setOf("context 1"))
-//    }
+    override fun onStart() {
+        super.onStart()
+
+        Log.d("starttf", "on start called in tf: ")
+//        MoEInAppHelper.getInstance().showInApp(this)
+//        moEngage =
+//            MoEngage.Builder(application, "Z1UDNSWJALFR3UTPWWMCSF5Z", DataCenter.DATA_CENTER_1)
+//                .configureLogs(LogConfig(LogLevel.VERBOSE, true)).configureNotificationMetaData(
+//                    NotificationConfig(
+//                        R.drawable.ic_launcher_foreground, R.drawable.ic_launcher_foreground
+//                    )
+//                ).configureMoEngageEnvironment(MoEngageEnvironmentConfig(MoEngageEnvironment.TEST))
+//                .configureFcm(FcmConfig(true)).build()
 //
-//    override fun onStop() {
-//        super.onStop()
-//        MoEInAppHelper.getInstance().resetInAppContext()
-//    }
+//
+//        MoEngage.initialiseDefaultInstance(moEngage)
+
+//        MoEInAppHelper.getInstance().showInApp(this)
+    }
+
+    //
+    override fun onStop() {
+        super.onStop()
+
+        Log.d("stoptf", "on stop called in tf: ")
+    }
 //
 //    override fun onResume() {
 //        super.onResume()
@@ -138,6 +125,22 @@ class TestActivity() : AppCompatActivity() {
 //            }
 //
 //        })
+//    }
+
+    override fun onPause() {
+        super.onPause()
+
+        Log.d("pausetf", "on pause called in tf: ")
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        Log.d("resumetf", "on resume called in tf: ")
+    }
+
+//    companion object {
+//        lateinit var moEngage: MoEngage
 //    }
 
 

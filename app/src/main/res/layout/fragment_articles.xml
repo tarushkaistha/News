@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?><androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/swipe_refresh_container"
@@ -181,6 +180,18 @@
             app:layout_constraintTop_toBottomOf="@id/send_f3_btn"
             tools:layout_editor_absoluteX="139dp" />
 
+        <Button
+            android:id="@+id/open_custom_web_view_activity_btn"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="my custom web view activity btn"
+            android:textColor="#335F12"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/open_my_card_activity_btn"
+            tools:layout_editor_absoluteX="139dp" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/news_rv"
             android:layout_width="match_parent"
@@ -192,6 +203,16 @@
             app:layout_constraintTop_toBottomOf="@id/open_card_activity_btn"
             tools:itemCount="3"
             tools:listitem="@layout/single_news_item" />
+
+        <Button
+            android:id="@+id/login_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/show_html_inApp_btn"
+            android:text="login btn"
+            app:layout_constraintEnd_toStartOf="@+id/open_card_activity_btn"
+            app:layout_constraintStart_toEndOf="@+id/open_my_card_activity_btn"
+            tools:layout_editor_absoluteY="240dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

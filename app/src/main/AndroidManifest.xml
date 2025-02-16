@@ -2,12 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-
-    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION"/>
-
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -15,49 +13,96 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_launcher"
+
+
+        android:icon="@mipmap/ic_launcher_a"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
+        <activity
+            android:name=".ui.CustomWebView"
+            android:exported="true">
 
+            <intent-filter>
+
+                <action android:name="android.intent.action.VIEW" />
+
+            </intent-filter>
+
+        </activity>
         <activity
             android:name=".ui.MyCustomCategoryActivity"
             android:exported="true" />
         <activity
             android:name=".ui.Abc"
-            android:exported="true" />
-        <!-- <activity -->
+            android:exported="true" /> <!-- <activity -->
         <!-- android:name="com.moengage.cards.ui.CardActivity" -->
         <!-- android:label="@string/cards_toolbar_title" -->
         <!-- android:theme="@style/MyMoECardTheme.NoActionBar" /> -->
         <activity
             android:name=".ui.TestActivity"
-            android:exported="true" />
-        <activity
-            android:name=".ui.CustomInboxActivity"
-            android:exported="true"
-            android:theme="@style/Base.Theme.MyCustomInbox" />
+            android:exported="true">
+
+
+            <intent-filter>
+
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="tarush"
+                    android:pathPrefix="/testactivity"
+                    android:scheme="http" />
+
+            </intent-filter>
+
+
+            <intent-filter>
+
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="tarush"
+                    android:pathPrefix="/testactivity"
+                    android:scheme="https" />
+
+            </intent-filter>
+
+
+        </activity>
+        <!--        <activity-->
+        <!--            android:name=".ui.CustomInboxActivity"-->
+        <!--            android:exported="true"-->
+        <!--            android:theme="@style/Base.Theme.MyCustomInbox" />-->
         <activity
             android:name=".ui.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".ui.MainActivity"
-            android:exported="true" /> <!-- <service -->
-        <!-- android:name="com.moengage.firebase.MoEFireBaseMessagingService" -->
-        <!-- android:exported="false"> -->
-        <!-- <intent-filter> -->
-        <!-- <action android:name="com.google.firebase.MESSAGING_EVENT" /> -->
-        <!-- </intent-filter> -->
-        <!-- </service> -->
+            android:configChanges="orientation"
+            android:exported="true" />
+        <!--         <service-->
+        <!--         android:name="com.moengage.firebase.MoEFireBaseMessagingService"-->
+        <!--         android:exported="false">-->
+        <!--         <intent-filter>-->
+        <!--         <action android:name="com.google.firebase.MESSAGING_EVENT" />-->
+        <!--         </intent-filter>-->
+        <!--         </service>-->
         <service
             android:name=".notifications.MyFirebaseMessagingService"
             android:exported="false">
@@ -65,6 +110,19 @@
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
+
+        <provider
+            android:name="androidx.startup.InitializationProvider"
+            android:authorities="${applicationId}.androidx-startup"
+            android:exported="false"
+            tools:node="merge">
+
+            <!-- If you are using androidx.starAtup to initialize other components -->
+            <meta-data
+                android:name="androidx.work.WorkManagerInitializer"
+                android:value="androidx.startup"
+                tools:node="remove" />
+        </provider>
     </application>
 
 </manifest>

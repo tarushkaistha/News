@@ -24,11 +24,11 @@ android {
     buildTypes {
         debug {
 //            buildConfigField("int","versionCode","2")
-            debuggable true
+//            debuggable true
         }
         release {
             minifyEnabled false
-//            debuggable false
+            debuggable false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -77,15 +77,19 @@ dependencies {
     implementation(moengage.core)
     implementation(moengage.richNotification)
     implementation(moengage.inapp)
+
     implementation("com.google.android.gms:play-services-ads-identifier:18.0.1")
     implementation 'com.google.android.gms:play-services-location:21.3.0'
-    implementation(moengage.integrationVerifier)
-    implementation(moengage.inboxUi)
-    implementation(moengage.inboxCore)
-    implementation(moengage.geofence)
+//    implementation(moengage.integrationVerifier)
+//    implementation(moengage.inboxUi)
+//    implementation(moengage.inboxCore)
+//    implementation(moengage.geofence)
+//    implementation(moengage.pushAmpPlus)
+
     implementation(moengage.cardsUi)
+    implementation(moengage.security)
     implementation(moengage.cardsCore)
     implementation("androidx.core:core:1.9.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("androidx.lifecycle:lifecycle-process:2.7.0")
+    implementation("androidx.lifecycle:lifecycle-process:2.5.1")
 }

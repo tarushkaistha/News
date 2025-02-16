@@ -1,9 +1,11 @@
 package com.example.myapplication.ui
 
-import android.Manifest
+//import com.bumptech.glide.Glide
+//import com.bumptech.glide.Glide
+//import com.moengage.inbox.ui.MoEInboxUiHelper
+//import com.moengage.inbox.ui.view.InboxActivity
+//import com.moengage.inbox.ui.view.InboxActivity
 import android.content.Intent
-import android.content.pm.PackageManager
-import android.content.res.Configuration
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -12,16 +14,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts.RequestPermission
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout.OnRefreshListener
-//import com.bumptech.glide.Glide
+import com.bumptech.glide.util.Util
 import com.example.myapplication.R
 import com.example.myapplication.Utils
 import com.example.myapplication.articlesViewModel.ArticlesViewModel
@@ -33,15 +33,19 @@ import com.moengage.core.MoECoreHelper
 import com.moengage.core.Properties
 import com.moengage.core.analytics.MoEAnalyticsHelper
 import com.moengage.core.enableAdIdTracking
-import com.moengage.firebase.MoEFireBaseHelper
+import com.moengage.core.listeners.UserDeletionListener
+import com.moengage.core.model.user.deletion.UserDeletionData
 import com.moengage.inapp.MoEInAppHelper
+import com.moengage.inapp.listeners.InAppLifeCycleListener
+import com.moengage.inapp.listeners.OnClickActionListener
 import com.moengage.inapp.listeners.SelfHandledAvailableListener
+import com.moengage.inapp.listeners.SelfHandledCampaignsAvailableListener
+import com.moengage.inapp.model.ClickData
+import com.moengage.inapp.model.InAppData
 import com.moengage.inapp.model.SelfHandledCampaignData
-import com.moengage.inbox.ui.MoEInboxUiHelper
-import com.moengage.inbox.ui.view.InboxActivity
+import com.moengage.inapp.model.SelfHandledCampaignsData
+import com.moengage.inapp.model.actions.CustomAction
 import com.moengage.pushbase.MoEPushHelper
-import com.moengage.pushbase.listener.TokenAvailableListener
-import com.moengage.pushbase.model.Token
 
 
 class ArticlesFragment : Fragment() {
@@ -55,8 +59,11 @@ class ArticlesFragment : Fragment() {
         return binding.root
     }
 
+    @RequiresApi(36)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+//        MyApplication.moEngage
 
 
         enableAdIdTracking(requireActivity())
@@ -64,13 +71,20 @@ class ArticlesFragment : Fragment() {
 //        MoEGeofenceHelper.getInstance().startGeofenceMonitoring(requireActivity())
 
         binding.openCardActivityBtn.setOnClickListener {
-//            startActivity(Intent(requireActivity(), CardActivity::class.java))
             MoECoreHelper.logoutUser(requireActivity())
+
         }
 
         binding.openMyCardActivityBtn.setOnClickListener {
-            val i = Intent(requireActivity(), MyCustomCategoryActivity::class.java)
-            requireActivity().startActivity(i)
+//            val i = Intent(requireActivity(), MyCustomCategoryActivity::class.java)
+//            requireActivity().startActivity(i)
+        }
+
+        binding.openCustomWebViewActivityBtn.setOnClickListener {
+//            val i = Intent(requireActivity(), CustomWebView::class.java)
+//            requireActivity().startActivity(i)
+
+//            disableSdk(requireActivity())
         }
 
 //
@@ -87,77 +101,56 @@ class ArticlesFragment : Fragment() {
 //            MoEAnalyticsHelper.trackEvent(requireActivity(), "Purchase", property)
 
         binding.trackPurchaseEvent.setOnClickListener {
-//            val property = Properties().addAttribute("quantity", 2)
-//                // tracking string
-//                .addAttribute("product", "iPhone")
+//            requireActivity().startActivity(Intent(requireActivity(), TestActivity::class.java))
+
+//            val property = Properties().addAttribute("raw", "John cena")
 //
-//            MoEAnalyticsHelper.trackEvent(requireActivity(), "Purchase", property)
-            val i = Intent(requireActivity(), TestActivity::class.java)
-            requireActivity().startActivity(i)
+//            MoEAnalyticsHelper.trackEvent(requireActivity(), "WWE RAW", property)
+
+            MoECoreHelper.deleteUser(requireActivity(),object : UserDeletionListener {
+                override fun onResult(data: UserDeletionData) {
+                    Log.d(Utils.MOENGAGE_TAG, "onResult of user deletion data: $data")
+                }
+
+            })
         }
 
+
+
         binding.defInboxBtn.setOnClickListener {
-            MoEInboxUiHelper.getInstance().setInboxAdapter(DefaultCustomInboxAdapter())
-            startActivity(Intent(requireActivity(), InboxActivity::class.java))
+//            MoEInboxUiHelper.getInstance().setInboxAdapter(DefaultCustomInboxAdapter())
+//            startActivity(Intent(requireActivity(), InboxActivity::class.java))
         }
 
         binding.openInboxActivityBtn.setOnClickListener {
-            startActivity(Intent(requireActivity(), CustomInboxActivity::class.java))
+//            startActivity(Intent(requireActivity(), CustomInboxActivity::class.java))
         }
 
-
-//        MoEAnalyticsHelper.setUniqueId(requireActivity(), 1001)
-
-//        MoECoreHelper.logoutUser(requireActivity())
-
-//        MoEAnalyticsHelper.setUniqueId(requireActivity(), 1002)
-//        MoEAnalyticsHelper.setUniqueId(requireActivity(), 1004)
-
-//        MoEAnalyticsHelper.setAlias(requireActivity(),"1003")
-
-//        MoEAnalyticsHelper.setUniqueId(requireActivity(), "2001")
-//
-//        MoECoreHelper.logoutUser(requireActivity())
-//
-//        MoECoreHelper.logoutUser(requireActivity())
-        MoEAnalyticsHelper.setUniqueId(requireActivity(), "Obk")
-
-
-//        MoEPushHelper.getInstance().requestPushPermission(requireActivity())
-
-        MoEAnalyticsHelper.setFirstName(requireActivity(),"Obike")
-//        MoEAnalyticsHelper.setUserName()
-//        MoEAnalyticsHelper.setLocation()
-//        MoEAnalyticsHelper.setBirthDate(requireActivity(),Date())
-//        MoEAnalyticsHelper.setEmailId(requireActivity(),"tarush.kaistha@moengage.com")
-//        MoEAnalyticsHelper.setGender(requireActivity(),UserGender.MALE)
-        MoEAnalyticsHelper.setMobileNumber(requireActivity(), "9015004529")
-//        val property = Properties().addAttribute("quantity", 2)
-//            // tracking string
-//            .addAttribute("product", "iPhone")
-//
-//        MoEAnalyticsHelper.trackEvent(requireActivity(), "Purchases", property)
-//        MoEAnalyticsHelper.setUniqueId(requireActivity(), "T3")
-
-
-//        MoEAnalyticsHelper.setUniqueId(requireActivity(), "202G")
-
-        if (ContextCompat.checkSelfPermission(
-                requireActivity(), Manifest.permission.POST_NOTIFICATIONS
-            ) == PackageManager.PERMISSION_GRANTED
-        ) {
-            Toast.makeText(requireContext(), "Permission Granted", Toast.LENGTH_SHORT).show()
-        } else {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-                requestPostPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
-            } else {
-                Toast.makeText(
-                    requireContext(),
-                    "Permission already granted below android level 13",
-                    Toast.LENGTH_SHORT
-                ).show()
-            }
+        binding.loginBtn.setOnClickListener {
+//            startActivity(Intent(requireActivity(), InboxActivity::class.java))
         }
+
+        MoEAnalyticsHelper.setEmailId(requireActivity(), "altiora.kia@moengage.com")
+
+//        if (ContextCompat.checkSelfPermission(
+//                requireActivity(), Manifest.permission.POST_NOTIFICATIONS
+//            ) == PackageManager.PERMISSION_GRANTED
+//        ) {
+////            Toast.makeText(requireContext(), "Permission Granted", Toast.LENGTH_SHORT).show()
+//        } else {
+//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+//                requestPostPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
+//            } else {
+//                Toast.makeText(
+//                    requireContext(),
+//                    "Permission already granted below android level 13",
+//                    Toast.LENGTH_SHORT
+//                ).show()
+//            }
+//        }
+
+        MoEPushHelper.getInstance().requestPushPermission(requireActivity())
+
 
         binding.apply {
             newsAdapter = NewsAdapter {
@@ -201,20 +194,52 @@ class ArticlesFragment : Fragment() {
 
 
             this.sendF1Btn.setOnClickListener {
-                findNavController().navigate(R.id.action_articlesFragment_to_f1)
+//                findNavController().navigate(R.id.action_articlesFragment_to_f1)
+//                startActivity(Intent(requireActivity(), CardActivity::class.java))
+
+                val currentAndroidVersion = Build.VERSION.SDK_INT
+
+//                println("Current Android version: $currentAndroidVersion")
+
+                Log.d("sendf1", "current version: $currentAndroidVersion")
+
             }
 
             this.sendF2Btn.setOnClickListener {
-                findNavController().navigate(R.id.action_articlesFragment_to_f2)
+//                findNavController().navigate(R.id.action_articlesFragment_to_f2)
+                val i = Intent(requireActivity(), MyCustomCategoryActivity::class.java)
+                requireActivity().startActivity(i)
             }
 
 
             this.sendF3Btn.setOnClickListener {
-                findNavController().navigate(R.id.action_articlesFragment_to_f32)
+//                findNavController().navigate(R.id.action_articlesFragment_to_f32)
+                MoEAnalyticsHelper.setUniqueId(requireActivity(), "Johnathan")
+
+            }
+
+            this.showInAppBtn.setOnClickListener {
+
+                MoEInAppHelper.getInstance()
+                    .getSelfHandledInApp(requireActivity(), object : SelfHandledAvailableListener {
+                        override fun onSelfHandledAvailable(data: SelfHandledCampaignData?) {
+                            val myPayload = data?.campaign?.payload
+                            Log.d(Utils.MOENGAGE_TAG, "mypnshav: $myPayload")
+
+//                    val myData: SelfHandledCampaignData = showData(data!!)
+//                    MoEInAppHelper.getInstance().selfHandledShown(requireActivity(), myData)
+
+
+                        }
+
+                    })
+
             }
 
 
             this.sendNotificationBtn.setOnClickListener {
+
+//                disableSdk(requireActivity())
 //                FirebaseMessaging.getInstance().token.addOnCompleteListener { task ->
 //                    if (!task.isSuccessful) {
 //                        Log.w(
@@ -230,13 +255,13 @@ class ArticlesFragment : Fragment() {
 //
 //                }
 
-                MoEFireBaseHelper.getInstance().addTokenListener(object : TokenAvailableListener {
-                    override fun onTokenAvailable(token: Token) {
-                        val myToken = token.pushToken
-                        Log.d("ArticlesFrg", "push token: $myToken ")
-                    }
-
-                })
+//                MoEFireBaseHelper.getInstance().addTokenListener(object : TokenAvailableListener {
+//                    override fun onTokenAvailable(token: Token) {
+//                        val myToken = token.pushToken
+//                        Log.d("ArticlesFrg", "push token: $myToken ")
+//                    }
+//
+//                })
 
             }
 
@@ -299,12 +324,12 @@ class ArticlesFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
-
+        Log.d("start", "on start called: ")
 
 //        Toast.makeText(requireActivity(), "art frg start", Toast.LENGTH_LONG).show()
 //        MoEInAppHelper.getInstance().showInApp(requireActivity())
 
-//        MoEInAppHelper.getInstance().setInAppContext(setOf("context3"))
+//        MoEInAppHelper.getInstance().setInAppContext(setOf("home"))
 //        MoEInAppHelper.getInstance().showNudge(requireActivity())
 
 //        MoEInAppHelper.getInstance().addInAppLifeCycleListener(object : InAppLifeCycleListener {
@@ -324,6 +349,10 @@ class ArticlesFragment : Fragment() {
     override fun onPause() {
         super.onPause()
 //        Toast.makeText(requireActivity(), "art frg pause", Toast.LENGTH_LONG).show()
+        Log.d("pause", "on pause called: ")
+//        MoEInAppHelper.getInstance().resetInAppContext()
+
+
     }
 
 
@@ -331,6 +360,8 @@ class ArticlesFragment : Fragment() {
 
         val myPayLoad = data?.campaign?.payload
         Log.d(Utils.MOENGAGE_TAG, "showData: $myPayLoad")
+
+//        Log.d(Utils.MOENGAGE_TAG, "showDataWithContext: ${data.campaignData}")
 
 
         val secondMessagePayloadResponse = Gson().fromJson(myPayLoad, SecondMessage::class.java)
@@ -368,6 +399,13 @@ class ArticlesFragment : Fragment() {
     override fun onResume() {
         super.onResume()
 
+
+//        MoEInAppHelper.getInstance().getSelfHandledInApps(requireActivity(),object : SelfHandledCampaignsAvailableListener{
+//            override fun onCampaignsAvailable(campaigns: SelfHandledCampaignsData?) {
+//                Log.d(Utils.MOENGAGE_TAG, "multiple SDK camps list size: ${campaigns!!.campaigns}")
+//            }
+//
+//        })
         MoEInAppHelper.getInstance().showInApp(requireActivity())
 //        MoEInAppHelper.getInstance().showNudge(requireActivity())
 
@@ -389,25 +427,20 @@ class ArticlesFragment : Fragment() {
 
 //        MoEInAppHelper.getInstance().showNudge(requireActivity())
 
-        MoEInAppHelper.getInstance()
-            .getSelfHandledInApp(requireActivity(), object : SelfHandledAvailableListener {
-                override fun onSelfHandledAvailable(data: SelfHandledCampaignData?) {
-                    val myPayload = data?.campaign?.payload
-                    Log.d("moengage sh", "onSelfHandledAvailable: $myPayload")
-
-                    binding.showHtmlInAppBtn.setOnClickListener {
-                        val myData: SelfHandledCampaignData = showData(data!!)
-                        MoEInAppHelper.getInstance().selfHandledShown(requireActivity(), myData)
-                    }
-
-                }
-
-            })
-
-
-//        val properties = Properties()
-//        properties.addAttribute("title", "redmi")
-//        MoEAnalyticsHelper.trackEvent(requireActivity(), "Tap on News", properties)
+//        MoEInAppHelper.getInstance().setInAppContext(setOf("abc"))
+//        MoEInAppHelper.getInstance()
+//            .getSelfHandledInApp(requireActivity(), object : SelfHandledAvailableListener {
+//                override fun onSelfHandledAvailable(data: SelfHandledCampaignData?) {
+//                    val myPayload = data?.campaign?.payload
+//                    Log.d(Utils.MOENGAGE_TAG, "mypnshav: $myPayload")
+//
+//                    val myData: SelfHandledCampaignData = showData(data!!)
+//                    MoEInAppHelper.getInstance().selfHandledShown(requireActivity(), myData)
+//
+//
+//                }
+//
+//            })
 
 
 //        MoEInAppHelper.getInstance().setSelfHandledListener(object : SelfHandledAvailableListener {
@@ -424,18 +457,32 @@ class ArticlesFragment : Fragment() {
 //        MoEInAppHelper.getInstance().addInAppLifeCycleListener(object : InAppLifeCycleListener {
 //            override fun onDismiss(inAppData: InAppData) {
 //                // has to be implemented
-//                Log.d(articlesFrgTag, "on dismiss is invoked on resume ")
-//                Log.d(articlesFrgTag, "in app nudge data: $inAppData")
+//                Log.d(Utils.MOENGAGE_TAG, "on dismiss is invoked on resume ")
+//                Log.d(Utils.MOENGAGE_TAG, "in app nudge data: $inAppData")
 //
 //            }
 //
 //            override fun onShown(inAppData: InAppData) {
-//                Log.d(articlesFrgTag, "on shown is invoked on resume ")
-//                Log.d(articlesFrgTag, "in app nudge data: $inAppData")
+//                Log.d(Utils.MOENGAGE_TAG, "on shown is invoked on resume ")
+//                Log.d(Utils.MOENGAGE_TAG, "in app nudge data: $inAppData")
 //            }
 //
 //        })
 
+//        MoEInAppHelper.getInstance().setClickActionListener(object : OnClickActionListener {
+//            override fun onClick(clickData: ClickData): Boolean {
+//                Log.d("Utils.MOENGAGE_TAG", "onClick in-app: $clickData ")
+//
+//
+//                val kvPair = (clickData.action as CustomAction).keyValuePairs
+//                Log.d(Utils.MOENGAGE_TAG, "kv pairs for custom action : $kvPair")
+//                val i = Intent(Intent.ACTION_VIEW)
+//                i.setData(Uri.parse(navigationUrl))
+//                startActivity(i)
+//                return false
+//            }
+//
+//        })
 
 //        MoEInAppHelper.getInstance().setClickActionListener(object : OnClickActionListener {
 //            override fun onClick(clickData: ClickData): Boolean {
@@ -487,6 +534,14 @@ class ArticlesFragment : Fragment() {
     companion object {
         val articlesFrgTag = "ARTICLES_FRAGMENT"
 
+    }
+
+    override fun onStop() {
+        super.onStop()
+
+        Log.d("stop", "on stop called: ")
+
+//        MoEInAppHelper.getInstance().resetInAppContext()
     }
 
 //    override fun onConfigurationChanged(newConfig: Configuration) {

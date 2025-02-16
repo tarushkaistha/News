@@ -59,10 +59,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/grant_notification_permission" />
 
-    <WebView
-        android:id="@+id/myWebView"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/open_default_card_screen_btn" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -28,7 +28,7 @@
 
         <ImageView
             android:id="@+id/inApp_iv"
-            android:layout_width="100dp"
+            android:layout_width="0dp"
             android:layout_height="100dp"
             android:contentDescription="show image in inApp"
             app:layout_constraintBottom_toTopOf="@id/yesBtn"

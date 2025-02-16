@@ -13,9 +13,11 @@ import android.util.Log
 import android.widget.RemoteViews
 import androidx.core.app.NotificationCompat
 import com.example.myapplication.R
+import com.example.myapplication.Utils
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 import com.moengage.firebase.MoEFireBaseHelper
+import com.moengage.pushbase.MoEPushHelper
 
 
 class MyFirebaseMessagingService : FirebaseMessagingService() {
@@ -25,11 +27,11 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
         super.onNewToken(token)
 
 
-        Log.d("service", "on token observe: $token ")
-
+//        Log.d("service", "on token observe: $token ")
+//
         MoEFireBaseHelper.getInstance().passPushToken(applicationContext, token)
-
-        Log.d("service", "on pass psh token observe: $token ")
+//
+//        Log.d("service", "on pass psh token observe: $token ")
     }
 
     override fun onMessageReceived(message: RemoteMessage) {
@@ -47,12 +49,24 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
 //
 //            }
 
-            val payload = remoteMessage.data
 
-            Log.d("fbservice", "notification title: $payload")
+//            val payload = remoteMessage.data
 
 
-//            val webUrl = remoteMessage.data["gcm_webUrl"]
+
+
+//            Log.d("fbservice", "notification payload: $payload")
+//            Log.d("fbservicecarousel", "test carousel payoad: $payload")
+
+
+            val title = remoteMessage.data["title"]
+            val content = remoteMessage.data["content"]
+
+            val payload = remoteMessage.toIntent().extras
+
+            Log.d(Utils.MOENGAGE_TAG, "check payload: $payload")
+
+//            showNotification(title, content, pii = null)
 
             val bundle = Bundle()
 
@@ -62,31 +76,42 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
 //                MoEFireBaseHelper.getInstance().passPushPayload(applicationContext, bundle)
             }
 
-//            MoEFireBaseHelper.getInstance().passPushPayload(applicationContext, remoteMessage.data)
-            MoEFireBaseHelper.getInstance().passPushPayload(applicationContext, bundle)
+            MoEFireBaseHelper.getInstance().passPushPayload(applicationContext, remoteMessage.data)
+//            MoEFireBaseHelper.getInstance().passPushPayload(applicationContext, payload!!)
+//            MoEFireBaseHelper.getInstance().passPushPayload(applicationContext, bundle)
 //            MoEFireBaseHelper.getInstance().passPushPayload(applicationContext, bundle)
 
 
 //            val myAfPushLink = bundle.getString("my_key")
 
+//            val title = remoteMessage.data[]
 //            showNotification(title, body, pii)
 
 
-//            val intent = Intent(Intent.ACTION_DEFAULT, Uri.parse("")).apply {
-//                flags = Intent.FLAG_ACTIVITY_SINGLE_TOP
-//            }.putExtras(bundle)
+            val intent = Intent(
+                Intent.ACTION_DEFAULT,
+                Uri.parse("https://mfast.vn/khong-can-bang-cap-chuyen-mon-van-kiem-duoc-20-30-trieu-moi-thang/")
+            ).apply {
+                flags = Intent.FLAG_ACTIVITY_SINGLE_TOP
+            }.putExtras(bundle)
 
-//            val pii = PendingIntent.getActivity(
-//                applicationContext, 0, intent, PendingIntent.FLAG_IMMUTABLE
-//            )
+            val pii = PendingIntent.getActivity(
+                applicationContext, 0, intent, PendingIntent.FLAG_IMMUTABLE
+            )
 
 
 //            showNotification(title, body, pii)
 
 
-//            if (MoEPushHelper.getInstance().isFromMoEngagePlatform(myPushPayLoad)) {
+            if (MoEPushHelper.getInstance().isFromMoEngagePlatform(remoteMessage.data)) {
+                MoEFireBaseHelper.getInstance().passPushPayload(applicationContext, remoteMessage.data)
+            }
 //                Log.d("myfbservice", "my push payload received: $myPushPayLoad ")
-////                MoEFireBaseHelper.getInstance().passPushPayload(applicationContext, myPushPayLoad)
+//            MoEFireBaseHelper.getInstance().passPushPayload(applicationContext, myPushPayLoad)
+            try {////                MoEFireBaseHelper.getInstance().passPushPayload(applicationContext, myPushPayLoad)
+            } catch (e: Exception) {
+                TODO("Not yet implemented")
+            }
 ////                    val sentFromWhere = remoteMessage.data.containsValue("app")
 ////                    editor.putBoolean("youSentFrom", sentFromWhere)
 ////                    editor.apply()
@@ -115,6 +140,9 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
 //            }
 
 //            showNotification("abc", "def", pii = null)
+
+
+
         }
     }
 
@@ -129,6 +157,21 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
 
 
         val notificationManager =
+            notificationManager()
+
+        val myNotificationBuilder = NotificationCompat.Builder(
+            applicationContext, "123"
+        ).setSmallIcon(R.drawable.ic_launcher_foreground).setContentTitle(title)
+            .setContentText(body).setContentIntent(pii).setDefaults(Notification.DEFAULT_ALL)
+            .setPriority(NotificationCompat.PRIORITY_HIGH)/*.setCustomContentView(myNotificationView)*/
+
+        notificationManager.notify(123, myNotificationBuilder.build())
+
+        return myNotificationBuilder
+    }
+
+    private fun notificationManager(): NotificationManager {
+        val notificationManager =
             applicationContext.getSystemService(NOTIFICATION_SERVICE) as NotificationManager
 
         if (Build.VERSION.SDK_INT > Build.VERSION_CODES.O) {
@@ -136,18 +179,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
                 NotificationChannel("123", "beep", NotificationManager.IMPORTANCE_HIGH)
             notificationManager.createNotificationChannel(notificationChannel)
         }
-
-        val myNotificationBuilder = NotificationCompat.Builder(
-            applicationContext, "123"
-        ).setSmallIcon(R.drawable.ic_launcher_foreground).setContentTitle(title)
-            .setContentText(body).setContentIntent(pii)
-            .setDefaults(Notification.DEFAULT_ALL)
-            .setPriority(NotificationCompat.PRIORITY_HIGH)/*.setCustomContentView(myNotificationView)*/
-            .setAutoCancel(true)
-
-        notificationManager.notify(123, myNotificationBuilder.build())
-
-        return myNotificationBuilder
+        return notificationManager
     }
 }
 
