@@ -1,11 +1,15 @@
 package com.example.myapplication
 
+import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.example.myapplication.databinding.NewsFragmentBinding
+import com.moengage.pushbase.MoEPushHelper
 
 class NewsFragment : Fragment() {
 
@@ -22,7 +26,11 @@ class NewsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        MoEPushHelper.getInstance().requestPushPermission(requireActivity())
+
     }
+
 
     override fun onResume() {
         super.onResume()

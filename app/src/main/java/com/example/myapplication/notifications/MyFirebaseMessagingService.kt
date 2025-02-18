@@ -53,8 +53,6 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
 //            val payload = remoteMessage.data
 
 
-
-
 //            Log.d("fbservice", "notification payload: $payload")
 //            Log.d("fbservicecarousel", "test carousel payoad: $payload")
 
@@ -77,6 +75,8 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
             }
 
             MoEFireBaseHelper.getInstance().passPushPayload(applicationContext, remoteMessage.data)
+
+
 //            MoEFireBaseHelper.getInstance().passPushPayload(applicationContext, payload!!)
 //            MoEFireBaseHelper.getInstance().passPushPayload(applicationContext, bundle)
 //            MoEFireBaseHelper.getInstance().passPushPayload(applicationContext, bundle)
@@ -104,7 +104,8 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
 
 
             if (MoEPushHelper.getInstance().isFromMoEngagePlatform(remoteMessage.data)) {
-                MoEFireBaseHelper.getInstance().passPushPayload(applicationContext, remoteMessage.data)
+                MoEFireBaseHelper.getInstance()
+                    .passPushPayload(applicationContext, remoteMessage.data)
             }
 //                Log.d("myfbservice", "my push payload received: $myPushPayLoad ")
 //            MoEFireBaseHelper.getInstance().passPushPayload(applicationContext, myPushPayLoad)
@@ -142,7 +143,6 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
 //            showNotification("abc", "def", pii = null)
 
 
-
         }
     }
 
@@ -156,8 +156,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
         myNotificationView.setOnClickPendingIntent(R.id.clickButton, pii)
 
 
-        val notificationManager =
-            notificationManager()
+        val notificationManager = notificationManager()
 
         val myNotificationBuilder = NotificationCompat.Builder(
             applicationContext, "123"
