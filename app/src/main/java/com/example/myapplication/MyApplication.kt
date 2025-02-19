@@ -19,8 +19,6 @@ import com.moengage.core.MoEngage
 import com.moengage.core.config.FcmConfig
 import com.moengage.core.config.LogConfig
 import com.moengage.core.config.NotificationConfig
-import com.moengage.core.config.StorageEncryptionConfig
-import com.moengage.core.config.StorageSecurityConfig
 import kotlinx.coroutines.DelicateCoroutinesApi
 
 //import com.moengage.core.model.environment.MoEngageEnvironment
