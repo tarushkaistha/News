@@ -11,6 +11,7 @@ import android.os.Bundle
 import android.os.Looper
 import android.util.Log
 import android.widget.RemoteViews
+import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationCompat
 import com.example.myapplication.R
 import com.example.myapplication.Utils
@@ -41,6 +42,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
 
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     private fun handleMessage(remoteMessage: RemoteMessage) {
         val handler = android.os.Handler(Looper.getMainLooper())
         handler.post {
@@ -51,8 +53,6 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
 
 
 //            val payload = remoteMessage.data
-
-
 
 
 //            Log.d("fbservice", "notification payload: $payload")
@@ -103,9 +103,10 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
 //            showNotification(title, body, pii)
 
 
-            if (MoEPushHelper.getInstance().isFromMoEngagePlatform(remoteMessage.data)) {
-                MoEFireBaseHelper.getInstance().passPushPayload(applicationContext, remoteMessage.data)
-            }
+//            if (MoEPushHelper.getInstance().isFromMoEngagePlatform(remoteMessage.data)) {
+//                MoEFireBaseHelper.getInstance()
+//                    .passPushPayload(applicationContext, remoteMessage.data)
+//            }
 //                Log.d("myfbservice", "my push payload received: $myPushPayLoad ")
 //            MoEFireBaseHelper.getInstance().passPushPayload(applicationContext, myPushPayLoad)
             try {////                MoEFireBaseHelper.getInstance().passPushPayload(applicationContext, myPushPayLoad)
@@ -141,6 +142,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
 
 //            showNotification("abc", "def", pii = null)
 
+//            createCustomNotificationChannel("abc","abc")
 
 
         }
@@ -156,8 +158,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
         myNotificationView.setOnClickPendingIntent(R.id.clickButton, pii)
 
 
-        val notificationManager =
-            notificationManager()
+        val notificationManager = notificationManager()
 
         val myNotificationBuilder = NotificationCompat.Builder(
             applicationContext, "123"
@@ -180,6 +181,15 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
             notificationManager.createNotificationChannel(notificationChannel)
         }
         return notificationManager
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun createCustomNotificationChannel(channelId: String, channelName: String) {
+        val channel =
+            NotificationChannel(channelId, channelName, NotificationManager.IMPORTANCE_HIGH)
+
+        val manager = getSystemService(NOTIFICATION_SERVICE) as NotificationManager
+        manager.createNotificationChannel(channel)
     }
 }
 
