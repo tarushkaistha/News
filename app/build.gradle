@@ -91,5 +91,5 @@ dependencies {
     implementation(moengage.cardsCore)
     implementation("androidx.core:core:1.9.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("androidx.lifecycle:lifecycle-process:2.5.1")
+    implementation("androidx.lifecycle:lifecycle-process:2.7.0")
 }

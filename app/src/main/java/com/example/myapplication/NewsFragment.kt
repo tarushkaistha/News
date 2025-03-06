@@ -1,12 +1,17 @@
 package com.example.myapplication
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.myapplication.databinding.NewsFragmentBinding
-import com.google.gson.JsonArray
+import com.moengage.cards.core.MoECardHelper
+import com.moengage.cards.core.listener.CardAvailableListener
+import com.moengage.cards.core.listener.SyncCompleteListener
+import com.moengage.cards.core.model.CardData
+import com.moengage.cards.core.model.SyncCompleteData
 import com.moengage.core.MoECoreHelper
 import com.moengage.core.Properties
 import com.moengage.core.analytics.MoEAnalyticsHelper
@@ -31,12 +36,28 @@ class NewsFragment : Fragment() {
 
         enableAdIdTracking(requireActivity())
 
+        MoECardHelper.onCardSectionLoaded(requireActivity(), object : SyncCompleteListener {
+            override fun onSyncComplete(data: SyncCompleteData?) {
+
+                Log.d(Utils.MOENGAGE_TAG, "onSyncComplete data: $data")
+
+            }
+
+        });
+
         binding.loginBtn.setOnClickListener {
-            MoEAnalyticsHelper.setUniqueId(requireActivity(), "jaysean")
+            MoEAnalyticsHelper.setUniqueId(requireActivity(), "testsean")
         }
 
         binding.logoutBtn.setOnClickListener {
-            MoECoreHelper.logoutUser(requireActivity())
+//            MoECoreHelper.logoutUser(requireActivity())
+
+            MoECardHelper.fetchCards(requireActivity(), object : CardAvailableListener {
+                override fun onCardAvailable(cardData: CardData?) {
+                    Log.d(Utils.MOENGAGE_TAG, "onCardAvailable my card data: ${cardData!!.cards}")
+                }
+
+            })
         }
 
 
@@ -59,8 +80,8 @@ class NewsFragment : Fragment() {
 //            println("my array map of country : ${arrayMapOfCountry[0]}")
 
             val obj = JSONObject()
-            obj.put("usa","charlotte")
-            obj.put("india","chandigarh")
+            obj.put("usa", "charlotte")
+            obj.put("india", "chandigarh")
 
 
             val arrayOfCountry = JSONArray()
