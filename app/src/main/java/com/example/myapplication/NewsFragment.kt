@@ -2,16 +2,13 @@ package com.example.myapplication
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.lifecycleScope
 import com.example.myapplication.databinding.NewsFragmentBinding
-import com.moengage.inbox.core.MoEInboxHelper
+import com.example.myapplication.ui.CustomInboxActivity
 import com.moengage.inbox.ui.view.InboxActivity
-import kotlinx.coroutines.launch
 
 class NewsFragment : Fragment() {
 
@@ -29,20 +26,15 @@ class NewsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.defMoeInbox.setOnClickListener {
-//            val intent = Intent(requireActivity(), InboxActivity::class.java)
-//            startActivity(intent)
+            val intent = Intent(requireActivity(), InboxActivity::class.java)
+            startActivity(intent)
 
 
+        }
 
-            lifecycleScope.launch {
-                val inboxData = MoEInboxHelper.getInstance().fetchAllMessages(requireActivity())
-                Log.d("Utils.moengage", "my inbox data : $inboxData")
-
-                val mediaContent = inboxData!!.inboxMessages[0].mediaContent
-                val image = mediaContent!!.url
-
-                Log.d("utils.image", "my image url: $image ")
-            }
+        binding.myCustomInbox.setOnClickListener {
+//            findNavController().navigate(R.id.action_newsFragment_to_customInbox)
+            startActivity(Intent(requireActivity(), CustomInboxActivity::class.java))
         }
     }
 

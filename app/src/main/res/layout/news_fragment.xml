@@ -70,5 +70,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/customWebView" />
 
+    <Button
+        android:id="@+id/myCustomInbox"
+        app:layout_constraintTop_toBottomOf="@id/defMoeInbox"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:text="My custom inbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

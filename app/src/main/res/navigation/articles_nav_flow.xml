@@ -46,5 +46,13 @@
         <action
             android:id="@+id/action_newsFragment_to_f2"
             app:destination="@id/f2" />
+        <action
+            android:id="@+id/action_newsFragment_to_customInbox"
+            app:destination="@id/customInbox" />
     </fragment>
+    <fragment
+        android:id="@+id/customInbox"
+        android:name="com.example.myapplication.ui.CustomInbox"
+        android:label="fragment_custom_inbox"
+        tools:layout="@layout/fragment_custom_inbox" />
 </navigation>
