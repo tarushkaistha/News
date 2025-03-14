@@ -7,6 +7,8 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.core.content.ContextCompat.startActivity
+import com.moengage.core.Properties
+import com.moengage.core.analytics.MoEAnalyticsHelper
 import com.moengage.pushbase.push.PushMessageListener
 
 class CustomPushMessageListener : PushMessageListener() {
@@ -102,17 +104,25 @@ class CustomPushMessageListener : PushMessageListener() {
 ////                    .passPushPayload(activity.applicationContext, payload)
 ////            }
 //
-//        val url_value = payload.getString("gcm_webUrl")
-//        Log.d("cmpl", "gcm url: $url_value")
+////        val url_value = payload.getString("gcm_webUrl")
+////        Log.d("cmpl", "gcm url: $url_value")
+//
+//        val myUrl = payload.getString("url")
+//
+//        val property = Properties()
+//        property.addAttribute("mydeeplink", myUrl)
+//        MoEAnalyticsHelper.trackEvent(activity, "tap on pn", property)
 ////
-//        val intent = Intent(activity, CustomWebView::class.java)
-//        intent.putExtra("url", url_value)
-//        Log.d("cmpl intent", "gcm url set intent extra: $url_value")
-//        startActivity(activity, intent, null)
+////        val intent = Intent(activity, CustomWebView::class.java)
+////        intent.putExtra("url", url_value)
+////        intent.putExtra("url-value", myUrl)
+////        Log.d("cmpl intent", "gcm url set intent extra: $url_value")
+////        Log.d("cmpl intent", "gcm url set intent extra: $myUrl")
+////        startActivity(activity, intent, null)
 //
 //
 //
-//        return true
+//        return false
 //    }
 
     override fun onNotificationReceived(context: Context, payload: Bundle) {

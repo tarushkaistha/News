@@ -13,12 +13,20 @@ import android.os.Build
 import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.LifecycleObserver
+import com.example.myapplication.ui.CustomPushMessageListener
+import com.google.android.gms.location.GeofencingEvent
 import com.moengage.core.DataCenter
 import com.moengage.core.LogLevel
 import com.moengage.core.MoEngage
 import com.moengage.core.config.FcmConfig
 import com.moengage.core.config.LogConfig
+//import com.moengage.core.config.MoEngageEnvironmentConfig
 import com.moengage.core.config.NotificationConfig
+//import com.moengage.core.model.environment.MoEngageEnvironment
+import com.moengage.geofence.MoEGeofenceHelper
+import com.moengage.geofence.listener.OnGeofenceHitListener
+import com.moengage.geofence.model.GeofenceData
+import com.moengage.pushbase.MoEPushHelper
 import kotlinx.coroutines.DelicateCoroutinesApi
 
 //import com.moengage.core.model.environment.MoEngageEnvironment
@@ -48,11 +56,32 @@ class MyApplication : Application(), LifecycleObserver {
                     false
                 )
             )
-//            .configureMoEngageEnvironment(MoEngageEnvironmentConfig(MoEngageEnvironment.TEST))
-            .configureFcm(FcmConfig(true)).build()
+//            .configureMoEngageEnvironment(MoEngageEnvironmentConfig(MoEngageEnvironment.LIVE))
+            //.configureFcm(FcmConfig(false))
+            .build()
 
 
         MoEngage.initialiseDefaultInstance(moEngage)
+
+//        MoEPushHelper.getInstance().registerMessageListener(CustomPushMessageListener())
+
+        MoEGeofenceHelper.getInstance().addListener(object : OnGeofenceHitListener{
+            override fun geofenceHit(geofenceData: GeofenceData): Boolean {
+                Log.d("mygeofence", "geofenceHit data: $geofenceData")
+
+                val geofencingEvent = GeofencingEvent.fromIntent(geofenceData.intent)
+                val triggeredFences = geofencingEvent!!.triggeringGeofences
+
+                Log.d("my geofence", "geofenceHit triggered fences: $triggeredFences")
+
+                val transitionType = geofencingEvent.geofenceTransition
+
+                Log.d("my geofence", "geofenceHit transition type: $transitionType")
+
+                return false
+            }
+
+        })
 
 
     }

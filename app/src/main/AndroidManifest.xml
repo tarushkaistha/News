@@ -57,7 +57,7 @@
                 <data
                     android:host="tarush"
                     android:pathPrefix="/testactivity"
-                    android:scheme="http" />
+                    android:scheme="kaistha" />
 
             </intent-filter>
 
@@ -111,18 +111,18 @@
             </intent-filter>
         </service>
 
-<!--        <provider-->
-<!--            android:name="androidx.startup.InitializationProvider"-->
-<!--            android:authorities="${applicationId}.androidx-startup"-->
-<!--            android:exported="false"-->
-<!--            tools:node="merge">-->
+        <provider
+            android:name="androidx.startup.InitializationProvider"
+            android:authorities="${applicationId}.androidx-startup"
+            android:exported="false"
+            tools:node="merge">
 
-<!--            &lt;!&ndash; If you are using androidx.starAtup to initialize other components &ndash;&gt;-->
-<!--            <meta-data-->
-<!--                android:name="androidx.work.WorkManagerInitializer"-->
-<!--                android:value="androidx.startup"-->
-<!--                tools:node="remove" />-->
-<!--        </provider>-->
+            <!-- If you are using androidx.starAtup to initialize other components -->
+            <meta-data
+                android:name="androidx.work.WorkManagerInitializer"
+                android:value="androidx.startup"
+                tools:node="remove" />
+        </provider>
     </application>
 
 </manifest>

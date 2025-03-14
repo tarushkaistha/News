@@ -46,5 +46,12 @@
         <action
             android:id="@+id/action_newsFragment_to_f2"
             app:destination="@id/f2" />
+        <action
+            android:id="@+id/action_newsFragment_to_articlesFragment"
+            app:destination="@id/articlesFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/articlesFragment"
+        android:name="com.example.myapplication.ui.ArticlesFragment"
+        android:label="ArticlesFragment" />
 </navigation>

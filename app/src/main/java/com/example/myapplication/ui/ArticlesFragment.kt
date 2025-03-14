@@ -33,17 +33,17 @@ import com.moengage.core.MoECoreHelper
 import com.moengage.core.Properties
 import com.moengage.core.analytics.MoEAnalyticsHelper
 import com.moengage.core.enableAdIdTracking
-import com.moengage.core.listeners.UserDeletionListener
-import com.moengage.core.model.user.deletion.UserDeletionData
+//import com.moengage.core.listeners.UserDeletionListener
+//import com.moengage.core.model.user.deletion.UserDeletionData
 import com.moengage.inapp.MoEInAppHelper
 import com.moengage.inapp.listeners.InAppLifeCycleListener
 import com.moengage.inapp.listeners.OnClickActionListener
 import com.moengage.inapp.listeners.SelfHandledAvailableListener
-import com.moengage.inapp.listeners.SelfHandledCampaignsAvailableListener
+//import com.moengage.inapp.listeners.SelfHandledCampaignsAvailableListener
 import com.moengage.inapp.model.ClickData
 import com.moengage.inapp.model.InAppData
 import com.moengage.inapp.model.SelfHandledCampaignData
-import com.moengage.inapp.model.SelfHandledCampaignsData
+//import com.moengage.inapp.model.SelfHandledCampaignsData
 import com.moengage.inapp.model.actions.CustomAction
 import com.moengage.pushbase.MoEPushHelper
 
@@ -107,12 +107,12 @@ class ArticlesFragment : Fragment() {
 //
 //            MoEAnalyticsHelper.trackEvent(requireActivity(), "WWE RAW", property)
 
-            MoECoreHelper.deleteUser(requireActivity(),object : UserDeletionListener {
-                override fun onResult(data: UserDeletionData) {
-                    Log.d(Utils.MOENGAGE_TAG, "onResult of user deletion data: $data")
-                }
-
-            })
+//            MoECoreHelper.deleteUser(requireActivity(),object : UserDeletionListener {
+//                override fun onResult(data: UserDeletionData) {
+//                    Log.d(Utils.MOENGAGE_TAG, "onResult of user deletion data: $data")
+//                }
+//
+//            })
         }
 
 
@@ -406,6 +406,8 @@ class ArticlesFragment : Fragment() {
 //            }
 //
 //        })
+
+        MoEInAppHelper.getInstance().setInAppContext(setOf("news"))
         MoEInAppHelper.getInstance().showInApp(requireActivity())
 //        MoEInAppHelper.getInstance().showNudge(requireActivity())
 
