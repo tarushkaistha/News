@@ -65,65 +65,65 @@ class CustomPushMessageListener : PushMessageListener() {
         super.onNotificationCleared(context, payload)
     }
 
-//    override fun onNotificationClick(activity: Activity, payload: Bundle): Boolean {
-//        Log.d("fbs", "onNotificationClick: $payload")
+    override fun onNotificationClick(activity: Activity, payload: Bundle): Boolean {
+        Log.d("fbs", "onNotificationClick: $payload")
+
+
+//        val sp = activity.applicationContext.getSharedPreferences("my sp", 0)
+
+//        val myAfPushLink = payload.getString("my_key")
+//        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(myAfPushLink)).apply {
+//            flags = Intent.FLAG_ACTIVITY_SINGLE_TOP
+//        }
 //
 //
-////        val sp = activity.applicationContext.getSharedPreferences("my sp", 0)
+//        val pii = PendingIntent.getActivity(
+//            activity.applicationContext, 0, intent, PendingIntent.FLAG_IMMUTABLE
+//        )
+//        activity.startActivity(intent)
+
+
+//        val i = Intent(activity.applicationContext, Abc::class.java)
+//        i.putExtra("pushLink", myAfPushLink)
+//        activity.startActivity(i)
+//            val myUser = payload.getString("user")
 //
-////        val myAfPushLink = payload.getString("my_key")
-////        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(myAfPushLink)).apply {
-////            flags = Intent.FLAG_ACTIVITY_SINGLE_TOP
-////        }
-////
-////
-////        val pii = PendingIntent.getActivity(
-////            activity.applicationContext, 0, intent, PendingIntent.FLAG_IMMUTABLE
-////        )
-////        activity.startActivity(intent)
+//            val myUrl = payload.getString("gcm_webUrl")
 //
+//            if (myUser == "true") {
+//                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(myUrl)).apply {
+//                    flags = Intent.FLAG_ACTIVITY_SINGLE_TOP
+//                }
 //
-////        val i = Intent(activity.applicationContext, Abc::class.java)
-////        i.putExtra("pushLink", myAfPushLink)
-////        activity.startActivity(i)
-////            val myUser = payload.getString("user")
-////
-////            val myUrl = payload.getString("gcm_webUrl")
-////
-////            if (myUser == "true") {
-////                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(myUrl)).apply {
-////                    flags = Intent.FLAG_ACTIVITY_SINGLE_TOP
-////                }
-////
-////                activity.startActivity(intent)
-////
-////                MoEPushHelper.getInstance()
-////                    .logNotificationClick(activity.applicationContext, payload)
-////            } else {
-////                MoEFireBaseHelper.getInstance()
-////                    .passPushPayload(activity.applicationContext, payload)
-////            }
+//                activity.startActivity(intent)
 //
-////        val url_value = payload.getString("gcm_webUrl")
-////        Log.d("cmpl", "gcm url: $url_value")
+//                MoEPushHelper.getInstance()
+//                    .logNotificationClick(activity.applicationContext, payload)
+//            } else {
+//                MoEFireBaseHelper.getInstance()
+//                    .passPushPayload(activity.applicationContext, payload)
+//            }
+
+        val url_value = payload.getString("gcm_webUrl")
+        Log.d("cmpl", "gcm url: $url_value")
+
+        val myUrl = payload.getString("url")
+
+        val property = Properties()
+        property.addAttribute("mydeeplink", myUrl)
+        MoEAnalyticsHelper.trackEvent(activity, "tap on pn", property)
 //
-//        val myUrl = payload.getString("url")
-//
-//        val property = Properties()
-//        property.addAttribute("mydeeplink", myUrl)
-//        MoEAnalyticsHelper.trackEvent(activity, "tap on pn", property)
-////
-////        val intent = Intent(activity, CustomWebView::class.java)
-////        intent.putExtra("url", url_value)
-////        intent.putExtra("url-value", myUrl)
-////        Log.d("cmpl intent", "gcm url set intent extra: $url_value")
-////        Log.d("cmpl intent", "gcm url set intent extra: $myUrl")
-////        startActivity(activity, intent, null)
-//
-//
-//
-//        return false
-//    }
+        val intent = Intent(activity, CustomWebView::class.java)
+        intent.putExtra("url", url_value)
+//        intent.putExtra("url-value", myUrl)
+//        Log.d("cmpl intent", "gcm url set intent extra: $url_value")
+//        Log.d("cmpl intent", "gcm url set intent extra: $myUrl")
+        startActivity(activity, intent, null)
+
+
+
+        return false
+    }
 
     override fun onNotificationReceived(context: Context, payload: Bundle) {
         Log.d("fbs", "onNotificationReceived: $payload")

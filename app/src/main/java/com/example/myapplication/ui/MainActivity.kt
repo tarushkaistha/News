@@ -2,12 +2,12 @@ package com.example.myapplication.ui
 
 //import com.example.myapplication.MyApplication.Companion.moEngage
 import android.os.Bundle
-import android.os.Handler
 import android.util.Log
 import androidx.navigation.fragment.NavHostFragment
 import com.example.myapplication.Utils
 import com.example.myapplication.databinding.ActivityMainBinding
 import com.moengage.core.MoEngage
+import com.moengage.inapp.MoEInAppHelper
 
 class MainActivity : BaseActivityCompat() {
     private lateinit var binding: ActivityMainBinding
@@ -42,7 +42,8 @@ class MainActivity : BaseActivityCompat() {
 //        MoEngage.initialiseDefaultInstance(moEngage)
 //
 //        Handler().postDelayed({
-//            MoEInAppHelper.getInstance().showInApp(this)
+//        MoEInAppHelper.getInstance().showNudge(this)
+//        MoEInAppHelper.getInstance().setInAppContext(setOf("news"))
 //        }, 2000)
 
 //        Handler().postDelayed({}, 1000)
@@ -66,7 +67,7 @@ class MainActivity : BaseActivityCompat() {
     override fun onStop() {
         super.onStop()
 
-//        MoEInAppHelper.getInstance().resetInAppContext()
+        MoEInAppHelper.getInstance().resetInAppContext()
     }
 
     companion object {
