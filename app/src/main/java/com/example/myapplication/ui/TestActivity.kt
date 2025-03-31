@@ -1,19 +1,19 @@
 package com.example.myapplication.ui
 
-import android.os.Bundle
-import android.util.Log
-import androidx.appcompat.app.AppCompatActivity
-import com.example.myapplication.R
-import com.example.myapplication.databinding.TestActivityBinding
-import com.moengage.core.DataCenter
-import com.moengage.core.LogLevel
-import com.moengage.core.MoEngage
-import com.moengage.core.config.FcmConfig
-import com.moengage.core.config.LogConfig
 //import com.moengage.core.config.MoEngageEnvironmentConfig
-import com.moengage.core.config.NotificationConfig
 //import com.moengage.core.model.environment.MoEngageEnvironment
-import com.moengage.inapp.MoEInAppHelper
+import android.app.AlarmManager
+import android.content.Intent
+import android.os.Build
+import android.os.Bundle
+import android.provider.Settings.ACTION_REQUEST_SCHEDULE_EXACT_ALARM
+import android.util.Log
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
+import com.example.myapplication.Utils
+import com.example.myapplication.databinding.TestActivityBinding
+import com.moengage.pushbase.MoEPushHelper
 
 
 class TestActivity() : AppCompatActivity() {
@@ -27,8 +27,15 @@ class TestActivity() : AppCompatActivity() {
         binding = TestActivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        Log.d("testact", "onCreate my data ${intent.data}: ")
+//        val payload: Bundle? = intent.extras
+//        if (payload != null) {
+//            MoEPushHelper.getInstance().logNotificationClick(applicationContext, payload)
+//        }
 
+        intent.extras.let {
+            Log.d(Utils.MOENGAGE_TAG, "onCreate data: $intent")
+            MoEPushHelper.getInstance().logNotificationClick(this@TestActivity, intent)
+        }
 
 //        MoECardHelper.setSyncCompleteListener(object : SyncCompleteListener {
 //            override fun onSyncComplete(data: SyncCompleteData?) {
@@ -60,18 +67,18 @@ class TestActivity() : AppCompatActivity() {
 //        }
 
 
-//        binding.grantNotificationPermission.setOnClickListener {
-//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-//                val alarmManager = ContextCompat.getSystemService(this, AlarmManager::class.java)
-//                if (alarmManager?.canScheduleExactAlarms() == false) {
-//                    startActivity(Intent(Settings.ACTION_REQUEST_SCHEDULE_EXACT_ALARM))
-//                } else {
-//                    Toast.makeText(
-//                        this, "Notification Permission already granted", Toast.LENGTH_LONG
-//                    ).show()
-//                }
-//            }
-//        }
+        binding.grantNotificationPermission.setOnClickListener {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+                val alarmManager = ContextCompat.getSystemService(this, AlarmManager::class.java)
+                if (alarmManager?.canScheduleExactAlarms() == false) {
+                    startActivity(Intent(ACTION_REQUEST_SCHEDULE_EXACT_ALARM))
+                } else {
+                    Toast.makeText(
+                        this, "Notification Permission already granted", Toast.LENGTH_LONG
+                    ).show()
+                }
+            }
+        }
 
 
     }

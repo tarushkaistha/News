@@ -4,6 +4,7 @@ package com.example.myapplication.ui
 import android.os.Bundle
 import android.util.Log
 import androidx.navigation.fragment.NavHostFragment
+import com.example.myapplication.R
 import com.example.myapplication.Utils
 import com.example.myapplication.databinding.ActivityMainBinding
 import com.moengage.core.MoEngage

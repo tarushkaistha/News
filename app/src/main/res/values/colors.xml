@@ -6,8 +6,6 @@
     <color name="grey">#D3D1D1</color>
 
 
-    <color name="moe_rich_push_progress_bar_background_color">#D52A2A</color>
-    <color name="moe_rich_push_progress_bar_progress_color">#1A52DF</color>
 
     <color name="moe_card_header_color">#28218D</color>
     <color name="moe_card_message_color">#293E11</color>

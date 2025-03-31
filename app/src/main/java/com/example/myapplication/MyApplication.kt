@@ -47,10 +47,6 @@ class MyApplication : Application(), LifecycleObserver {
                 NotificationConfig(
                     R.drawable.ic_launcher_foreground,
                     R.drawable.ic_launcher_foreground,
-                    notificationColor = R.color.moe_rich_push_progress_bar_background_color,
-                    true,
-                    false,
-                    false
                 )
             )
 //            .configureMoEngageEnvironment(MoEngageEnvironmentConfig(MoEngageEnvironment.LIVE))

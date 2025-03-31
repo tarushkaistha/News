@@ -1,28 +1,23 @@
 package com.example.myapplication
 
-import android.Manifest
-import android.content.pm.PackageManager
+//import com.moengage.geofence.MoEGeofenceHelper
+import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.activity.result.contract.ActivityResultContracts.RequestPermission
 import androidx.annotation.RequiresApi
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
 import com.example.myapplication.databinding.NewsFragmentBinding
+import com.moengage.cards.ui.CardActivity
 import com.moengage.core.MoECoreHelper
 import com.moengage.core.Properties
 import com.moengage.core.analytics.MoEAnalyticsHelper
+import com.moengage.core.disableSdk
 import com.moengage.core.enableAdIdTracking
-//import com.moengage.geofence.MoEGeofenceHelper
+import com.moengage.geofence.MoEGeofenceHelper
 import com.moengage.inapp.MoEInAppHelper
-import com.moengage.pushbase.MoEPushHelper
-import org.json.JSONArray
-import org.json.JSONObject
 
 class NewsFragment : Fragment() {
 
@@ -42,10 +37,12 @@ class NewsFragment : Fragment() {
 
         enableAdIdTracking(requireActivity())
 
+//        startActivity(Intent(ACTION_REQUEST_SCHEDULE_EXACT_ALARM))
+
         binding.loginBtn.setOnClickListener {
 //            MoEAnalyticsHelper.setUniqueId(requireActivity(), "UID7")
 
-            MoEAnalyticsHelper.setAlias(requireActivity(),"my alias three")
+            MoEAnalyticsHelper.setAlias(requireActivity(), "my alias three")
 
 
         }
@@ -90,51 +87,20 @@ class NewsFragment : Fragment() {
 
 //            property.addAttribute("country","india")
 //
-//            MoEAnalyticsHelper.trackEvent(requireActivity(), "Country_Name", property)
+//            MoEAnalyticsHelper.trackEvent(requireActivity(), "in-app-shown", property)
 
 //            MoEAnalyticsHelper.setBirthDate(requireActivity(),"2000-09-27")
 
+            startActivity(Intent(requireActivity(), CardActivity::class.java))
+
 
         }
 
-//        MoEGeofenceHelper.getInstance().startGeofenceMonitoring(requireActivity())
+        MoEGeofenceHelper.getInstance().startGeofenceMonitoring(requireActivity())
 
-//                if (ContextCompat.checkSelfPermission(
-//                requireActivity(), Manifest.permission.POST_NOTIFICATIONS
-//            ) == PackageManager.PERMISSION_GRANTED
-//        ) {
-////            Toast.makeText(requireContext(), "Permission Granted", Toast.LENGTH_SHORT).show()
-//        } else {
-//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-//                requestPostPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
-//            } else {
-//                Toast.makeText(
-//                    requireContext(),
-//                    "Permission already granted below android level 13",
-//                    Toast.LENGTH_SHORT
-//                ).show()
-//            }
-//        }
+//        MoEPushHelper.getInstance().requestPushPermission(requireActivity())
 
-//        requestPostPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
 
-//        MoEPushHelper.getInstance().pushPermissionResponse(requireActivity(), false)
-
-        MoEPushHelper.getInstance().requestPushPermission(requireActivity())
-
-    }
-
-    private val requestPostPermissionLauncher = registerForActivityResult(
-        RequestPermission()
-    ) { isGranted ->
-        if (isGranted) {
-            MoEPushHelper.getInstance().pushPermissionResponse(requireActivity(), false)
-//            Toast.makeText(
-//                requireActivity(), "Grant permission above api level 33", Toast.LENGTH_SHORT
-//            ).show()
-        } else {
-//            Toast.makeText(requireActivity(), "Permission cannot be granted", Toast.LENGTH_SHORT)
-        }
     }
 
     override fun onResume() {
@@ -154,8 +120,9 @@ class NewsFragment : Fragment() {
 
 
 //        MoEInAppHelper.getInstance().setInAppContext(setOf("news"))
-//        MoEInAppHelper.getInstance().showInApp(requireActivity())
+        MoEInAppHelper.getInstance().showInApp(requireActivity())
     }
+
 
     override fun onStop() {
         super.onStop()
