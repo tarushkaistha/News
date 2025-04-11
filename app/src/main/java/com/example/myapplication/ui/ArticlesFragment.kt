@@ -35,16 +35,16 @@ import com.moengage.core.analytics.MoEAnalyticsHelper
 import com.moengage.core.enableAdIdTracking
 //import com.moengage.core.listeners.UserDeletionListener
 //import com.moengage.core.model.user.deletion.UserDeletionData
-import com.moengage.inapp.MoEInAppHelper
-import com.moengage.inapp.listeners.InAppLifeCycleListener
-import com.moengage.inapp.listeners.OnClickActionListener
-import com.moengage.inapp.listeners.SelfHandledAvailableListener
+//import com.moengage.inapp.MoEInAppHelper
+//import com.moengage.inapp.listeners.InAppLifeCycleListener
+//import com.moengage.inapp.listeners.OnClickActionListener
+//import com.moengage.inapp.listeners.SelfHandledAvailableListener
 //import com.moengage.inapp.listeners.SelfHandledCampaignsAvailableListener
-import com.moengage.inapp.model.ClickData
-import com.moengage.inapp.model.InAppData
-import com.moengage.inapp.model.SelfHandledCampaignData
+//import com.moengage.inapp.model.ClickData
+//import com.moengage.inapp.model.InAppData
+//import com.moengage.inapp.model.SelfHandledCampaignData
 //import com.moengage.inapp.model.SelfHandledCampaignsData
-import com.moengage.inapp.model.actions.CustomAction
+//import com.moengage.inapp.model.actions.CustomAction
 import com.moengage.pushbase.MoEPushHelper
 
 
@@ -220,19 +220,19 @@ class ArticlesFragment : Fragment() {
 
             this.showInAppBtn.setOnClickListener {
 
-                MoEInAppHelper.getInstance()
-                    .getSelfHandledInApp(requireActivity(), object : SelfHandledAvailableListener {
-                        override fun onSelfHandledAvailable(data: SelfHandledCampaignData?) {
-                            val myPayload = data?.campaign?.payload
-                            Log.d(Utils.MOENGAGE_TAG, "mypnshav: $myPayload")
-
-//                    val myData: SelfHandledCampaignData = showData(data!!)
-//                    MoEInAppHelper.getInstance().selfHandledShown(requireActivity(), myData)
-
-
-                        }
-
-                    })
+//                MoEInAppHelper.getInstance()
+//                    .getSelfHandledInApp(requireActivity(), object : SelfHandledAvailableListener {
+//                        override fun onSelfHandledAvailable(data: SelfHandledCampaignData?) {
+//                            val myPayload = data?.campaign?.payload
+//                            Log.d(Utils.MOENGAGE_TAG, "mypnshav: $myPayload")
+//
+////                    val myData: SelfHandledCampaignData = showData(data!!)
+////                    MoEInAppHelper.getInstance().selfHandledShown(requireActivity(), myData)
+//
+//
+//                        }
+//
+//                    })
 
             }
 
@@ -356,45 +356,45 @@ class ArticlesFragment : Fragment() {
     }
 
 
-    fun showData(data: SelfHandledCampaignData?): SelfHandledCampaignData {
-
-        val myPayLoad = data?.campaign?.payload
-        Log.d(Utils.MOENGAGE_TAG, "showData: $myPayLoad")
-
-//        Log.d(Utils.MOENGAGE_TAG, "showDataWithContext: ${data.campaignData}")
-
-
-        val secondMessagePayloadResponse = Gson().fromJson(myPayLoad, SecondMessage::class.java)
-        Log.d(Utils.MOENGAGE_TAG, "my second payload response : $secondMessagePayloadResponse")
-        val title = secondMessagePayloadResponse.template_id
-        Log.d(Utils.MOENGAGE_TAG, "show dialog title: $title")
-        val myAlertDialog = AlertDialog.Builder(requireActivity()).create()
-
-
-        val myCustomView = layoutInflater.inflate(R.layout.custom_alert_dialog, null)
-        myCustomView.findViewById<TextView?>(R.id.title).apply {
-            text = title
-        }
-
-        val inAppImage = myCustomView.findViewById<ImageView?>(R.id.inApp_iv)
-
-//        Glide.with(requireActivity()).load(secondMessagePayloadResponse.image_url).into(inAppImage)
-
-        myAlertDialog.setView(myCustomView)
-
-
-        myAlertDialog.setCancelable(false)
-
-        val crossBtn: TextView = myCustomView.findViewById(R.id.cross_btn)
-
-        crossBtn.setOnClickListener {
-            MoEInAppHelper.getInstance().selfHandledDismissed(requireActivity(), data!!)
-            myAlertDialog.dismiss()
-        }
-        myAlertDialog.show()
-        return data!!
-
-    }
+//    fun showData(data: SelfHandledCampaignData?): SelfHandledCampaignData {
+//
+//        val myPayLoad = data?.campaign?.payload
+//        Log.d(Utils.MOENGAGE_TAG, "showData: $myPayLoad")
+//
+////        Log.d(Utils.MOENGAGE_TAG, "showDataWithContext: ${data.campaignData}")
+//
+//
+//        val secondMessagePayloadResponse = Gson().fromJson(myPayLoad, SecondMessage::class.java)
+//        Log.d(Utils.MOENGAGE_TAG, "my second payload response : $secondMessagePayloadResponse")
+//        val title = secondMessagePayloadResponse.template_id
+//        Log.d(Utils.MOENGAGE_TAG, "show dialog title: $title")
+//        val myAlertDialog = AlertDialog.Builder(requireActivity()).create()
+//
+//
+//        val myCustomView = layoutInflater.inflate(R.layout.custom_alert_dialog, null)
+//        myCustomView.findViewById<TextView?>(R.id.title).apply {
+//            text = title
+//        }
+//
+//        val inAppImage = myCustomView.findViewById<ImageView?>(R.id.inApp_iv)
+//
+////        Glide.with(requireActivity()).load(secondMessagePayloadResponse.image_url).into(inAppImage)
+//
+//        myAlertDialog.setView(myCustomView)
+//
+//
+//        myAlertDialog.setCancelable(false)
+//
+//        val crossBtn: TextView = myCustomView.findViewById(R.id.cross_btn)
+//
+//        crossBtn.setOnClickListener {
+//            MoEInAppHelper.getInstance().selfHandledDismissed(requireActivity(), data!!)
+//            myAlertDialog.dismiss()
+//        }
+//        myAlertDialog.show()
+//        return data!!
+//
+//    }
 
     override fun onResume() {
         super.onResume()
@@ -407,8 +407,8 @@ class ArticlesFragment : Fragment() {
 //
 //        })
 
-        MoEInAppHelper.getInstance().setInAppContext(setOf("news"))
-        MoEInAppHelper.getInstance().showInApp(requireActivity())
+//        MoEInAppHelper.getInstance().setInAppContext(setOf("news"))
+//        MoEInAppHelper.getInstance().showInApp(requireActivity())
 //        MoEInAppHelper.getInstance().showNudge(requireActivity())
 
 //        MoECardHelper.setSyncCompleteListener(object : SyncCompleteListener {

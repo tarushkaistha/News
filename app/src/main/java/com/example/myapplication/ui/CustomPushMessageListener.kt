@@ -37,29 +37,29 @@ class CustomPushMessageListener : PushMessageListener() {
         return super.isNotificationRequired(context, payload)
     }
 
-    override fun onCreateNotification(
-        context: Context, notificationPayload: NotificationPayload
-    ): NotificationCompat.Builder? {
-
-        Log.d("fbs", "onCreateNotification: $notificationPayload")
-//            val mytitle = notificationPayload.payload.getString("gcm_title")
-//            val mybody = notificationPayload.payload.getString("gcm_alert")
+//    override fun onCreateNotification(
+//        context: Context, notificationPayload: NotificationPayload
+//    ): NotificationCompat.Builder? {
 //
+//        Log.d("fbs", "onCreateNotification: $notificationPayload")
+////            val mytitle = notificationPayload.payload.getString("gcm_title")
+////            val mybody = notificationPayload.payload.getString("gcm_alert")
+////
+////
+////            val pii = PendingIntent.getActivity(
+////                context.applicationContext, 0, Intent(), PendingIntent.FLAG_IMMUTABLE
+////            )
+////
+////            val myUser = notificationPayload.payload.getString("user")
+////
+////            if (myUser == "true") {
+////                return MyNotificationBuilder.showNotification(
+////                    context, title = mytitle, body = mybody, pii
+////                )
+////            }
 //
-//            val pii = PendingIntent.getActivity(
-//                context.applicationContext, 0, Intent(), PendingIntent.FLAG_IMMUTABLE
-//            )
-//
-//            val myUser = notificationPayload.payload.getString("user")
-//
-//            if (myUser == "true") {
-//                return MyNotificationBuilder.showNotification(
-//                    context, title = mytitle, body = mybody, pii
-//                )
-//            }
-
-        return super.onCreateNotification(context, notificationPayload)
-    }
+//        return super.onCreateNotification(context, notificationPayload)
+//    }
 
     override fun onNotificationCleared(context: Context, payload: Bundle) {
         Log.d("fbs", "onNotificationCleared: $payload")
@@ -67,29 +67,29 @@ class CustomPushMessageListener : PushMessageListener() {
         super.onNotificationCleared(context, payload)
     }
 
-    override fun onNotificationClick(activity: Activity, payload: Bundle): Boolean {
-        Log.d("fbs", "onNotificationClick: $payload")
-
-        val url_value = payload.getString("gcm_webUrl")
-        Log.d("cmpl", "gcm url: $url_value")
-
-        val myUrl = payload.getString("url")
-
-        val property = Properties()
-        property.addAttribute("mydeeplink", myUrl)
-        MoEAnalyticsHelper.trackEvent(activity, "tap on pn", property)
+//    override fun onNotificationClick(activity: Activity, payload: Bundle): Boolean {
+//        Log.d("fbs", "onNotificationClick: $payload")
 //
-        val intent = Intent(activity, CustomWebView::class.java)
-        intent.putExtra("url", url_value)
-//        intent.putExtra("url-value", myUrl)
-//        Log.d("cmpl intent", "gcm url set intent extra: $url_value")
-//        Log.d("cmpl intent", "gcm url set intent extra: $myUrl")
-        startActivity(activity, intent, null)
-
-
-
-        return false
-    }
+//        val url_value = payload.getString("gcm_webUrl")
+//        Log.d("cmpl", "gcm url: $url_value")
+//
+//        val myUrl = payload.getString("url")
+//
+//        val property = Properties()
+//        property.addAttribute("mydeeplink", myUrl)
+//        MoEAnalyticsHelper.trackEvent(activity, "tap on pn", property)
+////
+//        val intent = Intent(activity, CustomWebView::class.java)
+//        intent.putExtra("url", url_value)
+////        intent.putExtra("url-value", myUrl)
+////        Log.d("cmpl intent", "gcm url set intent extra: $url_value")
+////        Log.d("cmpl intent", "gcm url set intent extra: $myUrl")
+//        startActivity(activity, intent, null)
+//
+//
+//
+//        return false
+//    }
 
     override fun onNotificationReceived(context: Context, payload: Bundle) {
         Log.d("fbs", "onNotificationReceived: $payload")

@@ -27,7 +27,7 @@ android {
 //            debuggable true
         }
         release {
-            minifyEnabled false
+            minifyEnabled true
             debuggable false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
@@ -74,13 +74,16 @@ dependencies {
     implementation("com.google.firebase:firebase-crashlytics")
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.0.0")
     implementation 'com.facebook.shimmer:shimmer:0.5.0'
-    implementation(moengage.core)
+//    implementation(moengage.core)
 //    implementation("com.moengage:moe-android-sdk:13.03.00")
-    implementation(moengage.richNotification)
-    implementation(moengage.inapp)
-//    implementation("com.moengage:rich-notification:5.0.1")
-//    implementation("com.moengage:inapp:8.7.1")
+//    implementation(moengage.richNotification)
+//    implementation(moengage.inapp)
+    implementation("com.moengage:rich-notification:5.0.1")
+//    implementation("com.moengage:inapp:8.2.0")
 
+
+
+    implementation("com.moengage:moengage-segment-integration:6.5.8")
 
     implementation("com.google.android.gms:play-services-ads-identifier:18.0.1")
     implementation 'com.google.android.gms:play-services-location:21.3.0'
