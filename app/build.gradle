@@ -78,7 +78,7 @@ dependencies {
 //    implementation("com.moengage:moe-android-sdk:13.03.00")
 //    implementation(moengage.richNotification)
 //    implementation(moengage.inapp)
-    implementation("com.moengage:rich-notification:5.0.1")
+    implementation("com.moengage:rich-notification:4.3.1")
 //    implementation("com.moengage:inapp:8.2.0")
 
 
