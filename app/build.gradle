@@ -75,20 +75,24 @@ dependencies {
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.0.0")
     implementation 'com.facebook.shimmer:shimmer:0.5.0'
     implementation(moengage.core)
+//    implementation("com.moengage:moe-android-sdk:13.03.00")
     implementation(moengage.richNotification)
     implementation(moengage.inapp)
+//    implementation("com.moengage:rich-notification:5.0.1")
+//    implementation("com.moengage:inapp:8.7.1")
+
 
     implementation("com.google.android.gms:play-services-ads-identifier:18.0.1")
     implementation 'com.google.android.gms:play-services-location:21.3.0'
 //    implementation(moengage.integrationVerifier)
 //    implementation(moengage.inboxUi)
 //    implementation(moengage.inboxCore)
-    implementation(moengage.geofence)
+//    implementation(moengage.geofence)
 //    implementation(moengage.pushAmpPlus)
 
-    implementation(moengage.cardsUi)
-    implementation(moengage.security)
-    implementation(moengage.cardsCore)
+//    implementation(moengage.cardsUi)
+//    implementation(moengage.security)
+//    implementation(moengage.cardsCore)
     implementation("androidx.core:core:1.9.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("androidx.lifecycle:lifecycle-process:2.7.0")

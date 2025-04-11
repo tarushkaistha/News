@@ -9,10 +9,10 @@ import com.example.myapplication.Utils.Companion.MOENGAGE_TAG
 import com.example.myapplication.databinding.FragmentMyCustomCategoryBinding
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayout.OnTabSelectedListener
-import com.moengage.cards.core.CARDS_CATEGORY_ALL
-import com.moengage.cards.core.MoECardHelper
-import com.moengage.cards.core.listener.SyncCompleteListener
-import com.moengage.cards.core.model.SyncCompleteData
+//import com.moengage.cards.core.CARDS_CATEGORY_ALL
+//import com.moengage.cards.core.MoECardHelper
+//import com.moengage.cards.core.listener.SyncCompleteListener
+//import com.moengage.cards.core.model.SyncCompleteData
 
 //import com.moengage.cards.core.CARDS_CATEGORY_ALL
 //import com.moengage.cards.core.MoECardHelper
@@ -30,69 +30,75 @@ class MyCustomCategoryActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = FragmentMyCustomCategoryBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        MoECardHelper.onCardSectionLoaded(this, object : SyncCompleteListener {
-            override fun onSyncComplete(data: SyncCompleteData?) {
-                Log.d(MOENGAGE_TAG, "onSyncComplete data: $data")
-            }
+//        MoECardHelper.onCardSectionLoaded(this, object : SyncCompleteListener {
+//            override fun onSyncComplete(data: SyncCompleteData?) {
+//                Log.d(MOENGAGE_TAG, "onSyncComplete data: $data")
+//            }
+//
+//        })
 
-        })
+
+//        val cardCats = getCardCategories(this)
+//        val tabs = binding.tabs as TabLayout
+//
+//        when {
+//            cardCats.isEmpty() -> {
+//                binding.categoryContainer.visibility = View.GONE
+//            }
+//
+//            else -> {
+//                binding.categoryContainer.visibility = View.VISIBLE
+//                binding.emptyCardsTv.visibility = View.GONE
+//                tabs.visibility = View.VISIBLE
+//
+//                tabs.addTab(tabs.newTab().setText(cardCats.elementAt(0)), true)
+//
+//                for (i in 1 until cardCats.size) {
+//                    tabs.addTab(tabs.newTab().setText(cardCats.elementAt(i)))
+//                }
+//
+//                tabs.addOnTabSelectedListener(object : OnTabSelectedListener {
+//                    override fun onTabSelected(tab: TabLayout.Tab?) {
+//                        when (tab?.position) {
+//                            0 -> {
+//                                binding.categoryContainer.visibility = View.VISIBLE
+//                                binding.emptyCardsTv.visibility = View.GONE
+//                                val bundle = Bundle()
+//                                val allCategory = cardCats.elementAt(0)
+//                                bundle.putString("cat_all", allCategory)
+//                                val fm = supportFragmentManager
+//                                val ft = fm.beginTransaction()
+//                                ft.replace(binding.categoryContainer.id, allFragment)
+//                                ft.commit()
+//                                allFragment.arguments = bundle
+//                            }
+//                        }
+//                    }
+//
+//                    override fun onTabUnselected(tab: TabLayout.Tab?) {
+//                    }
+//
+//                    override fun onTabReselected(tab: TabLayout.Tab?) {
+//                    }
+//
+//                })
+//
+//                val allCategory = cardCats.elementAt(0)
+//                val bundle = Bundle()
+//                bundle.putString("cat_all", allCategory)
+//                val fm = supportFragmentManager
+//                val ft = fm.beginTransaction()
+//                ft.replace(binding.categoryContainer.id, allFragment)
+//                ft.commit()
+//                allFragment.arguments = bundle
+//            }
+//        }
 
 
-        val cardCats = getCardCategories(this)
-        val tabs = binding.tabs as TabLayout
 
-        when {
-            cardCats.isEmpty() -> {
-                binding.categoryContainer.visibility = View.GONE
-            }
+        // IGNORE  the following
 
-            else -> {
-                binding.categoryContainer.visibility = View.VISIBLE
-                binding.emptyCardsTv.visibility = View.GONE
-                tabs.visibility = View.VISIBLE
 
-                tabs.addTab(tabs.newTab().setText(cardCats.elementAt(0)), true)
-
-                for (i in 1 until cardCats.size) {
-                    tabs.addTab(tabs.newTab().setText(cardCats.elementAt(i)))
-                }
-
-                tabs.addOnTabSelectedListener(object : OnTabSelectedListener {
-                    override fun onTabSelected(tab: TabLayout.Tab?) {
-                        when (tab?.position) {
-                            0 -> {
-                                binding.categoryContainer.visibility = View.VISIBLE
-                                binding.emptyCardsTv.visibility = View.GONE
-                                val bundle = Bundle()
-                                val allCategory = cardCats.elementAt(0)
-                                bundle.putString("cat_all", allCategory)
-                                val fm = supportFragmentManager
-                                val ft = fm.beginTransaction()
-                                ft.replace(binding.categoryContainer.id, allFragment)
-                                ft.commit()
-                                allFragment.arguments = bundle
-                            }
-                        }
-                    }
-
-                    override fun onTabUnselected(tab: TabLayout.Tab?) {
-                    }
-
-                    override fun onTabReselected(tab: TabLayout.Tab?) {
-                    }
-
-                })
-
-                val allCategory = cardCats.elementAt(0)
-                val bundle = Bundle()
-                bundle.putString("cat_all", allCategory)
-                val fm = supportFragmentManager
-                val ft = fm.beginTransaction()
-                ft.replace(binding.categoryContainer.id, allFragment)
-                ft.commit()
-                allFragment.arguments = bundle
-            }
-        }
 //        when {
 //            cardCats.isEmpty() -> {
 //                binding.categoryContainer.visibility = View.GONE
@@ -178,17 +184,17 @@ class MyCustomCategoryActivity : AppCompatActivity() {
     override fun onStop() {
         super.onStop()
 
-        MoECardHelper.onCardSectionUnloaded(this)
+//        MoECardHelper.onCardSectionUnloaded(this)
 
     }
 
-    private fun getCardCategories(context: Context): List<String> {
-        val categories = MoECardHelper.getCardCategories(context)
-        val shouldShowAllTab = MoECardHelper.isAllCategoryEnabled(context)
-        if (!shouldShowAllTab) return categories
-        val allCategories = mutableListOf<String>(CARDS_CATEGORY_ALL).apply {
-            addAll(categories)
-        }
-        return allCategories.toList()
-    }
+//    private fun getCardCategories(context: Context): List<String> {
+//        val categories = MoECardHelper.getCardCategories(context)
+//        val shouldShowAllTab = MoECardHelper.isAllCategoryEnabled(context)
+//        if (!shouldShowAllTab) return categories
+//        val allCategories = mutableListOf<String>(CARDS_CATEGORY_ALL).apply {
+//            addAll(categories)
+//        }
+//        return allCategories.toList()
+//    }
 }

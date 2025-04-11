@@ -13,9 +13,9 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.example.myapplication.Utils
 import com.example.myapplication.databinding.FragmentAllBinding
-import com.moengage.cards.core.MoECardHelper
-import com.moengage.cards.core.listener.CardAvailableListener
-import com.moengage.cards.core.model.CardData
+//import com.moengage.cards.core.MoECardHelper
+//import com.moengage.cards.core.listener.CardAvailableListener
+//import com.moengage.cards.core.model.CardData
 import kotlinx.coroutines.launch
 
 class AllFragment : Fragment() {
@@ -41,16 +41,16 @@ class AllFragment : Fragment() {
 
 
 
-            MoECardHelper.fetchCards(requireActivity(), object : CardAvailableListener {
-                override fun onCardAvailable(cardData: CardData?) {
-
-                    Log.d(Utils.MOENGAGE_TAG, "my card data: $cardData")
-                    Log.d(Utils.MOENGAGE_TAG, "my card data with cards having tag: ${cardData!!.cards}")
-
-
-                }
-
-            })
+//            MoECardHelper.fetchCards(requireActivity(), object : CardAvailableListener {
+//                override fun onCardAvailable(cardData: CardData?) {
+//
+//                    Log.d(Utils.MOENGAGE_TAG, "my card data: $cardData")
+//                    Log.d(Utils.MOENGAGE_TAG, "my card data with cards having tag: ${cardData!!.cards}")
+//
+//
+//                }
+//
+//            })
 //            MoECardHelper.fetchCards(requireActivity(), object : CardAvailableListener {
 //                override fun onCardAvailable(cardData: CardData?) {
 //
@@ -123,8 +123,8 @@ class AllFragment : Fragment() {
 //
 //            }
 
-            val cardData: CardData? =
-                MoECardHelper.getCardsForCategory(requireContext(), allCategory!!)
+//            val cardData: CardData? =
+//                MoECardHelper.getCardsForCategory(requireContext(), allCategory!!)
 //            Log.d(Utils.MOENGAGE_TAG, "my card data with category: $cardData")
 
 //            val myCardsWithCats = cardData?.cards

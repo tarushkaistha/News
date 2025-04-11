@@ -1,23 +1,29 @@
 package com.example.myapplication
 
 //import com.moengage.geofence.MoEGeofenceHelper
+//import com.moengage.cards.ui.CardActivity
+//import com.moengage.geofence.MoEGeofenceHelper
 import android.content.Intent
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import com.example.myapplication.databinding.NewsFragmentBinding
-import com.moengage.cards.ui.CardActivity
+import com.example.myapplication.ui.CustomWebView
 import com.moengage.core.MoECoreHelper
 import com.moengage.core.Properties
 import com.moengage.core.analytics.MoEAnalyticsHelper
-import com.moengage.core.disableSdk
 import com.moengage.core.enableAdIdTracking
-import com.moengage.geofence.MoEGeofenceHelper
-import com.moengage.inapp.MoEInAppHelper
+//import com.moengage.inapp.MoEInAppHelper
+//import com.moengage.inapp.listeners.OnClickActionListener
+//import com.moengage.inapp.model.ClickData
+//import com.moengage.inapp.model.actions.NavigationAction
+import com.moengage.pushbase.MoEPushHelper
 
 class NewsFragment : Fragment() {
 
@@ -37,15 +43,35 @@ class NewsFragment : Fragment() {
 
         enableAdIdTracking(requireActivity())
 
+        binding.customWebView.setOnClickListener {
+            startActivity(Intent(requireActivity(), CustomWebView::class.java))
+        }
+
+//        FirebaseMessaging.getInstance().token.addOnCompleteListener { task ->
+//            if (!task.isSuccessful) {
+//                Log.d(
+//                    "NewsFragment", "Fetching FCM registration token failed", task.exception
+//                )
+//                return@addOnCompleteListener
+//            }
+//
+//            val token = task.result
+//            Log.d("NewsFragment", "Resultant token: $token")
+//            MoEFireBaseHelper.getInstance().passPushToken(requireActivity(), token)
+//            Toast.makeText(requireActivity(), "Resultant token: $token", Toast.LENGTH_SHORT).show()
+//
+//        }
 //        startActivity(Intent(ACTION_REQUEST_SCHEDULE_EXACT_ALARM))
 
         binding.loginBtn.setOnClickListener {
-//            MoEAnalyticsHelper.setUniqueId(requireActivity(), "UID7")
+            MoEAnalyticsHelper.setUniqueId(requireActivity(), "UID 11")
 
-            MoEAnalyticsHelper.setAlias(requireActivity(), "my alias three")
+//            MoEAnalyticsHelper.setUniqueId(requireActivity(), "UID 9")
 
 
         }
+
+//        MoEAnalyticsHelper.setUniqueId(requireActivity(), "UID 10")
 
         binding.logoutBtn.setOnClickListener {
             MoECoreHelper.logoutUser(requireActivity())
@@ -82,8 +108,8 @@ class NewsFragment : Fragment() {
 //            arrayOfCountry.put(obj)
 
             val property = Properties()
-//            property.addAttribute("country", arrayOfCountry.toString())
-//            MoEAnalyticsHelper.trackEvent(requireActivity(), "Country_Event", property)
+            property.addAttribute("city", "aus")
+            MoEAnalyticsHelper.trackEvent(requireActivity(), "City_Event", property)
 
 //            property.addAttribute("country","india")
 //
@@ -91,36 +117,32 @@ class NewsFragment : Fragment() {
 
 //            MoEAnalyticsHelper.setBirthDate(requireActivity(),"2000-09-27")
 
-            startActivity(Intent(requireActivity(), CardActivity::class.java))
-
 
         }
 
-        MoEGeofenceHelper.getInstance().startGeofenceMonitoring(requireActivity())
+//        MoEGeofenceHelper.getInstance().startGeofenceMonitoring(requireActivity())
 
-//        MoEPushHelper.getInstance().requestPushPermission(requireActivity())
-
+        MoEPushHelper.getInstance().requestPushPermission(requireActivity())
 
     }
 
     override fun onResume() {
         super.onResume()
+
+//        MoEInAppHelper.getInstance().showInApp(requireActivity())
 //        MoEInAppHelper.getInstance().showNudge(requireActivity())
 //        MoEInAppHelper.getInstance().setInAppContext(setOf("news"))
 //        MoEInAppHelper.getInstance().setClickActionListener(object : OnClickActionListener {
 //            override fun onClick(clickData: ClickData): Boolean {
 //                Log.d("moengage onclick", "onClick in-app data: $clickData ")
 //
-//
-//
+//                val c: NavigationAction = clickData.action as NavigationAction
+//                val d = c.navigationUrl
+//                Log.d("moengage onclick", "onClick click data: $d")
 //                return false
 //            }
 //
 //        })
-
-
-//        MoEInAppHelper.getInstance().setInAppContext(setOf("news"))
-        MoEInAppHelper.getInstance().showInApp(requireActivity())
     }
 
 

@@ -7,11 +7,11 @@
 
 
 
-    <color name="moe_card_header_color">#28218D</color>
-    <color name="moe_card_message_color">#293E11</color>
-    <color name="moe_card_timestamp_color">#9E9E9E</color>
+<!--    <color name="moe_card_header_color">#28218D</color>-->
+<!--    <color name="moe_card_message_color">#293E11</color>-->
+<!--    <color name="moe_card_timestamp_color">#9E9E9E</color>-->
 
 
-    <color name="moe_card_unclicked_indicator_color">#805009</color>
+<!--    <color name="moe_card_unclicked_indicator_color">#805009</color>-->
 
 </resources>

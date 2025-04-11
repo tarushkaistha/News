@@ -40,6 +40,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
     }
 
 
+    @RequiresApi(Build.VERSION_CODES.O)
     private fun handleMessage(remoteMessage: RemoteMessage) {
         val handler = android.os.Handler(Looper.getMainLooper())
         handler.post {
@@ -71,6 +72,8 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
 
 
             MoEFireBaseHelper.getInstance().passPushPayload(applicationContext, remoteMessage.data)
+
+            createCustomNotificationChannel("abc","abc")
 
             if (MoEPushHelper.getInstance().isFromMoEngagePlatform(remoteMessage.data)) {
 //                MoEFireBaseHelper.getInstance()

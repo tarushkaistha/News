@@ -6,9 +6,11 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import androidx.core.app.NotificationCompat
 import androidx.core.content.ContextCompat.startActivity
 import com.moengage.core.Properties
 import com.moengage.core.analytics.MoEAnalyticsHelper
+import com.moengage.pushbase.model.NotificationPayload
 import com.moengage.pushbase.push.PushMessageListener
 
 class CustomPushMessageListener : PushMessageListener() {
@@ -35,11 +37,11 @@ class CustomPushMessageListener : PushMessageListener() {
         return super.isNotificationRequired(context, payload)
     }
 
-//    override fun onCreateNotification(
-//        context: Context, notificationPayload: NotificationPayload
-//    ): NotificationCompat.Builder? {
-//
-//        Log.d("fbs", "onCreateNotification: $notificationPayload")
+    override fun onCreateNotification(
+        context: Context, notificationPayload: NotificationPayload
+    ): NotificationCompat.Builder? {
+
+        Log.d("fbs", "onCreateNotification: $notificationPayload")
 //            val mytitle = notificationPayload.payload.getString("gcm_title")
 //            val mybody = notificationPayload.payload.getString("gcm_alert")
 //
@@ -55,9 +57,9 @@ class CustomPushMessageListener : PushMessageListener() {
 //                    context, title = mytitle, body = mybody, pii
 //                )
 //            }
-//
-//        return super.onCreateNotification(context, notificationPayload)
-//    }
+
+        return super.onCreateNotification(context, notificationPayload)
+    }
 
     override fun onNotificationCleared(context: Context, payload: Bundle) {
         Log.d("fbs", "onNotificationCleared: $payload")
@@ -67,42 +69,6 @@ class CustomPushMessageListener : PushMessageListener() {
 
     override fun onNotificationClick(activity: Activity, payload: Bundle): Boolean {
         Log.d("fbs", "onNotificationClick: $payload")
-
-
-//        val sp = activity.applicationContext.getSharedPreferences("my sp", 0)
-
-//        val myAfPushLink = payload.getString("my_key")
-//        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(myAfPushLink)).apply {
-//            flags = Intent.FLAG_ACTIVITY_SINGLE_TOP
-//        }
-//
-//
-//        val pii = PendingIntent.getActivity(
-//            activity.applicationContext, 0, intent, PendingIntent.FLAG_IMMUTABLE
-//        )
-//        activity.startActivity(intent)
-
-
-//        val i = Intent(activity.applicationContext, Abc::class.java)
-//        i.putExtra("pushLink", myAfPushLink)
-//        activity.startActivity(i)
-//            val myUser = payload.getString("user")
-//
-//            val myUrl = payload.getString("gcm_webUrl")
-//
-//            if (myUser == "true") {
-//                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(myUrl)).apply {
-//                    flags = Intent.FLAG_ACTIVITY_SINGLE_TOP
-//                }
-//
-//                activity.startActivity(intent)
-//
-//                MoEPushHelper.getInstance()
-//                    .logNotificationClick(activity.applicationContext, payload)
-//            } else {
-//                MoEFireBaseHelper.getInstance()
-//                    .passPushPayload(activity.applicationContext, payload)
-//            }
 
         val url_value = payload.getString("gcm_webUrl")
         Log.d("cmpl", "gcm url: $url_value")

@@ -19,8 +19,8 @@ class CustomWebView : AppCompatActivity() {
         setContentView(binding.root)
         var articleUrl = String()
         try {
-//            articleUrl = intent.getStringExtra("url").toString()
             articleUrl = intent.getStringExtra("url").toString()
+//            articleUrl = intent.getStringExtra("url").toString()
             Log.d("cwv", "my article url: $articleUrl")
             val webView: WebView = binding.myWebView
             webView.settings.javaScriptEnabled = GlobalCache.jsConfig.isJavaScriptEnabled
@@ -41,7 +41,7 @@ class CustomWebView : AppCompatActivity() {
         super.onResume()
 
         MoEInAppHelper.getInstance().setInAppContext(setOf("news"))
-        MoEInAppHelper.getInstance().showInApp(this)
+//        MoEInAppHelper.getInstance().showInApp(this)
     }
 
     override fun onStop() {
