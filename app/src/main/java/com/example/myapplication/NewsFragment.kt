@@ -64,8 +64,13 @@ class NewsFragment : Fragment() {
 //        startActivity(Intent(ACTION_REQUEST_SCHEDULE_EXACT_ALARM))
 
         binding.loginBtn.setOnClickListener {
-            MoEAnalyticsHelper.setUniqueId(requireActivity(), "UID 11")
+//            MoEAnalyticsHelper.setUniqueId(requireActivity(), "UID 11")
 
+            MoEAnalyticsHelper.identifyUser(requireActivity(), "t3")
+//            MoEAnalyticsHelper.identifyUser(
+//                requireActivity(),
+//                mapOf("name" to "tarush","gender" to "male")
+//            )
 //            MoEAnalyticsHelper.setUniqueId(requireActivity(), "UID 9")
 
 
