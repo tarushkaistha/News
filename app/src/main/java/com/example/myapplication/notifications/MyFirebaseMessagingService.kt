@@ -73,7 +73,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
 
             MoEFireBaseHelper.getInstance().passPushPayload(applicationContext, remoteMessage.data)
 
-            createCustomNotificationChannel("abc","abc")
+//            createCustomNotificationChannel("abc","abc")
 
             if (MoEPushHelper.getInstance().isFromMoEngagePlatform(remoteMessage.data)) {
 //                MoEFireBaseHelper.getInstance()
