@@ -15,10 +15,13 @@ import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import com.example.myapplication.databinding.NewsFragmentBinding
 import com.example.myapplication.ui.CustomWebView
+import com.moe.pushlibrary.MoEHelper
+import com.moengage.cards.core.MoECardHelper
 import com.moengage.core.MoECoreHelper
 import com.moengage.core.Properties
 import com.moengage.core.analytics.MoEAnalyticsHelper
 import com.moengage.core.enableAdIdTracking
+import com.moengage.inapp.MoEInAppHelper
 //import com.moengage.inapp.MoEInAppHelper
 //import com.moengage.inapp.listeners.OnClickActionListener
 //import com.moengage.inapp.model.ClickData
@@ -64,8 +67,8 @@ class NewsFragment : Fragment() {
 //        startActivity(Intent(ACTION_REQUEST_SCHEDULE_EXACT_ALARM))
 
         binding.loginBtn.setOnClickListener {
-            MoEAnalyticsHelper.setUniqueId(requireActivity(), "UID 11")
-
+//            MoEAnalyticsHelper.setUniqueId(requireActivity(), "UID 11")
+            MoEHelper.getInstance(requireActivity()).setUniqueId("chd1")
 //            MoEAnalyticsHelper.setUniqueId(requireActivity(), "UID 9")
 
 
@@ -123,6 +126,8 @@ class NewsFragment : Fragment() {
 //        MoEGeofenceHelper.getInstance().startGeofenceMonitoring(requireActivity())
 
         MoEPushHelper.getInstance().requestPushPermission(requireActivity())
+
+
 
     }
 

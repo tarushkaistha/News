@@ -8,6 +8,7 @@ import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.os.Looper
+import android.widget.RemoteViews
 import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationCompat
 import com.example.myapplication.R
@@ -45,14 +46,6 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
         val handler = android.os.Handler(Looper.getMainLooper())
         handler.post {
 
-
-            val title = remoteMessage.data["gcm_title"]
-            val content = remoteMessage.data["gcm_alert"]
-//
-//            Log.d(Utils.MOENGAGE_TAG, "handleMessage: $title$content")
-//
-//            val bundle = Bundle()
-
             val bundle = Bundle()
             for ((key, value) in remoteMessage.data.entries) {
                 bundle.putString(key, value)
@@ -68,54 +61,19 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
             val pendingIntent = PendingIntent.getActivity(
                 applicationContext, 0, intent, PendingIntent.FLAG_IMMUTABLE
             )
-//            showNotification(title, content, pendingIntent)
 
-
-            MoEFireBaseHelper.getInstance().passPushPayload(applicationContext, remoteMessage.data)
-
-//            createCustomNotificationChannel("abc","abc")
-
-            if (MoEPushHelper.getInstance().isFromMoEngagePlatform(remoteMessage.data)) {
+//            if (MoEPushHelper.getInstance()
+//                    .isFromMoEngagePlatform(remoteMessage.data) && MoEPushHelper.getInstance()
+//                    .isSilentPush(remoteMessage.data)
+//            ) {
 //                MoEFireBaseHelper.getInstance()
 //                    .passPushPayload(applicationContext, remoteMessage.data)
-//                showNotification(title, content, pendingIntent)
-            }
-//                Log.d("myfbservice", "my push payload received: $myPushPayLoad ")
-//            MoEFireBaseHelper.getInstance().passPushPayload(applicationContext, myPushPayLoad)
-            try {////                MoEFireBaseHelper.getInstance().passPushPayload(applicationContext, myPushPayLoad)
+//                return@post
+//            }
+            try {
             } catch (e: Exception) {
                 TODO("Not yet implemented")
             }
-////                    val sentFromWhere = remoteMessage.data.containsValue("app")
-////                    editor.putBoolean("youSentFrom", sentFromWhere)
-////                    editor.apply()
-////
-////                    if (sharedPreference.getBoolean("youSentFrom", true)) {
-////                        Toast.makeText(
-////                            applicationContext, "Can show notification", Toast.LENGTH_LONG
-////                        ).show()
-//
-////            showNotification(title, body, pii)
-//            } else {
-////                        Toast.makeText(
-////                            applicationContext, "Cannot show notification", Toast.LENGTH_LONG
-////                        ).show()
-//
-////                        MoEFireBaseHelper.getInstance()
-////                            .passPushPayload(applicationContext, myPushPayLoad)
-//            }
-//
-//                } else {
-//                    Logger.print { "onMessageReceived() : Not a MoEngage Payload." }
-//                }
-//
-//            } catch (e: Exception) {
-//                Logger.print(LogLevel.ERROR, e) { "myfbservice onMessageReceived() : " }
-//            }
-
-//            showNotification("abc", "def", pii = null)
-
-//            createCustomNotificationChannel("abc","abc")
 
 
         }
@@ -126,9 +84,9 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
     ): NotificationCompat.Builder {
 
 
-//        val myNotificationView = RemoteViews(packageName, R.layout.add_btn_in_custom_notification)
-//
-//        myNotificationView.setOnClickPendingIntent(R.id.clickButton, pii)
+        val myNotificationView = RemoteViews(packageName, R.layout.add_btn_in_custom_notification)
+
+        myNotificationView.setOnClickPendingIntent(R.id.clickButton, pii)
 
 
         val notificationManager = notificationManager()
