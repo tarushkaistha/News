@@ -16,7 +16,6 @@ import androidx.fragment.app.Fragment
 import com.example.myapplication.databinding.NewsFragmentBinding
 import com.example.myapplication.ui.CustomWebView
 import com.moe.pushlibrary.MoEHelper
-import com.moengage.cards.core.MoECardHelper
 import com.moengage.core.MoECoreHelper
 import com.moengage.core.Properties
 import com.moengage.core.analytics.MoEAnalyticsHelper

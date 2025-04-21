@@ -62,6 +62,12 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
                 applicationContext, 0, intent, PendingIntent.FLAG_IMMUTABLE
             )
 
+            if (MoEPushHelper.getInstance().isFromMoEngagePlatform(remoteMessage.data)) {
+                MoEFireBaseHelper.getInstance()
+                    .passPushPayload(applicationContext, remoteMessage.data)
+                return@post
+            }
+
 //            if (MoEPushHelper.getInstance()
 //                    .isFromMoEngagePlatform(remoteMessage.data) && MoEPushHelper.getInstance()
 //                    .isSilentPush(remoteMessage.data)
@@ -70,10 +76,6 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
 //                    .passPushPayload(applicationContext, remoteMessage.data)
 //                return@post
 //            }
-            try {
-            } catch (e: Exception) {
-                TODO("Not yet implemented")
-            }
 
 
         }

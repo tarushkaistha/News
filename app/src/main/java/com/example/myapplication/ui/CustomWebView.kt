@@ -28,6 +28,7 @@ class CustomWebView : AppCompatActivity() {
             webView.settings.domStorageEnabled = true
             webView.webViewClient = WebViewClient()
             webView.loadUrl(articleUrl)
+//            webView.loadUrl("https://www.prexpe.com.pe/pagos-de-servicios")
         } catch (t: Throwable) {
             Log.d(Utils.MOENGAGE_TAG, "onCreate:  ")
             Log.d(Utils.MOENGAGE_TAG, "onCreate: could not load web view ")

@@ -35,6 +35,7 @@ import kotlinx.coroutines.DelicateCoroutinesApi
 
 class MyApplication : Application(), LifecycleObserver {
 
+    @RequiresApi(Build.VERSION_CODES.O)
     @OptIn(DelicateCoroutinesApi::class)
     override fun onCreate() {
         super.onCreate()
@@ -44,6 +45,7 @@ class MyApplication : Application(), LifecycleObserver {
 
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     fun initMoEngage() {
         val moEngage = MoEngage.Builder(this, "Z1UDNSWJALFR3UTPWWMCSF5Z")
             .setDataCenter(DataCenter.DATA_CENTER_1)
@@ -60,6 +62,8 @@ class MyApplication : Application(), LifecycleObserver {
 
 
         MoEngage.initialiseDefaultInstance(moEngage)
+
+//        createCustomNotificationChannel("General Notification","General Notification")
 
 //        MoEPushHelper.getInstance().registerMessageListener(CustomPushMessageListener())
 
@@ -90,21 +94,30 @@ class MyApplication : Application(), LifecycleObserver {
 //    }
 
 
+//    @RequiresApi(Build.VERSION_CODES.O)
+//    private fun createCustomNotificationChannel(channelId: String, channelName: String) {
+//        val channel =
+//            NotificationChannel(channelId, channelName, NotificationManager.IMPORTANCE_HIGH)
+//
+//        val soundUri: Uri =
+//            Uri.parse("android.resource://" + packageName + "/" + R.raw.livechat_notify)
+//
+//
+//        Log.d("my sound uri", "sound uri: $soundUri")
+//
+//        val audioAttributes =
+//            AudioAttributes.Builder().setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
+//                .setUsage(AudioAttributes.USAGE_NOTIFICATION).build()
+//        channel.setSound(soundUri, audioAttributes)
+//        val manager = getSystemService(NOTIFICATION_SERVICE) as NotificationManager
+//        manager.createNotificationChannel(channel)
+//    }
+
     @RequiresApi(Build.VERSION_CODES.O)
     private fun createCustomNotificationChannel(channelId: String, channelName: String) {
         val channel =
             NotificationChannel(channelId, channelName, NotificationManager.IMPORTANCE_HIGH)
 
-        val soundUri: Uri =
-            Uri.parse("android.resource://" + packageName + "/" + R.raw.livechat_notify)
-
-
-        Log.d("my sound uri", "sound uri: $soundUri")
-
-        val audioAttributes =
-            AudioAttributes.Builder().setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
-                .setUsage(AudioAttributes.USAGE_NOTIFICATION).build()
-        channel.setSound(soundUri, audioAttributes)
         val manager = getSystemService(NOTIFICATION_SERVICE) as NotificationManager
         manager.createNotificationChannel(channel)
     }

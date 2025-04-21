@@ -70,17 +70,10 @@ class CustomPushMessageListener : PushMessageListener() {
     override fun onNotificationClick(activity: Activity, payload: Bundle): Boolean {
         Log.d("fbs", "onNotificationClick: $payload")
 
-        val url_value = payload.getString("gcm_webUrl")
-        Log.d("cmpl", "gcm url: $url_value")
-
         val myUrl = payload.getString("url")
-
-        val property = Properties()
-        property.addAttribute("mydeeplink", myUrl)
-        MoEAnalyticsHelper.trackEvent(activity, "tap on pn", property)
 //
         val intent = Intent(activity, CustomWebView::class.java)
-        intent.putExtra("url", url_value)
+        intent.putExtra("url", myUrl)
 //        intent.putExtra("url-value", myUrl)
 //        Log.d("cmpl intent", "gcm url set intent extra: $url_value")
 //        Log.d("cmpl intent", "gcm url set intent extra: $myUrl")
