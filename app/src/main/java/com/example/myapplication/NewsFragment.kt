@@ -19,6 +19,7 @@ import com.moengage.core.MoECoreHelper
 import com.moengage.core.Properties
 import com.moengage.core.analytics.MoEAnalyticsHelper
 import com.moengage.core.enableAdIdTracking
+import com.moengage.inapp.MoEInAppHelper
 //import com.moengage.inapp.MoEInAppHelper
 //import com.moengage.inapp.MoEInAppHelper
 //import com.moengage.inapp.listeners.OnClickActionListener
@@ -130,7 +131,7 @@ class NewsFragment : Fragment() {
     override fun onResume() {
         super.onResume()
 
-//        MoEInAppHelper.getInstance().showInApp(requireActivity())
+        MoEInAppHelper.getInstance().showInApp(requireActivity())
 //        MoEInAppHelper.getInstance().showNudge(requireActivity())
 //        MoEInAppHelper.getInstance().setInAppContext(setOf("news"))
 //        MoEInAppHelper.getInstance().setClickActionListener(object : OnClickActionListener {
