@@ -78,14 +78,14 @@ dependencies {
 //    implementation("com.moengage:moe-android-sdk:13.00.02")
 //    implementation(moengage.richNotification)
 //    implementation(moengage.inapp)
-    implementation("com.moengage:inapp:8.7.1")
-    implementation("com.moengage:rich-notification:5.1.2")
+    implementation("com.moengage:inapp:8.6.0")
+    implementation("com.moengage:rich-notification:5.1.0")
 //    implementation("com.moengage:inapp:8.2.0")
 
 
 
 //    implementation("com.moengage:moengage-segment-integration:6.5.8")
-    implementation("com.moengage:moengage-segment-kotlin-destination:2.4.2")
+    implementation("com.moengage:moengage-segment-kotlin-destination:2.4.0")
     implementation("com.google.android.gms:play-services-ads-identifier:18.0.1")
     implementation 'com.google.android.gms:play-services-location:21.3.0'
 //    implementation(moengage.integrationVerifier)
