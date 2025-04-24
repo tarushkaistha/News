@@ -3,8 +3,11 @@ package com.example.myapplication
 //import com.moengage.geofence.MoEGeofenceHelper
 //import com.moengage.cards.ui.CardActivity
 //import com.moengage.geofence.MoEGeofenceHelper
+//import com.moengage.inapp.MoEInAppHelper
+//import com.moengage.inapp.listeners.OnClickActionListener
+//import com.moengage.inapp.model.ClickData
+//import com.moengage.inapp.model.actions.NavigationAction
 import android.content.Intent
-import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -21,10 +24,9 @@ import com.moengage.core.Properties
 import com.moengage.core.analytics.MoEAnalyticsHelper
 import com.moengage.core.enableAdIdTracking
 import com.moengage.inapp.MoEInAppHelper
-//import com.moengage.inapp.MoEInAppHelper
-//import com.moengage.inapp.listeners.OnClickActionListener
-//import com.moengage.inapp.model.ClickData
-//import com.moengage.inapp.model.actions.NavigationAction
+import com.moengage.inapp.listeners.OnClickActionListener
+import com.moengage.inapp.model.ClickData
+import com.moengage.inapp.model.actions.NavigationAction
 import com.moengage.pushbase.MoEPushHelper
 
 class NewsFragment : Fragment() {
@@ -124,8 +126,10 @@ class NewsFragment : Fragment() {
 
 //        MoEGeofenceHelper.getInstance().startGeofenceMonitoring(requireActivity())
 
+
         MoEPushHelper.getInstance().requestPushPermission(requireActivity())
 
+        MoEAnalyticsHelper.setUserAttribute(requireActivity(), "locality", "SF")
 
 
     }

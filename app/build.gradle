@@ -75,10 +75,10 @@ dependencies {
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.0.0")
     implementation 'com.facebook.shimmer:shimmer:0.5.0'
     implementation(moengage.core)
-//    implementation("com.moengage:moe-android-sdk:13.03.00")
-    implementation(moengage.richNotification)
+//    implementation("com.moengage:moe-android-sdk:13.06.00")
+//    implementation(moengage.richNotification)
     implementation(moengage.inapp)
-//    implementation("com.moengage:rich-notification:5.0.1")
+//    implementation("com.moengage:rich-notification:5.1.0")
 //    implementation("com.moengage:inapp:8.7.1")
 
 
@@ -92,7 +92,7 @@ dependencies {
 
 //    implementation(moengage.cardsUi)
 //    implementation(moengage.security)
-    implementation(moengage.cardsCore)
+//    implementation(moengage.cardsCore)
     implementation("androidx.core:core:1.9.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("androidx.lifecycle:lifecycle-process:2.7.0")

@@ -65,7 +65,6 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
             if (MoEPushHelper.getInstance().isFromMoEngagePlatform(remoteMessage.data)) {
                 MoEFireBaseHelper.getInstance()
                     .passPushPayload(applicationContext, remoteMessage.data)
-                return@post
             }
 
 //            if (MoEPushHelper.getInstance()
