@@ -19,6 +19,7 @@ import com.moengage.core.MoECoreHelper
 import com.moengage.core.Properties
 import com.moengage.core.analytics.MoEAnalyticsHelper
 import com.moengage.core.enableAdIdTracking
+import com.moengage.inapp.MoEInAppHelper
 //import com.moengage.inapp.MoEInAppHelper
 //import com.moengage.inapp.listeners.OnClickActionListener
 //import com.moengage.inapp.model.ClickData
@@ -66,11 +67,11 @@ class NewsFragment : Fragment() {
         binding.loginBtn.setOnClickListener {
 //            MoEAnalyticsHelper.setUniqueId(requireActivity(), "UID 11")
 
-            MoEAnalyticsHelper.identifyUser(requireActivity(), "t3")
-//            MoEAnalyticsHelper.identifyUser(
-//                requireActivity(),
-//                mapOf("name" to "tarush","gender" to "male")
-//            )
+//            MoEAnalyticsHelper.identifyUser(requireActivity(), "t3")
+            MoEAnalyticsHelper.identifyUser(
+                requireActivity(),
+                mapOf("identifierName1" to "stark","identifierName2" to "tony")
+            )
 //            MoEAnalyticsHelper.setUniqueId(requireActivity(), "UID 9")
 
 

@@ -8,9 +8,11 @@ import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.os.Looper
+import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationCompat
 import com.example.myapplication.R
+import com.example.myapplication.Utils
 import com.example.myapplication.ui.TestActivity
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
@@ -46,10 +48,13 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
         handler.post {
 
 
+
+
             val title = remoteMessage.data["gcm_title"]
             val content = remoteMessage.data["gcm_alert"]
 //
-//            Log.d(Utils.MOENGAGE_TAG, "handleMessage: $title$content")
+            Log.d(Utils.MOENGAGE_TAG, "remote message : $remoteMessage")
+            Log.d(Utils.MOENGAGE_TAG, "remote message data payload : ${remoteMessage.data}")
 //
 //            val bundle = Bundle()
 
