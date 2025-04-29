@@ -67,14 +67,14 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
                     .passPushPayload(applicationContext, remoteMessage.data)
             }
 
-//            if (MoEPushHelper.getInstance()
-//                    .isFromMoEngagePlatform(remoteMessage.data) && MoEPushHelper.getInstance()
-//                    .isSilentPush(remoteMessage.data)
-//            ) {
-//                MoEFireBaseHelper.getInstance()
-//                    .passPushPayload(applicationContext, remoteMessage.data)
-//                return@post
-//            }
+            if (MoEPushHelper.getInstance()
+                    .isFromMoEngagePlatform(remoteMessage.data) && MoEPushHelper.getInstance()
+                    .isSilentPush(remoteMessage.data)
+            ) {
+                MoEFireBaseHelper.getInstance()
+                    .passPushPayload(applicationContext, remoteMessage.data)
+                return@post
+            }
 
 
         }
