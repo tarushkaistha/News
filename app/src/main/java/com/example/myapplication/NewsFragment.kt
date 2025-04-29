@@ -13,11 +13,7 @@ import com.moengage.cards.core.listener.SyncCompleteListener
 import com.moengage.cards.core.model.CardData
 import com.moengage.cards.core.model.SyncCompleteData
 import com.moengage.core.MoECoreHelper
-import com.moengage.core.Properties
-import com.moengage.core.analytics.MoEAnalyticsHelper
 import com.moengage.core.enableAdIdTracking
-import org.json.JSONArray
-import org.json.JSONObject
 
 class NewsFragment : Fragment() {
 
@@ -45,13 +41,13 @@ class NewsFragment : Fragment() {
 
         });
 
-        binding.loginBtn.setOnClickListener {
-            MoEAnalyticsHelper.setUniqueId(requireActivity(), "testsean")
+        binding.logoutBtn.setOnClickListener {
+            MoECoreHelper.logoutUser(requireActivity())
+
+
         }
 
-        binding.logoutBtn.setOnClickListener {
-//            MoECoreHelper.logoutUser(requireActivity())
-
+        binding.defMoeCards.setOnClickListener {
             MoECardHelper.fetchCards(requireActivity(), object : CardAvailableListener {
                 override fun onCardAvailable(cardData: CardData?) {
                     Log.d(Utils.MOENGAGE_TAG, "onCardAvailable my card data: ${cardData!!.cards}")
@@ -61,6 +57,12 @@ class NewsFragment : Fragment() {
         }
 
 
+    }
+
+    override fun onStop() {
+        super.onStop()
+
+        MoECardHelper.onCardSectionUnloaded(requireActivity())
     }
 
 }

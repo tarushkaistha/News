@@ -87,7 +87,7 @@ dependencies {
 //    implementation(moengage.pushAmpPlus)
 
     implementation(moengage.cardsUi)
-    implementation(moengage.security)
+//    implementation(moengage.security)
     implementation(moengage.cardsCore)
     implementation("androidx.core:core:1.9.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
