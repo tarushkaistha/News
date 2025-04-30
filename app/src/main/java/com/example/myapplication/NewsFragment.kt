@@ -13,6 +13,7 @@ import com.moengage.cards.core.listener.SyncCompleteListener
 import com.moengage.cards.core.model.CardData
 import com.moengage.cards.core.model.SyncCompleteData
 import com.moengage.core.MoECoreHelper
+import com.moengage.core.analytics.MoEAnalyticsHelper
 import com.moengage.core.enableAdIdTracking
 
 class NewsFragment : Fragment() {
@@ -40,6 +41,10 @@ class NewsFragment : Fragment() {
             }
 
         });
+
+        binding.loginBtn.setOnClickListener {
+            MoEAnalyticsHelper.setUniqueId(requireActivity(), "tarushcard")
+        }
 
         binding.logoutBtn.setOnClickListener {
             MoECoreHelper.logoutUser(requireActivity())
