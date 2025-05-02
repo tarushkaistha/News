@@ -68,9 +68,10 @@ class NewsFragment : Fragment() {
 //            MoEAnalyticsHelper.setUniqueId(requireActivity(), "UID 11")
 
 //            MoEAnalyticsHelper.identifyUser(requireActivity(), "t3")
+
             MoEAnalyticsHelper.identifyUser(
                 requireActivity(),
-                mapOf("identifierName1" to "stark","identifierName2" to "tony")
+                mapOf("identifierName1" to "gotohell")
             )
 //            MoEAnalyticsHelper.setUniqueId(requireActivity(), "UID 9")
 
