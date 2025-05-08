@@ -9,11 +9,9 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.os.Looper
-import android.util.Log
 import android.widget.RemoteViews
 import androidx.core.app.NotificationCompat
 import com.example.myapplication.R
-import com.example.myapplication.Utils
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 import com.moengage.firebase.MoEFireBaseHelper
@@ -53,39 +51,20 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
 //            val payload = remoteMessage.data
 
 
-
-
 //            Log.d("fbservice", "notification payload: $payload")
 //            Log.d("fbservicecarousel", "test carousel payoad: $payload")
 
 
-            val title = remoteMessage.data["title"]
-            val content = remoteMessage.data["content"]
+            val title = remoteMessage.data["gcm_title"]
+            val content = remoteMessage.data["gcm_alert"]
 
-            val payload = remoteMessage.toIntent().extras
-
-            Log.d(Utils.MOENGAGE_TAG, "check payload: $payload")
-
-//            showNotification(title, content, pii = null)
 
             val bundle = Bundle()
 
 
             for ((key, value) in remoteMessage.data.entries) {
                 bundle.putString(key, value)
-//                MoEFireBaseHelper.getInstance().passPushPayload(applicationContext, bundle)
             }
-
-            MoEFireBaseHelper.getInstance().passPushPayload(applicationContext, remoteMessage.data)
-//            MoEFireBaseHelper.getInstance().passPushPayload(applicationContext, payload!!)
-//            MoEFireBaseHelper.getInstance().passPushPayload(applicationContext, bundle)
-//            MoEFireBaseHelper.getInstance().passPushPayload(applicationContext, bundle)
-
-
-//            val myAfPushLink = bundle.getString("my_key")
-
-//            val title = remoteMessage.data[]
-//            showNotification(title, body, pii)
 
 
             val intent = Intent(
@@ -100,9 +79,15 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
             )
 
 
-//            showNotification(title, body, pii)
+            if (MoEPushHelper.getInstance().isFromMoEngagePlatform(remoteMessage.data)){
+                MoEFireBaseHelper.getInstance().passPushPayload(applicationContext, remoteMessage.data)
+            }else{
+                // your app's business logic to show notification
+
+//                showNotification(title, content, pii)
+            }
 //                Log.d("myfbservice", "my push payload received: $myPushPayLoad ")
-//            MoEFireBaseHelper.getInstance().passPushPayload(applicationContext, myPushPayLoad)
+//            MoEFireBaseHelper.getInstance().passPushPayload(applicationContext, remoteMessage.data)
             try {////                MoEFireBaseHelper.getInstance().passPushPayload(applicationContext, myPushPayLoad)
             } catch (e: Exception) {
                 TODO("Not yet implemented")
@@ -137,7 +122,6 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
 //            showNotification("abc", "def", pii = null)
 
 
-
         }
     }
 
@@ -148,11 +132,10 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
 
         val myNotificationView = RemoteViews(packageName, R.layout.add_btn_in_custom_notification)
 
-        myNotificationView.setOnClickPendingIntent(R.id.clickButton, pii)
+//        myNotificationView.setOnClickPendingIntent(R.id.clickButton, pii)
 
 
-        val notificationManager =
-            notificationManager()
+        val notificationManager = notificationManager()
 
         val myNotificationBuilder = NotificationCompat.Builder(
             applicationContext, "123"
