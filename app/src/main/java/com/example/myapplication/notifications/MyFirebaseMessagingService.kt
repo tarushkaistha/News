@@ -101,11 +101,6 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
 
 
 //            showNotification(title, body, pii)
-
-
-            if (MoEPushHelper.getInstance().isFromMoEngagePlatform(remoteMessage.data)) {
-                MoEFireBaseHelper.getInstance().passPushPayload(applicationContext, remoteMessage.data)
-            }
 //                Log.d("myfbservice", "my push payload received: $myPushPayLoad ")
 //            MoEFireBaseHelper.getInstance().passPushPayload(applicationContext, myPushPayLoad)
             try {////                MoEFireBaseHelper.getInstance().passPushPayload(applicationContext, myPushPayLoad)
