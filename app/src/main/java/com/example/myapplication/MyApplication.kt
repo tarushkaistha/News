@@ -47,8 +47,7 @@ class MyApplication : Application(), LifecycleObserver {
 
     @RequiresApi(Build.VERSION_CODES.O)
     fun initMoEngage() {
-        val moEngage = MoEngage.Builder(this, "Z1UDNSWJALFR3UTPWWMCSF5Z")
-            .setDataCenter(DataCenter.DATA_CENTER_1)
+        val moEngage = MoEngage.Builder(this, "Z1UDNSWJALFR3UTPWWMCSF5Z",DataCenter.DATA_CENTER_1)
             .configureLogs(LogConfig(LogLevel.VERBOSE, true))
             .configureNotificationMetaData(
                 NotificationConfig(
@@ -58,6 +57,7 @@ class MyApplication : Application(), LifecycleObserver {
             )
 //            .configureMoEngageEnvironment(MoEngageEnvironmentConfig(MoEngageEnvironment.LIVE))
 //            .configureFcm(FcmConfig(true))
+
             .build()
 
 

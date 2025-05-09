@@ -18,7 +18,7 @@ import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import com.example.myapplication.databinding.NewsFragmentBinding
 import com.example.myapplication.ui.CustomWebView
-import com.moe.pushlibrary.MoEHelper
+//import com.moe.pushlibrary.MoEHelper
 import com.moengage.core.MoECoreHelper
 import com.moengage.core.Properties
 import com.moengage.core.analytics.MoEAnalyticsHelper
@@ -70,7 +70,7 @@ class NewsFragment : Fragment() {
 
         binding.loginBtn.setOnClickListener {
 //            MoEAnalyticsHelper.setUniqueId(requireActivity(), "UID 11")
-            MoEHelper.getInstance(requireActivity()).setUniqueId("chd1")
+//            MoEHelper.getInstance(requireActivity()).setUniqueId("chd1")
 //            MoEAnalyticsHelper.setUniqueId(requireActivity(), "UID 9")
 
 
