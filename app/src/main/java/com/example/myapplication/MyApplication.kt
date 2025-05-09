@@ -15,7 +15,6 @@ import android.os.Build
 import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.LifecycleObserver
-import com.example.myapplication.ui.CustomPushMessageListener
 import com.google.android.gms.location.GeofencingEvent
 import com.moengage.core.DataCenter
 import com.moengage.core.LogLevel

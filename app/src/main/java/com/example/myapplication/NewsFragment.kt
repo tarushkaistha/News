@@ -141,18 +141,18 @@ class NewsFragment : Fragment() {
 
 //        MoEInAppHelper.getInstance().showInApp(requireActivity())
 //        MoEInAppHelper.getInstance().showNudge(requireActivity())
-//        MoEInAppHelper.getInstance().setInAppContext(setOf("news"))
-//        MoEInAppHelper.getInstance().setClickActionListener(object : OnClickActionListener {
-//            override fun onClick(clickData: ClickData): Boolean {
-//                Log.d("moengage onclick", "onClick in-app data: $clickData ")
-//
-//                val c: NavigationAction = clickData.action as NavigationAction
-//                val d = c.navigationUrl
-//                Log.d("moengage onclick", "onClick click data: $d")
-//                return false
-//            }
-//
-//        })
+        MoEInAppHelper.getInstance().setInAppContext(setOf("news"))
+        MoEInAppHelper.getInstance().setClickActionListener(object : OnClickActionListener {
+            override fun onClick(clickData: ClickData): Boolean {
+                Log.d("moengage onclick", "onClick in-app data: $clickData ")
+
+                val c: NavigationAction = clickData.action as NavigationAction
+                val d = c.navigationUrl
+                Log.d("moengage onclick", "onClick click data: $d")
+                return false
+            }
+
+        })
     }
 
 
