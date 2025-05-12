@@ -56,69 +56,12 @@ class MyApplication : Application(), LifecycleObserver {
                     R.drawable.ic_launcher_foreground,
                 )
             )
-//            .configureMoEngageEnvironment(MoEngageEnvironmentConfig(MoEngageEnvironment.LIVE))
-//            .configureFcm(FcmConfig(true))
+            .configureFcm(FcmConfig(false))
             .build()
 
 
         MoEngage.initialiseDefaultInstance(moEngage)
 
-//        createCustomNotificationChannel("General Notification","General Notification")
 
-//        MoEPushHelper.getInstance().registerMessageListener(CustomPushMessageListener())
-
-//        MoEGeofenceHelper.getInstance().addListener(object : OnGeofenceHitListener {
-//            override fun geofenceHit(geofenceData: GeofenceData): Boolean {
-//                Log.d("mygeofence", "geofenceHit data: $geofenceData")
-//
-//                val geofencingEvent = GeofencingEvent.fromIntent(geofenceData.intent)
-//                val triggeredFences = geofencingEvent!!.triggeringGeofences
-//
-//                Log.d("my geofence", "geofenceHit triggered fences: $triggeredFences")
-//
-//                val transitionType = geofencingEvent.geofenceTransition
-//
-//                Log.d("my geofence", "geofenceHit transition type: $transitionType")
-//
-//                return false
-//            }
-//
-//        })
-
-
-    }
-
-
-//    companion object {
-//        lateinit var moEngage: MoEngage
-//    }
-
-
-//    @RequiresApi(Build.VERSION_CODES.O)
-//    private fun createCustomNotificationChannel(channelId: String, channelName: String) {
-//        val channel =
-//            NotificationChannel(channelId, channelName, NotificationManager.IMPORTANCE_HIGH)
-//
-//        val soundUri: Uri =
-//            Uri.parse("android.resource://" + packageName + "/" + R.raw.livechat_notify)
-//
-//
-//        Log.d("my sound uri", "sound uri: $soundUri")
-//
-//        val audioAttributes =
-//            AudioAttributes.Builder().setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
-//                .setUsage(AudioAttributes.USAGE_NOTIFICATION).build()
-//        channel.setSound(soundUri, audioAttributes)
-//        val manager = getSystemService(NOTIFICATION_SERVICE) as NotificationManager
-//        manager.createNotificationChannel(channel)
-//    }
-
-    @RequiresApi(Build.VERSION_CODES.O)
-    private fun createCustomNotificationChannel(channelId: String, channelName: String) {
-        val channel =
-            NotificationChannel(channelId, channelName, NotificationManager.IMPORTANCE_HIGH)
-
-        val manager = getSystemService(NOTIFICATION_SERVICE) as NotificationManager
-        manager.createNotificationChannel(channel)
     }
 }
