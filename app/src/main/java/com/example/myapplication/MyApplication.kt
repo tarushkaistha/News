@@ -57,7 +57,6 @@ class MyApplication : Application(), LifecycleObserver {
             )
 //            .configureMoEngageEnvironment(MoEngageEnvironmentConfig(MoEngageEnvironment.LIVE))
 //            .configureFcm(FcmConfig(true))
-
             .build()
 
 

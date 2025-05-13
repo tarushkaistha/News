@@ -7,6 +7,7 @@ package com.example.myapplication
 //import com.moengage.inapp.listeners.OnClickActionListener
 //import com.moengage.inapp.model.ClickData
 //import com.moengage.inapp.model.actions.NavigationAction
+//import com.moe.pushlibrary.MoEHelper
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
@@ -18,17 +19,16 @@ import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import com.example.myapplication.databinding.NewsFragmentBinding
 import com.example.myapplication.ui.CustomWebView
-//import com.moe.pushlibrary.MoEHelper
 import com.moengage.core.MoECoreHelper
 import com.moengage.core.Properties
 import com.moengage.core.analytics.MoEAnalyticsHelper
 import com.moengage.core.enableAdIdTracking
-import com.moengage.core.model.AppStatus
 import com.moengage.inapp.MoEInAppHelper
-import com.moengage.inapp.listeners.OnClickActionListener
-import com.moengage.inapp.model.ClickData
-import com.moengage.inapp.model.actions.NavigationAction
+import com.moengage.inapp.listeners.SelfHandledAvailableListener
+import com.moengage.inapp.model.SelfHandledCampaignData
 import com.moengage.pushbase.MoEPushHelper
+import org.json.JSONArray
+import org.json.JSONObject
 
 class NewsFragment : Fragment() {
 
@@ -47,6 +47,8 @@ class NewsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         enableAdIdTracking(requireActivity())
+
+        MoEPushHelper.getInstance().requestPushPermission(requireActivity())
 
         binding.customWebView.setOnClickListener {
             startActivity(Intent(requireActivity(), CustomWebView::class.java))
@@ -112,9 +114,10 @@ class NewsFragment : Fragment() {
 //            val arrayOfCountry = JSONArray()
 //            arrayOfCountry.put(obj)
 
+            val jsonObject = JSONObject().put("kaistha", JSONArray(listOf("tony", "iron")))
             val property = Properties()
-            property.addAttribute("city", "aus")
-            MoEAnalyticsHelper.trackEvent(requireActivity(), "City_Event", property)
+            property.addAttribute("city", jsonObject.toString())
+            MoEAnalyticsHelper.trackEvent(requireActivity(), "JSMarvel_Event", property)
 
 //            property.addAttribute("country","india")
 //
@@ -122,17 +125,14 @@ class NewsFragment : Fragment() {
 
 //            MoEAnalyticsHelper.setBirthDate(requireActivity(),"2000-09-27")
 
+            MoEAnalyticsHelper.setUserAttribute(requireActivity(), "locality", "SF")
+
+            MoEAnalyticsHelper.setMobileNumber(requireActivity(), "1234")
+
 
         }
 
-//        MoEGeofenceHelper.getInstance().startGeofenceMonitoring(requireActivity())
-
-
         MoEPushHelper.getInstance().requestPushPermission(requireActivity())
-
-        MoEAnalyticsHelper.setUserAttribute(requireActivity(), "locality", "SF")
-
-        MoEAnalyticsHelper.setMobileNumber(requireActivity(),"1234")
 
     }
 
@@ -153,6 +153,20 @@ class NewsFragment : Fragment() {
 //            }
 //
 //        })
+
+        MoEInAppHelper.getInstance()
+            .getSelfHandledInApp(requireActivity(), object : SelfHandledAvailableListener {
+                override fun onSelfHandledAvailable(data: SelfHandledCampaignData?) {
+                    val myPayload = data?.campaign?.payload
+                    Log.d(Utils.MOENGAGE_TAG, "my sh in-app: $myPayload")
+
+//                    MoEInAppHelper.getInstance().selfHandledShown(requireActivity(), data!!)
+
+                }
+
+            })
+
+
     }
 
 
