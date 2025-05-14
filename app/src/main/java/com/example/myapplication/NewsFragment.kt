@@ -75,6 +75,7 @@ class NewsFragment : Fragment() {
 //            MoEHelper.getInstance(requireActivity()).setUniqueId("chd1")
 //            MoEAnalyticsHelper.setUniqueId(requireActivity(), "UID 9")
 
+            MoEAnalyticsHelper.identifyUser(requireActivity(),"terminal2")
 
         }
 
@@ -118,16 +119,6 @@ class NewsFragment : Fragment() {
             val property = Properties()
             property.addAttribute("city", jsonObject.toString())
             MoEAnalyticsHelper.trackEvent(requireActivity(), "JSMarvel_Event", property)
-
-//            property.addAttribute("country","india")
-//
-//            MoEAnalyticsHelper.trackEvent(requireActivity(), "in-app-shown", property)
-
-//            MoEAnalyticsHelper.setBirthDate(requireActivity(),"2000-09-27")
-
-            MoEAnalyticsHelper.setUserAttribute(requireActivity(), "locality", "SF")
-
-            MoEAnalyticsHelper.setMobileNumber(requireActivity(), "1234")
 
 
         }
