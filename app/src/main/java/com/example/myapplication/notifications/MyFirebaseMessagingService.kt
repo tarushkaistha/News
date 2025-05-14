@@ -79,49 +79,20 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
             )
 
 
-            if (MoEPushHelper.getInstance().isFromMoEngagePlatform(remoteMessage.data)){
-                MoEFireBaseHelper.getInstance().passPushPayload(applicationContext, remoteMessage.data)
-            }else{
+//            if (MoEPushHelper.getInstance().isFromMoEngagePlatform(remoteMessage.data)) {
+//                MoEFireBaseHelper.getInstance()
+//                    .passPushPayload(applicationContext, remoteMessage.data)
+//            }
+
+            if (MoEPushHelper.getInstance().isFromMoEngagePlatform(remoteMessage.data)) {
+                showNotification(title, content, null)
+            } else {
                 // your app's business logic to show notification
 
 //                showNotification(title, content, pii)
             }
-//                Log.d("myfbservice", "my push payload received: $myPushPayLoad ")
-//            MoEFireBaseHelper.getInstance().passPushPayload(applicationContext, remoteMessage.data)
-            try {////                MoEFireBaseHelper.getInstance().passPushPayload(applicationContext, myPushPayLoad)
-            } catch (e: Exception) {
-                TODO("Not yet implemented")
-            }
-////                    val sentFromWhere = remoteMessage.data.containsValue("app")
-////                    editor.putBoolean("youSentFrom", sentFromWhere)
-////                    editor.apply()
-////
-////                    if (sharedPreference.getBoolean("youSentFrom", true)) {
-////                        Toast.makeText(
-////                            applicationContext, "Can show notification", Toast.LENGTH_LONG
-////                        ).show()
-//
-////            showNotification(title, body, pii)
-//            } else {
-////                        Toast.makeText(
-////                            applicationContext, "Cannot show notification", Toast.LENGTH_LONG
-////                        ).show()
-//
-////                        MoEFireBaseHelper.getInstance()
-////                            .passPushPayload(applicationContext, myPushPayLoad)
-//            }
-//
-//                } else {
-//                    Logger.print { "onMessageReceived() : Not a MoEngage Payload." }
-//                }
-//
-//            } catch (e: Exception) {
-//                Logger.print(LogLevel.ERROR, e) { "myfbservice onMessageReceived() : " }
-//            }
 
-//            showNotification("abc", "def", pii = null)
-
-
+//            showNotification(title, content, null)
         }
     }
 
@@ -141,7 +112,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
             applicationContext, "123"
         ).setSmallIcon(R.drawable.ic_launcher_foreground).setContentTitle(title)
             .setContentText(body).setContentIntent(pii).setDefaults(Notification.DEFAULT_ALL)
-            .setPriority(NotificationCompat.PRIORITY_HIGH)/*.setCustomContentView(myNotificationView)*/
+            .setPriority(NotificationCompat.PRIORITY_DEFAULT)/*.setCustomContentView(myNotificationView)*/
 
         notificationManager.notify(123, myNotificationBuilder.build())
 
@@ -154,7 +125,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
 
         if (Build.VERSION.SDK_INT > Build.VERSION_CODES.O) {
             val notificationChannel =
-                NotificationChannel("123", "beep", NotificationManager.IMPORTANCE_HIGH)
+                NotificationChannel("123", "beep", NotificationManager.IMPORTANCE_DEFAULT)
             notificationManager.createNotificationChannel(notificationChannel)
         }
         return notificationManager
