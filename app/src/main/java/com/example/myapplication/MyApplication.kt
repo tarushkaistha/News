@@ -6,28 +6,22 @@ package com.example.myapplication
 //import com.moengage.core.model.environment.MoEngageEnvironment
 //import com.moengage.core.config.MoEngageEnvironmentConfig
 //import com.moengage.core.model.environment.MoEngageEnvironment
-import android.app.Application
-import android.app.NotificationChannel
-import android.app.NotificationManager
-import android.media.AudioAttributes
-import android.net.Uri
-import android.os.Build
-import android.util.Log
-import androidx.annotation.RequiresApi
-import androidx.lifecycle.LifecycleObserver
-import com.example.myapplication.ui.CustomPushMessageListener
-import com.google.android.gms.location.GeofencingEvent
-import com.moengage.core.DataCenter
-import com.moengage.core.LogLevel
-import com.moengage.core.MoEngage
-import com.moengage.core.analytics.MoEAnalyticsHelper
-import com.moengage.core.config.FcmConfig
-import com.moengage.core.config.LogConfig
-import com.moengage.core.config.NotificationConfig
-import com.moengage.pushbase.MoEPushHelper
 //import com.moengage.geofence.MoEGeofenceHelper
 //import com.moengage.geofence.listener.OnGeofenceHitListener
 //import com.moengage.geofence.model.GeofenceData
+import android.app.Application
+import android.os.Build
+import androidx.annotation.RequiresApi
+import androidx.collection.arraySetOf
+import androidx.lifecycle.LifecycleObserver
+import com.moengage.core.DataCenter
+import com.moengage.core.LogLevel
+import com.moengage.core.MoEngage
+import com.moengage.core.config.FcmConfig
+import com.moengage.core.config.LogConfig
+import com.moengage.core.config.NotificationConfig
+import com.moengage.core.config.ScreenNameTrackingConfig
+import com.moengage.core.config.TrackingOptOutConfig
 import kotlinx.coroutines.DelicateCoroutinesApi
 
 //import com.moengage.core.model.environment.MoEngageEnvironment
@@ -57,6 +51,12 @@ class MyApplication : Application(), LifecycleObserver {
                 )
             )
             .configureFcm(FcmConfig(false))
+            .configureTrackingOptOut(
+                TrackingOptOutConfig(
+                    false, false, arraySetOf(),
+                    ScreenNameTrackingConfig(true, setOf())
+                )
+            )
             .build()
 
 
