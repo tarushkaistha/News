@@ -8,10 +8,12 @@ package com.example.myapplication
 //import com.moengage.inapp.model.ClickData
 //import com.moengage.inapp.model.actions.NavigationAction
 //import com.moe.pushlibrary.MoEHelper
+//import com.moengage.inapp.MoEInAppHelper
+//import com.moengage.inapp.listeners.SelfHandledAvailableListener
+//import com.moengage.inapp.model.SelfHandledCampaignData
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -23,12 +25,10 @@ import com.moengage.core.MoECoreHelper
 import com.moengage.core.Properties
 import com.moengage.core.analytics.MoEAnalyticsHelper
 import com.moengage.core.enableAdIdTracking
-import com.moengage.inapp.MoEInAppHelper
-import com.moengage.inapp.listeners.SelfHandledAvailableListener
-import com.moengage.inapp.model.SelfHandledCampaignData
 import com.moengage.pushbase.MoEPushHelper
 import org.json.JSONArray
 import org.json.JSONObject
+
 
 class NewsFragment : Fragment() {
 
@@ -75,8 +75,18 @@ class NewsFragment : Fragment() {
 //            MoEHelper.getInstance(requireActivity()).setUniqueId("chd1")
 //            MoEAnalyticsHelper.setUniqueId(requireActivity(), "UID 9")
 
-            MoEAnalyticsHelper.identifyUser(requireActivity(),"terminal2")
+//            MoEAnalyticsHelper.identifyUser(requireActivity(),"terminal4")
 
+//            lifecycleScope.launch(Dispatchers.IO) {
+//                val c = MoEAnalyticsHelper.getUserIdentities(
+//                    requireActivity(), "Z1UDNSWJALFR3UTPWWMCSF5Z"
+//                )
+//                if (c != null) {
+//                    Log.d(Utils.MOENGAGE_TAG, "get user identity: ${c.entries}")
+//                }
+//            }
+
+//            MoEAnalyticsHelper.setEmailId(requireActivity(),"tarush@yahoo.com")
         }
 
 //        MoEAnalyticsHelper.setUniqueId(requireActivity(), "UID 10")
@@ -145,17 +155,17 @@ class NewsFragment : Fragment() {
 //
 //        })
 
-        MoEInAppHelper.getInstance()
-            .getSelfHandledInApp(requireActivity(), object : SelfHandledAvailableListener {
-                override fun onSelfHandledAvailable(data: SelfHandledCampaignData?) {
-                    val myPayload = data?.campaign?.payload
-                    Log.d(Utils.MOENGAGE_TAG, "my sh in-app: $myPayload")
-
-//                    MoEInAppHelper.getInstance().selfHandledShown(requireActivity(), data!!)
-
-                }
-
-            })
+//        MoEInAppHelper.getInstance()
+//            .getSelfHandledInApp(requireActivity(), object : SelfHandledAvailableListener {
+//                override fun onSelfHandledAvailable(data: SelfHandledCampaignData?) {
+//                    val myPayload = data?.campaign?.payload
+//                    Log.d(Utils.MOENGAGE_TAG, "my sh in-app: $myPayload")
+//
+////                    MoEInAppHelper.getInstance().selfHandledShown(requireActivity(), data!!)
+//
+//                }
+//
+//            })
 
 
     }

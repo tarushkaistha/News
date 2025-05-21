@@ -16,7 +16,6 @@ import com.example.myapplication.ui.TestActivity
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 import com.moengage.firebase.MoEFireBaseHelper
-import com.moengage.pushbase.MoEPushHelper
 
 
 class MyFirebaseMessagingService : FirebaseMessagingService() {
@@ -62,10 +61,13 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
                 applicationContext, 0, intent, PendingIntent.FLAG_IMMUTABLE
             )
 
-            if (MoEPushHelper.getInstance().isFromMoEngagePlatform(remoteMessage.data)) {
-                MoEFireBaseHelper.getInstance()
-                    .passPushPayload(applicationContext, remoteMessage.data)
-            }
+            MoEFireBaseHelper.getInstance().passPushPayload(applicationContext, remoteMessage.data)
+
+//            if (MoEPushHelper.getInstance().isFromMoEngagePlatform(remoteMessage.data)) {
+//                MoEFireBaseHelper.getInstance()
+//                    .passPushPayload(applicationContext, remoteMessage.data)
+//                return@post
+//            }
 
 
         }
