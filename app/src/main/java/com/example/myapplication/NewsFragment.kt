@@ -73,9 +73,9 @@ class NewsFragment : Fragment() {
         binding.loginBtn.setOnClickListener {
 //            MoEAnalyticsHelper.setUniqueId(requireActivity(), "UID 11")
 //            MoEHelper.getInstance(requireActivity()).setUniqueId("chd1")
-//            MoEAnalyticsHelper.setUniqueId(requireActivity(), "UID 9")
+//            MoEAnalyticsHelper.setUniqueId(requireActivity(), "delhi1")
 
-//            MoEAnalyticsHelper.identifyUser(requireActivity(),"terminal4")
+            MoEAnalyticsHelper.identifyUser(requireActivity(),"terminal4a")
 
 //            lifecycleScope.launch(Dispatchers.IO) {
 //                val c = MoEAnalyticsHelper.getUserIdentities(
