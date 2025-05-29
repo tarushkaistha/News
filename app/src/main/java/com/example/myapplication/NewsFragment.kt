@@ -14,6 +14,7 @@ package com.example.myapplication
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,10 +22,16 @@ import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import com.example.myapplication.databinding.NewsFragmentBinding
 import com.example.myapplication.ui.CustomWebView
+import com.example.myapplication.ui.DemoAct
 import com.moengage.core.MoECoreHelper
 import com.moengage.core.Properties
 import com.moengage.core.analytics.MoEAnalyticsHelper
 import com.moengage.core.enableAdIdTracking
+import com.moengage.inapp.MoEInAppHelper
+import com.moengage.inapp.listeners.SelfHandledAvailableListener
+import com.moengage.inapp.listeners.SelfHandledCampaignsAvailableListener
+import com.moengage.inapp.model.SelfHandledCampaignData
+import com.moengage.inapp.model.SelfHandledCampaignsData
 import com.moengage.pushbase.MoEPushHelper
 import org.json.JSONArray
 import org.json.JSONObject
@@ -48,10 +55,14 @@ class NewsFragment : Fragment() {
 
         enableAdIdTracking(requireActivity())
 
-        MoEPushHelper.getInstance().requestPushPermission(requireActivity())
+//        MoEPushHelper.getInstance().requestPushPermission(requireActivity())
 
         binding.customWebView.setOnClickListener {
             startActivity(Intent(requireActivity(), CustomWebView::class.java))
+        }
+
+        binding.demoAct.setOnClickListener {
+            startActivity(Intent(requireActivity(), DemoAct::class.java))
         }
 
 //        FirebaseMessaging.getInstance().token.addOnCompleteListener { task ->
@@ -75,7 +86,7 @@ class NewsFragment : Fragment() {
 //            MoEHelper.getInstance(requireActivity()).setUniqueId("chd1")
 //            MoEAnalyticsHelper.setUniqueId(requireActivity(), "delhi1")
 
-            MoEAnalyticsHelper.identifyUser(requireActivity(),"terminal4a")
+//            MoEAnalyticsHelper.identifyUser(requireActivity(),"terminal5a")
 
 //            lifecycleScope.launch(Dispatchers.IO) {
 //                val c = MoEAnalyticsHelper.getUserIdentities(
@@ -133,16 +144,19 @@ class NewsFragment : Fragment() {
 
         }
 
-        MoEPushHelper.getInstance().requestPushPermission(requireActivity())
+//        MoEPushHelper.getInstance().requestPushPermission(requireActivity())
 
     }
 
     override fun onResume() {
         super.onResume()
 
+        Log.d(Utils.MOENGAGE_TAG, "fragment onresume: resumed callback")
+//        MoEInAppHelper.getInstance().setInAppContext(setOf("hey,hellos"))
+//        MoEInAppHelper.getInstance().setInAppContext(setOf("hey","hellos"))
 //        MoEInAppHelper.getInstance().showInApp(requireActivity())
 //        MoEInAppHelper.getInstance().showNudge(requireActivity())
-//        MoEInAppHelper.getInstance().setInAppContext(setOf("news"))
+
 //        MoEInAppHelper.getInstance().setClickActionListener(object : OnClickActionListener {
 //            override fun onClick(clickData: ClickData): Boolean {
 //                Log.d("moengage onclick", "onClick in-app data: $clickData ")
@@ -155,18 +169,25 @@ class NewsFragment : Fragment() {
 //
 //        })
 
-//        MoEInAppHelper.getInstance()
-//            .getSelfHandledInApp(requireActivity(), object : SelfHandledAvailableListener {
-//                override fun onSelfHandledAvailable(data: SelfHandledCampaignData?) {
-//                    val myPayload = data?.campaign?.payload
-//                    Log.d(Utils.MOENGAGE_TAG, "my sh in-app: $myPayload")
-//
-////                    MoEInAppHelper.getInstance().selfHandledShown(requireActivity(), data!!)
-//
-//                }
-//
-//            })
+        MoEInAppHelper.getInstance()
+            .getSelfHandledInApp(requireActivity(), object : SelfHandledAvailableListener {
+                override fun onSelfHandledAvailable(data: SelfHandledCampaignData?) {
+                    val myPayload = data?.campaign?.payload
+                    Log.d(Utils.MOENGAGE_TAG, "my sh in-app: $myPayload")
 
+//                    MoEInAppHelper.getInstance().selfHandledShown(requireActivity(), data!!)
+
+                }
+
+            })
+
+
+//        MoEInAppHelper.getInstance().getSelfHandledInApps(requireActivity(), object : SelfHandledCampaignsAvailableListener{
+//            override fun onCampaignsAvailable(campaigns: SelfHandledCampaignsData?) {
+//                Log.d(Utils.MOENGAGE_TAG, "multi sh in-app: $campaigns")
+//            }
+//
+//        })
 
     }
 
@@ -174,12 +195,13 @@ class NewsFragment : Fragment() {
     override fun onStop() {
         super.onStop()
 
-//        MoEInAppHelper.getInstance().resetInAppContext()
+        Log.d(Utils.MOENGAGE_TAG, "fragemnt onstop: stop callback")
+        MoEInAppHelper.getInstance().resetInAppContext()
     }
 
     override fun onPause() {
         super.onPause()
-
+        Log.d(Utils.MOENGAGE_TAG, "fragment onpause: paused callback")
 //        MoEInAppHelper.getInstance().resetInAppContext()
     }
 

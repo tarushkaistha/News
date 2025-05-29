@@ -149,7 +149,7 @@ class ArticlesFragment : Fragment() {
 //            }
 //        }
 
-        MoEPushHelper.getInstance().requestPushPermission(requireActivity())
+//        MoEPushHelper.getInstance().requestPushPermission(requireActivity())
 
 
         binding.apply {
@@ -291,18 +291,18 @@ class ArticlesFragment : Fragment() {
     }
 
 
-    private val requestPostPermissionLauncher = registerForActivityResult(
-        RequestPermission()
-    ) { isGranted ->
-        if (isGranted) {
-            MoEPushHelper.getInstance().pushPermissionResponse(requireActivity(), isGranted)
-//            Toast.makeText(
-//                requireActivity(), "Grant permission above api level 33", Toast.LENGTH_SHORT
-//            ).show()
-        } else {
-//            Toast.makeText(requireActivity(), "Permission cannot be granted", Toast.LENGTH_SHORT)
-        }
-    }
+//    private val requestPostPermissionLauncher = registerForActivityResult(
+//        RequestPermission()
+//    ) { isGranted ->
+//        if (isGranted) {
+//            MoEPushHelper.getInstance().pushPermissionResponse(requireActivity(), isGranted)
+////            Toast.makeText(
+////                requireActivity(), "Grant permission above api level 33", Toast.LENGTH_SHORT
+////            ).show()
+//        } else {
+////            Toast.makeText(requireActivity(), "Permission cannot be granted", Toast.LENGTH_SHORT)
+//        }
+//    }
 
     private val swipeRefreshListener = OnRefreshListener {
         binding.swipeRefreshContainer.isRefreshing = true

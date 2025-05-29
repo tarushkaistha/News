@@ -9,9 +9,9 @@
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/mt_news_tb"
-        android:background="#A079C7"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="#A079C7"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:title="News" />
@@ -78,6 +78,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/defMoeInbox" />
+
+    <Button
+        android:id="@+id/demoAct"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="DemoAct"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/track_custom_event" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

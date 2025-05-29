@@ -68,7 +68,6 @@ class MainActivity : BaseActivityCompat() {
     override fun onStop() {
         super.onStop()
 
-        MoEInAppHelper.getInstance().resetInAppContext()
     }
 
     companion object {
