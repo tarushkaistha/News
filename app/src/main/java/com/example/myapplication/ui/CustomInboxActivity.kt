@@ -1,6 +1,7 @@
 package com.example.myapplication.ui
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -28,6 +29,8 @@ class CustomInboxActivity : AppCompatActivity() {
                 MoEInboxHelper.getInstance().fetchAllMessages(this@CustomInboxActivity)
 
             val inboxMessages: List<InboxMessage> = inboxData!!.inboxMessages
+
+            Log.d("custominbox", "onCreate inbox msgs: $inboxMessages")
 
             inboxes = inboxMessages.map {
                 MyInboxMessage(title = it.textContent.title)

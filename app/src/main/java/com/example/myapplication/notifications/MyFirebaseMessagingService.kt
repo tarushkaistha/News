@@ -79,18 +79,20 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
             )
 
 
-//            if (MoEPushHelper.getInstance().isFromMoEngagePlatform(remoteMessage.data)) {
-//                MoEFireBaseHelper.getInstance()
-//                    .passPushPayload(applicationContext, remoteMessage.data)
-//            }
-
             if (MoEPushHelper.getInstance().isFromMoEngagePlatform(remoteMessage.data)) {
-                showNotification(title, content, null)
-            } else {
+                MoEFireBaseHelper.getInstance()
+                    .passPushPayload(applicationContext, remoteMessage.data)
+            }
+
+           // if (MoEPushHelper.getInstance().isFromMoEngagePlatform(remoteMessage.data)) {
+//                showNotification(title, content, null)
+           // }
+
+            //else {
                 // your app's business logic to show notification
 
 //                showNotification(title, content, pii)
-            }
+            //}
 
 //            showNotification(title, content, null)
         }
