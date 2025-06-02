@@ -57,19 +57,6 @@ class MyApplication : Application(), LifecycleObserver {
 //            .configureMoEngageEnvironment(MoEngageEnvironmentConfig(MoEngageEnvironment.LIVE))
             .configureFcm(FcmConfig(true))
 
-        val moEngageAbhishek = MoEngage.Builder(this, "N479J9GSMH8OE6E4IPE5G7NV")
-            .setDataCenter(DataCenter.DATA_CENTER_1)
-            .configureLogs(LogConfig(LogLevel.VERBOSE, true))
-            .configureNotificationMetaData(
-                NotificationConfig(
-                    R.drawable.ic_launcher_foreground,
-                    R.drawable.ic_launcher_foreground,
-                )
-            )
-//            .configureMoEngageEnvironment(MoEngageEnvironmentConfig(MoEngageEnvironment.LIVE))
-            .configureFcm(FcmConfig(true))
-            .build()
-
         MoEngage.initialiseDefaultInstance(moEngage.build())
 //        MoEngage.initialiseInstance(moEngageAbhishek)
 

@@ -67,12 +67,8 @@ class NewsFragment : Fragment() {
         binding.loginBtn.setOnClickListener {
 //            MoEAnalyticsHelper.setUniqueId(requireActivity(), "UID 11")
 
-//            MoEAnalyticsHelper.identifyUser(requireActivity(), "t3")
+            MoEAnalyticsHelper.identifyUser(requireActivity(), "formula2")
 
-            MoEAnalyticsHelper.identifyUser(
-                requireActivity(),
-                mapOf("identifierName1" to "gotohell")
-            )
 //            MoEAnalyticsHelper.setUniqueId(requireActivity(), "UID 9")
 
 
