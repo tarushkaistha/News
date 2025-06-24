@@ -21,7 +21,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout.OnRefreshListener
-import com.bumptech.glide.util.Util
+//import com.bumptech.glide.util.Util
 import com.example.myapplication.R
 import com.example.myapplication.Utils
 import com.example.myapplication.articlesViewModel.ArticlesViewModel

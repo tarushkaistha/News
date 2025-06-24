@@ -23,18 +23,19 @@ import androidx.fragment.app.Fragment
 import com.example.myapplication.databinding.NewsFragmentBinding
 import com.example.myapplication.ui.CustomWebView
 import com.example.myapplication.ui.DemoAct
+import com.moe.pushlibrary.MoEHelper
 import com.moengage.core.MoECoreHelper
 import com.moengage.core.Properties
 import com.moengage.core.analytics.MoEAnalyticsHelper
 import com.moengage.core.enableAdIdTracking
+import com.moengage.core.model.AppStatus
 import com.moengage.inapp.MoEInAppHelper
-import com.moengage.inapp.listeners.SelfHandledAvailableListener
-import com.moengage.inapp.listeners.SelfHandledCampaignsAvailableListener
-import com.moengage.inapp.model.SelfHandledCampaignData
-import com.moengage.inapp.model.SelfHandledCampaignsData
-import com.moengage.pushbase.MoEPushHelper
+import com.moengage.inapp.listeners.OnClickActionListener
+import com.moengage.inapp.model.ClickData
+import com.moengage.inapp.model.actions.NavigationAction
 import org.json.JSONArray
 import org.json.JSONObject
+import java.util.Date
 
 
 class NewsFragment : Fragment() {
@@ -82,11 +83,11 @@ class NewsFragment : Fragment() {
 //        startActivity(Intent(ACTION_REQUEST_SCHEDULE_EXACT_ALARM))
 
         binding.loginBtn.setOnClickListener {
-//            MoEAnalyticsHelper.setUniqueId(requireActivity(), "UID 11")
-//            MoEHelper.getInstance(requireActivity()).setUniqueId("chd1")
+
+            MoEHelper.getInstance(requireActivity()).setUniqueId("chd1")
 //            MoEAnalyticsHelper.setUniqueId(requireActivity(), "delhi1")
 
-//            MoEAnalyticsHelper.identifyUser(requireActivity(),"terminal5a")
+//            MoEAnalyticsHelper.identifyUser(requireActivity(),"terminal8a")
 
 //            lifecycleScope.launch(Dispatchers.IO) {
 //                val c = MoEAnalyticsHelper.getUserIdentities(
@@ -136,10 +137,21 @@ class NewsFragment : Fragment() {
 //            val arrayOfCountry = JSONArray()
 //            arrayOfCountry.put(obj)
 
-            val jsonObject = JSONObject().put("kaistha", JSONArray(listOf("tony", "iron")))
+//            val jsonObject = JSONObject().put("kaistha", JSONArray(listOf("tony", "iron")))
+            val jsonObject = JSONObject().apply {
+                put("packagesAvailable", 7)
+                put("countryName", "global")
+            }
             val property = Properties()
-            property.addAttribute("city", jsonObject.toString())
-            MoEAnalyticsHelper.trackEvent(requireActivity(), "JSMarvel_Event", property)
+//            property.addAttribute(jsonObject.toString(), jsonObject.toString())
+//            MoEAnalyticsHelper.trackEvent(requireActivity(), "BSDK", property)
+
+//            property.addAttribute("attributeDate", Date())
+//            property.addDateIso("attributeDateIso", "2022-02-10T21:12:00Z")
+            property.addDateIso("attributeDateIsoTomorrow", "2025-06-19T21:12:00Z")
+            property.addAttribute("myDate", Date())
+
+            MoEAnalyticsHelper.trackEvent(requireActivity(), "date_event", property)
 
 
         }
@@ -154,32 +166,32 @@ class NewsFragment : Fragment() {
         Log.d(Utils.MOENGAGE_TAG, "fragment onresume: resumed callback")
 //        MoEInAppHelper.getInstance().setInAppContext(setOf("hey,hellos"))
 //        MoEInAppHelper.getInstance().setInAppContext(setOf("hey","hellos"))
-//        MoEInAppHelper.getInstance().showInApp(requireActivity())
+        MoEInAppHelper.getInstance().showInApp(requireActivity())
 //        MoEInAppHelper.getInstance().showNudge(requireActivity())
 
-//        MoEInAppHelper.getInstance().setClickActionListener(object : OnClickActionListener {
-//            override fun onClick(clickData: ClickData): Boolean {
-//                Log.d("moengage onclick", "onClick in-app data: $clickData ")
+        MoEInAppHelper.getInstance().setClickActionListener(object : OnClickActionListener {
+            override fun onClick(clickData: ClickData): Boolean {
+                Log.d("moengage onclick", "onClick in-app data: $clickData ")
+
+                val c: NavigationAction = clickData.action as NavigationAction
+                val d = c.navigationUrl
+                Log.d("moengage onclick", "onClick click data: $d")
+                return false
+            }
+
+        })
+
+//        MoEInAppHelper.getInstance()
+//            .getSelfHandledInApp(requireActivity(), object : SelfHandledAvailableListener {
+//                override fun onSelfHandledAvailable(data: SelfHandledCampaignData?) {
+//                    val myPayload = data?.campaign?.payload
+//                    Log.d(Utils.MOENGAGE_TAG, "my sh in-app: $myPayload")
 //
-//                val c: NavigationAction = clickData.action as NavigationAction
-//                val d = c.navigationUrl
-//                Log.d("moengage onclick", "onClick click data: $d")
-//                return false
-//            }
+////                    MoEInAppHelper.getInstance().selfHandledShown(requireActivity(), data!!)
 //
-//        })
-
-        MoEInAppHelper.getInstance()
-            .getSelfHandledInApp(requireActivity(), object : SelfHandledAvailableListener {
-                override fun onSelfHandledAvailable(data: SelfHandledCampaignData?) {
-                    val myPayload = data?.campaign?.payload
-                    Log.d(Utils.MOENGAGE_TAG, "my sh in-app: $myPayload")
-
-//                    MoEInAppHelper.getInstance().selfHandledShown(requireActivity(), data!!)
-
-                }
-
-            })
+//                }
+//
+//            })
 
 
 //        MoEInAppHelper.getInstance().getSelfHandledInApps(requireActivity(), object : SelfHandledCampaignsAvailableListener{

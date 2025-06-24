@@ -1,8 +1,10 @@
 package com.example.myapplication.ui
 
 //import com.example.myapplication.MyApplication.Companion.moEngage
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
+import android.view.WindowManager
 import androidx.navigation.fragment.NavHostFragment
 import com.example.myapplication.R
 import com.example.myapplication.Utils
@@ -18,6 +20,11 @@ class MainActivity : BaseActivityCompat() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 //        setContentView(com.moengage.core.R.layout.activity_moe_rich_landing)
+
+        val window = this.window
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+        window.statusBarColor = this.resources.getColor(R.color.colorPrimary)
         val navHostFragment =
             supportFragmentManager.findFragmentById(binding.fcv.id) as NavHostFragment
         val navController = navHostFragment.navController

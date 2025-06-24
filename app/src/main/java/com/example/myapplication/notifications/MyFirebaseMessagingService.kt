@@ -25,11 +25,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
         super.onNewToken(token)
 
 
-//        Log.d("service", "on token observe: $token ")
-//
         MoEFireBaseHelper.getInstance().passPushToken(applicationContext, token)
-//
-//        Log.d("service", "on pass psh token observe: $token ")
     }
 
     override fun onMessageReceived(message: RemoteMessage) {
@@ -73,48 +69,48 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
         }
     }
 
-    private fun showNotification(
-        title: String?, body: String?, pii: PendingIntent?
-    ): NotificationCompat.Builder {
+//    private fun showNotification(
+//        title: String?, body: String?, pii: PendingIntent?
+//    ): NotificationCompat.Builder {
+//
+//
+//        val myNotificationView = RemoteViews(packageName, R.layout.add_btn_in_custom_notification)
+//
+//        myNotificationView.setOnClickPendingIntent(R.id.clickButton, pii)
+//
+//
+//        val notificationManager = notificationManager()
+//
+//        val myNotificationBuilder = NotificationCompat.Builder(
+//            applicationContext, "123"
+//        ).setSmallIcon(R.drawable.ic_launcher_foreground).setContentTitle(title)
+//            .setContentText(body).setContentIntent(pii).setDefaults(Notification.DEFAULT_ALL)
+//            .setPriority(NotificationCompat.PRIORITY_HIGH)/*.setCustomContentView(myNotificationView)*/
+//
+//        notificationManager.notify(123, myNotificationBuilder.build())
+//
+//        return myNotificationBuilder
+//    }
 
-
-        val myNotificationView = RemoteViews(packageName, R.layout.add_btn_in_custom_notification)
-
-        myNotificationView.setOnClickPendingIntent(R.id.clickButton, pii)
-
-
-        val notificationManager = notificationManager()
-
-        val myNotificationBuilder = NotificationCompat.Builder(
-            applicationContext, "123"
-        ).setSmallIcon(R.drawable.ic_launcher_foreground).setContentTitle(title)
-            .setContentText(body).setContentIntent(pii).setDefaults(Notification.DEFAULT_ALL)
-            .setPriority(NotificationCompat.PRIORITY_HIGH)/*.setCustomContentView(myNotificationView)*/
-
-        notificationManager.notify(123, myNotificationBuilder.build())
-
-        return myNotificationBuilder
-    }
-
-    private fun notificationManager(): NotificationManager {
-        val notificationManager =
-            applicationContext.getSystemService(NOTIFICATION_SERVICE) as NotificationManager
-
-        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.O) {
-            val notificationChannel =
-                NotificationChannel("123", "beep", NotificationManager.IMPORTANCE_HIGH)
-            notificationManager.createNotificationChannel(notificationChannel)
-        }
-        return notificationManager
-    }
-
-    @RequiresApi(Build.VERSION_CODES.O)
-    private fun createCustomNotificationChannel(channelId: String, channelName: String) {
-        val channel =
-            NotificationChannel(channelId, channelName, NotificationManager.IMPORTANCE_HIGH)
-
-        val manager = getSystemService(NOTIFICATION_SERVICE) as NotificationManager
-        manager.createNotificationChannel(channel)
-    }
+//    private fun notificationManager(): NotificationManager {
+//        val notificationManager =
+//            applicationContext.getSystemService(NOTIFICATION_SERVICE) as NotificationManager
+//
+//        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.O) {
+//            val notificationChannel =
+//                NotificationChannel("123", "beep", NotificationManager.IMPORTANCE_HIGH)
+//            notificationManager.createNotificationChannel(notificationChannel)
+//        }
+//        return notificationManager
+//    }
+//
+//    @RequiresApi(Build.VERSION_CODES.O)
+//    private fun createCustomNotificationChannel(channelId: String, channelName: String) {
+//        val channel =
+//            NotificationChannel(channelId, channelName, NotificationManager.IMPORTANCE_HIGH)
+//
+//        val manager = getSystemService(NOTIFICATION_SERVICE) as NotificationManager
+//        manager.createNotificationChannel(channel)
+//    }
 }
 

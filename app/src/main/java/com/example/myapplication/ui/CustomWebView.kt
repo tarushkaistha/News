@@ -28,7 +28,8 @@ class CustomWebView : AppCompatActivity() {
             webView.settings.domStorageEnabled = true
             webView.webViewClient = WebViewClient()
             webView.loadUrl(articleUrl)
-//            webView.loadUrl("https://www.prexpe.com.pe/pagos-de-servicios")
+//            webView.loadUrl("https://www.vishalmegamart.com/en-in/women/ethnic-wear/kurtas-and-kurtis/")
+            webView.loadUrl("https://www.vezeeta.com/ar/dr/%D8%AE%D8%A8%D9%8A%D8%B1-%D9%86%D9%81%D8%B3%D9%8A-%D8%AF%D9%83%D8%AA%D9%88%D8%B1-%D9%86%D9%88%D8%B1%D8%AB-%D9%86%D9%81%D8%B3%D9%8A/")
         } catch (t: Throwable) {
             Log.d(Utils.MOENGAGE_TAG, "onCreate:  ")
             Log.d(Utils.MOENGAGE_TAG, "onCreate: could not load web view ")

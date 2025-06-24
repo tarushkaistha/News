@@ -5,9 +5,10 @@
 
     <color name="grey">#D3D1D1</color>
 
+    <color name="colorPrimary">#9F6CE7</color>
 
 
-<!--    <color name="moe_card_header_color">#28218D</color>-->
+    <!--    <color name="moe_card_header_color">#28218D</color>-->
 <!--    <color name="moe_card_message_color">#293E11</color>-->
 <!--    <color name="moe_card_timestamp_color">#9E9E9E</color>-->
 

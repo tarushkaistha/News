@@ -41,15 +41,11 @@ class MyApplication : Application(), LifecycleObserver {
 
     @RequiresApi(Build.VERSION_CODES.O)
     fun initMoEngage() {
-        val moEngage = MoEngage.Builder(this, "Z1UDNSWJALFR3UTPWWMCSF5Z",DataCenter.DATA_CENTER_1)
+        val moEngage: MoEngage = MoEngage.Builder(this, "Z1UDNSWJALFR3UTPWWMCSF5Z",DataCenter.DATA_CENTER_1)
             .configureLogs(LogConfig(LogLevel.VERBOSE, false)).configureNotificationMetaData(
                 NotificationConfig(
                     R.drawable.ic_launcher_foreground,
                     R.drawable.ic_launcher_foreground,
-                    -1,
-                    false,
-                    false,
-                    true
                 )
             )
 //            .configureMoEngageEnvironment(MoEngageEnvironmentConfig(MoEngageEnvironment.LIVE))
