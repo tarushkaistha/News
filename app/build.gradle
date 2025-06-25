@@ -77,12 +77,16 @@ dependencies {
     implementation(moengage.core)
     implementation(moengage.richNotification)
     implementation(moengage.inapp)
-
+//    implementation 'com.moengage:moe-android-sdk:13.00.03'
+//    implementation 'com.moengage:inapp:8.2.1'
+//    implementation 'com.moengage:inbox-ui:3.0.1'
+//    implementation 'com.moengage:inbox-core:3.0.1'
+//    implementation 'com.moengage:cards-core:2.0.2'
     implementation("com.google.android.gms:play-services-ads-identifier:18.0.1")
     implementation 'com.google.android.gms:play-services-location:21.3.0'
 //    implementation(moengage.integrationVerifier)
-//    implementation(moengage.inboxUi)
-//    implementation(moengage.inboxCore)
+    implementation(moengage.inboxUi)
+    implementation(moengage.inboxCore)
 //    implementation(moengage.geofence)
 //    implementation(moengage.pushAmpPlus)
 

@@ -39,7 +39,7 @@ class MyCustomCategoryActivity : AppCompatActivity() {
 
 
         val cardCats = getCardCategories(this)
-        val tabs = binding.tabs as TabLayout
+//        val tabs = binding.tabs as TabLayout
 
         when {
             cardCats.isEmpty() -> {
@@ -49,39 +49,39 @@ class MyCustomCategoryActivity : AppCompatActivity() {
             else -> {
                 binding.categoryContainer.visibility = View.VISIBLE
                 binding.emptyCardsTv.visibility = View.GONE
-                tabs.visibility = View.VISIBLE
+//                tabs.visibility = View.VISIBLE
 
-                tabs.addTab(tabs.newTab().setText(cardCats.elementAt(0)), true)
+//                tabs.addTab(tabs.newTab().setText(cardCats.elementAt(0)), true)
 
                 for (i in 1 until cardCats.size) {
-                    tabs.addTab(tabs.newTab().setText(cardCats.elementAt(i)))
+//                    tabs.addTab(tabs.newTab().setText(cardCats.elementAt(i)))
                 }
 
-                tabs.addOnTabSelectedListener(object : OnTabSelectedListener {
-                    override fun onTabSelected(tab: TabLayout.Tab?) {
-                        when (tab?.position) {
-                            0 -> {
-                                binding.categoryContainer.visibility = View.VISIBLE
-                                binding.emptyCardsTv.visibility = View.GONE
-                                val bundle = Bundle()
-                                val allCategory = cardCats.elementAt(0)
-                                bundle.putString("cat_all", allCategory)
-                                val fm = supportFragmentManager
-                                val ft = fm.beginTransaction()
-                                ft.replace(binding.categoryContainer.id, allFragment)
-                                ft.commit()
-                                allFragment.arguments = bundle
-                            }
-                        }
-                    }
-
-                    override fun onTabUnselected(tab: TabLayout.Tab?) {
-                    }
-
-                    override fun onTabReselected(tab: TabLayout.Tab?) {
-                    }
-
-                })
+//                tabs.addOnTabSelectedListener(object : OnTabSelectedListener {
+//                    override fun onTabSelected(tab: TabLayout.Tab?) {
+//                        when (tab?.position) {
+//                            0 -> {
+//                                binding.categoryContainer.visibility = View.VISIBLE
+//                                binding.emptyCardsTv.visibility = View.GONE
+//                                val bundle = Bundle()
+//                                val allCategory = cardCats.elementAt(0)
+//                                bundle.putString("cat_all", allCategory)
+//                                val fm = supportFragmentManager
+//                                val ft = fm.beginTransaction()
+//                                ft.replace(binding.categoryContainer.id, allFragment)
+//                                ft.commit()
+//                                allFragment.arguments = bundle
+//                            }
+//                        }
+//                    }
+//
+//                    override fun onTabUnselected(tab: TabLayout.Tab?) {
+//                    }
+//
+//                    override fun onTabReselected(tab: TabLayout.Tab?) {
+//                    }
+//
+//                })
 
                 val allCategory = cardCats.elementAt(0)
                 val bundle = Bundle()

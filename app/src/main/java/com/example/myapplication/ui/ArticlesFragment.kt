@@ -39,11 +39,11 @@ import com.moengage.inapp.MoEInAppHelper
 import com.moengage.inapp.listeners.InAppLifeCycleListener
 import com.moengage.inapp.listeners.OnClickActionListener
 import com.moengage.inapp.listeners.SelfHandledAvailableListener
-import com.moengage.inapp.listeners.SelfHandledCampaignsAvailableListener
+//import com.moengage.inapp.listeners.SelfHandledCampaignsAvailableListener
 import com.moengage.inapp.model.ClickData
 import com.moengage.inapp.model.InAppData
 import com.moengage.inapp.model.SelfHandledCampaignData
-import com.moengage.inapp.model.SelfHandledCampaignsData
+//import com.moengage.inapp.model.SelfHandledCampaignsData
 import com.moengage.inapp.model.actions.CustomAction
 import com.moengage.pushbase.MoEPushHelper
 

@@ -43,7 +43,7 @@ class NewsFragment : Fragment() {
         });
 
         binding.loginBtn.setOnClickListener {
-            MoEAnalyticsHelper.setUniqueId(requireActivity(), "tarushcard")
+            MoEAnalyticsHelper.setUniqueId(requireActivity(), "firefox")
         }
 
         binding.logoutBtn.setOnClickListener {
