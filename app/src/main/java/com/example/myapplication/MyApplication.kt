@@ -20,7 +20,9 @@ import com.moengage.core.LogLevel
 import com.moengage.core.MoEngage
 import com.moengage.core.config.FcmConfig
 import com.moengage.core.config.LogConfig
+//import com.moengage.core.config.MoEngageEnvironmentConfig
 import com.moengage.core.config.NotificationConfig
+//import com.moengage.core.model.environment.MoEngageEnvironment
 import com.moengage.pushbase.MoEPushHelper
 import kotlinx.coroutines.DelicateCoroutinesApi
 
@@ -49,7 +51,7 @@ class MyApplication : Application(), LifecycleObserver {
                 )
             )
 //            .configureMoEngageEnvironment(MoEngageEnvironmentConfig(MoEngageEnvironment.LIVE))
-//            .configureFcm(FcmConfig(true))
+//            .configureFcm(FcmConfig(false))
             .build()
 
 

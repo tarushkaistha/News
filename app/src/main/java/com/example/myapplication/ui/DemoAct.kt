@@ -17,14 +17,14 @@ class DemoAct : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
 
-        MoEInAppHelper.getInstance().setInAppContext(setOf("hey","hellos"))
-        MoEInAppHelper.getInstance().showInApp(this)
+//        MoEInAppHelper.getInstance().setInAppContext(setOf("hey","hellos"))
+        MoEInAppHelper.getInstance().showNudge(this)
     }
 
     override fun onStop() {
         super.onStop()
 
-        MoEInAppHelper.getInstance().resetInAppContext()
+//        MoEInAppHelper.getInstance().resetInAppContext()
     }
 
     override fun onPause() {

@@ -14,6 +14,7 @@ package com.example.myapplication
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.provider.Settings.ACTION_REQUEST_SCHEDULE_EXACT_ALARM
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -23,7 +24,8 @@ import androidx.fragment.app.Fragment
 import com.example.myapplication.databinding.NewsFragmentBinding
 import com.example.myapplication.ui.CustomWebView
 import com.example.myapplication.ui.DemoAct
-import com.moe.pushlibrary.MoEHelper
+import com.example.myapplication.ui.TestActivity
+//import com.moe.pushlibrary.MoEHelper
 import com.moengage.core.MoECoreHelper
 import com.moengage.core.Properties
 import com.moengage.core.analytics.MoEAnalyticsHelper
@@ -63,7 +65,8 @@ class NewsFragment : Fragment() {
         }
 
         binding.demoAct.setOnClickListener {
-            startActivity(Intent(requireActivity(), DemoAct::class.java))
+//            startActivity(Intent(requireActivity(), DemoAct::class.java))
+            startActivity(Intent(requireActivity(), TestActivity::class.java))
         }
 
 //        FirebaseMessaging.getInstance().token.addOnCompleteListener { task ->
@@ -84,10 +87,10 @@ class NewsFragment : Fragment() {
 
         binding.loginBtn.setOnClickListener {
 
-            MoEHelper.getInstance(requireActivity()).setUniqueId("chd1")
+//            MoEHelper.getInstance(requireActivity()).setUniqueId("chd1")
 //            MoEAnalyticsHelper.setUniqueId(requireActivity(), "delhi1")
 
-//            MoEAnalyticsHelper.identifyUser(requireActivity(),"terminal8a")
+//            MoEAnalyticsHelper.setUniqueId(requireActivity(),"terminal10a")
 
 //            lifecycleScope.launch(Dispatchers.IO) {
 //                val c = MoEAnalyticsHelper.getUserIdentities(
@@ -166,7 +169,7 @@ class NewsFragment : Fragment() {
         Log.d(Utils.MOENGAGE_TAG, "fragment onresume: resumed callback")
 //        MoEInAppHelper.getInstance().setInAppContext(setOf("hey,hellos"))
 //        MoEInAppHelper.getInstance().setInAppContext(setOf("hey","hellos"))
-        MoEInAppHelper.getInstance().showInApp(requireActivity())
+//        MoEInAppHelper.getInstance().showInApp(requireActivity())
 //        MoEInAppHelper.getInstance().showNudge(requireActivity())
 
         MoEInAppHelper.getInstance().setClickActionListener(object : OnClickActionListener {
