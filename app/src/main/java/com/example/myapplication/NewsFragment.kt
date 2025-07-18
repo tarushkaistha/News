@@ -43,7 +43,7 @@ class NewsFragment : Fragment() {
         });
 
         binding.loginBtn.setOnClickListener {
-            MoEAnalyticsHelper.setUniqueId(requireActivity(), "firefox")
+            MoEAnalyticsHelper.setUniqueId(requireActivity(), "cartwheel")
         }
 
         binding.logoutBtn.setOnClickListener {
