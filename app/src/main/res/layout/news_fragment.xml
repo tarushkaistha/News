@@ -87,5 +87,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/track_custom_event" />
 
+    <Button
+        android:id="@+id/testFrg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Test Fragment"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/demoAct" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

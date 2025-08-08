@@ -13,4 +13,6 @@
     <string name="moe_inbox_notification_title">My Inbox</string>
     <string name="moe_card_feed_title">Cards Feed</string>
     <string name="my_card_inbox">My Cards Feed</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

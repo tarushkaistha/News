@@ -11,31 +11,30 @@ package com.example.myapplication
 //import com.moengage.inapp.MoEInAppHelper
 //import com.moengage.inapp.listeners.SelfHandledAvailableListener
 //import com.moengage.inapp.model.SelfHandledCampaignData
+//import com.moe.pushlibrary.MoEHelper
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
-import android.provider.Settings.ACTION_REQUEST_SCHEDULE_EXACT_ALARM
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.example.myapplication.databinding.NewsFragmentBinding
 import com.example.myapplication.ui.CustomWebView
-import com.example.myapplication.ui.DemoAct
 import com.example.myapplication.ui.TestActivity
-//import com.moe.pushlibrary.MoEHelper
+import com.example.myapplication.ui.TestFragment
 import com.moengage.core.MoECoreHelper
 import com.moengage.core.Properties
 import com.moengage.core.analytics.MoEAnalyticsHelper
 import com.moengage.core.enableAdIdTracking
-import com.moengage.core.model.AppStatus
 import com.moengage.inapp.MoEInAppHelper
 import com.moengage.inapp.listeners.OnClickActionListener
 import com.moengage.inapp.model.ClickData
 import com.moengage.inapp.model.actions.NavigationAction
-import org.json.JSONArray
+import com.moengage.pushbase.MoEPushHelper
 import org.json.JSONObject
 import java.util.Date
 
@@ -58,10 +57,15 @@ class NewsFragment : Fragment() {
 
         enableAdIdTracking(requireActivity())
 
+        MoEPushHelper.getInstance().requestPushPermission(requireActivity())
 //        MoEPushHelper.getInstance().requestPushPermission(requireActivity())
 
         binding.customWebView.setOnClickListener {
             startActivity(Intent(requireActivity(), CustomWebView::class.java))
+        }
+
+        binding.testFrg.setOnClickListener {
+            findNavController().navigate(R.id.action_newsFragment_to_testFragment)
         }
 
         binding.demoAct.setOnClickListener {
@@ -90,7 +94,7 @@ class NewsFragment : Fragment() {
 //            MoEHelper.getInstance(requireActivity()).setUniqueId("chd1")
 //            MoEAnalyticsHelper.setUniqueId(requireActivity(), "delhi1")
 
-//            MoEAnalyticsHelper.setUniqueId(requireActivity(),"terminal10a")
+            MoEAnalyticsHelper.setUniqueId(requireActivity(),"gross")
 
 //            lifecycleScope.launch(Dispatchers.IO) {
 //                val c = MoEAnalyticsHelper.getUserIdentities(
@@ -166,11 +170,10 @@ class NewsFragment : Fragment() {
     override fun onResume() {
         super.onResume()
 
-        Log.d(Utils.MOENGAGE_TAG, "fragment onresume: resumed callback")
-//        MoEInAppHelper.getInstance().setInAppContext(setOf("hey,hellos"))
-//        MoEInAppHelper.getInstance().setInAppContext(setOf("hey","hellos"))
+        Log.d(Utils.MOENGAGE_TAG, "news fragment onresume: resumed callback")
+        MoEInAppHelper.getInstance().setInAppContext(setOf("news", "shell"))
 //        MoEInAppHelper.getInstance().showInApp(requireActivity())
-//        MoEInAppHelper.getInstance().showNudge(requireActivity())
+        MoEInAppHelper.getInstance().showNudge(requireActivity())
 
         MoEInAppHelper.getInstance().setClickActionListener(object : OnClickActionListener {
             override fun onClick(clickData: ClickData): Boolean {
@@ -210,14 +213,14 @@ class NewsFragment : Fragment() {
     override fun onStop() {
         super.onStop()
 
-        Log.d(Utils.MOENGAGE_TAG, "fragemnt onstop: stop callback")
-        MoEInAppHelper.getInstance().resetInAppContext()
+        Log.d(Utils.MOENGAGE_TAG, "news fragemnt onstop: stop callback")
+//        MoEInAppHelper.getInstance().resetInAppContext()
     }
 
     override fun onPause() {
         super.onPause()
-        Log.d(Utils.MOENGAGE_TAG, "fragment onpause: paused callback")
-//        MoEInAppHelper.getInstance().resetInAppContext()
+        Log.d(Utils.MOENGAGE_TAG, "news fragment onpause: paused callback")
+        MoEInAppHelper.getInstance().resetInAppContext()
     }
 
 }

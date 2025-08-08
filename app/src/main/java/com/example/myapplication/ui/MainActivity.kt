@@ -1,7 +1,6 @@
 package com.example.myapplication.ui
 
 //import com.example.myapplication.MyApplication.Companion.moEngage
-import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.WindowManager
@@ -35,7 +34,10 @@ class MainActivity : BaseActivityCompat() {
         super.onStart()
 
 
-        Log.d(Utils.MOENGAGE_TAG, "onStart: started callback")
+        Log.d(Utils.MOENGAGE_TAG, "main act onStart: started callback")
+
+//        MoEInAppHelper.getInstance().setInAppContext(setOf("news", "shell"))
+//        MoEInAppHelper.getInstance().showNudge(this)
 
 
 //        moEngage = MoEngage.Builder(application, "Z1UDNSWJALFR3UTPWWMCSF5Z", DATA_CENTER_1)
@@ -69,11 +71,14 @@ class MainActivity : BaseActivityCompat() {
 
     override fun onPause() {
         super.onPause()
-//        Toast.makeText(this, "main act pause", Toast.LENGTH_LONG).show()
+        Log.d(Utils.MOENGAGE_TAG, "main act onpause: stop callback")
+//        MoEInAppHelper.getInstance().resetInAppContext()
     }
 
     override fun onStop() {
         super.onStop()
+        Log.d(Utils.MOENGAGE_TAG, "main act onstop: stop callback")
+//        MoEInAppHelper.getInstance().resetInAppContext()
 
     }
 
