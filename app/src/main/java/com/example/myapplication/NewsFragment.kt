@@ -10,6 +10,7 @@ import com.example.myapplication.databinding.NewsFragmentBinding
 import com.moengage.cards.core.MoECardHelper
 import com.moengage.cards.core.listener.CardAvailableListener
 import com.moengage.cards.core.listener.SyncCompleteListener
+import com.moengage.cards.core.model.Card
 import com.moengage.cards.core.model.CardData
 import com.moengage.cards.core.model.SyncCompleteData
 import com.moengage.core.MoECoreHelper
@@ -19,6 +20,8 @@ import com.moengage.core.enableAdIdTracking
 class NewsFragment : Fragment() {
 
     private lateinit var binding: NewsFragmentBinding
+
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -43,7 +46,7 @@ class NewsFragment : Fragment() {
         });
 
         binding.loginBtn.setOnClickListener {
-            MoEAnalyticsHelper.setUniqueId(requireActivity(), "cartwheel")
+            MoEAnalyticsHelper.setUniqueId(requireActivity(), "cartswheel")
         }
 
         binding.logoutBtn.setOnClickListener {
@@ -53,12 +56,14 @@ class NewsFragment : Fragment() {
         }
 
         binding.defMoeCards.setOnClickListener {
-            MoECardHelper.fetchCards(requireActivity(), object : CardAvailableListener {
-                override fun onCardAvailable(cardData: CardData?) {
-                    Log.d(Utils.MOENGAGE_TAG, "onCardAvailable my card data: ${cardData!!.cards}")
-                }
-
-            })
+//            MoECardHelper.fetchCards(requireActivity(), object : CardAvailableListener {
+//                override fun onCardAvailable(cardData: CardData?) {
+//                    Log.d(Utils.MOENGAGE_TAG, "onCardAvailable my card data: ${cardData!!.cards}")
+//
+//                    val myCards: List<Card> = cardData.cards
+//                    myCards.map { it.category }
+//                }
+//            })
         }
 
 

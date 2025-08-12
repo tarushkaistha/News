@@ -38,10 +38,10 @@
             android:exported="true" />
         <activity
             android:name=".ui.Abc"
-            android:exported="true" /> <!-- <activity -->
-        <!-- android:name="com.moengage.cards.ui.CardActivity" -->
-        <!-- android:label="@string/cards_toolbar_title" -->
-        <!-- android:theme="@style/MyMoECardTheme.NoActionBar" /> -->
+            android:exported="true" />
+
+         <activity
+         android:name="com.moengage.cards.ui.CardActivity" />
         <activity
             android:name=".ui.TestActivity"
             android:exported="true">
