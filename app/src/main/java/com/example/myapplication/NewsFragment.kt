@@ -1,5 +1,6 @@
 package com.example.myapplication
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -7,10 +8,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.myapplication.databinding.NewsFragmentBinding
+import com.example.myapplication.ui.TestActivity
 import com.moengage.cards.core.MoECardHelper
 import com.moengage.cards.core.listener.CardAvailableListener
 import com.moengage.cards.core.listener.SyncCompleteListener
-import com.moengage.cards.core.model.Card
 import com.moengage.cards.core.model.CardData
 import com.moengage.cards.core.model.SyncCompleteData
 import com.moengage.core.MoECoreHelper
@@ -20,7 +21,6 @@ import com.moengage.core.enableAdIdTracking
 class NewsFragment : Fragment() {
 
     private lateinit var binding: NewsFragmentBinding
-
 
 
     override fun onCreateView(
@@ -49,21 +49,25 @@ class NewsFragment : Fragment() {
             MoEAnalyticsHelper.setUniqueId(requireActivity(), "cartswheel")
         }
 
+        binding.testAct.setOnClickListener {
+            startActivity(Intent(requireActivity(), TestActivity::class.java))
+        }
+
         binding.logoutBtn.setOnClickListener {
             MoECoreHelper.logoutUser(requireActivity())
 
 
         }
 
-        binding.defMoeCards.setOnClickListener {
-//            MoECardHelper.fetchCards(requireActivity(), object : CardAvailableListener {
-//                override fun onCardAvailable(cardData: CardData?) {
-//                    Log.d(Utils.MOENGAGE_TAG, "onCardAvailable my card data: ${cardData!!.cards}")
-//
+        binding.moeSelfHandledCard.setOnClickListener {
+            MoECardHelper.fetchCards(requireActivity(), object : CardAvailableListener {
+                override fun onCardAvailable(cardData: CardData?) {
+                    Log.d(Utils.MOENGAGE_TAG, "onCardAvailable my card data: ${cardData!!.cards}")
+
 //                    val myCards: List<Card> = cardData.cards
 //                    myCards.map { it.category }
-//                }
-//            })
+                }
+            })
         }
 
 
