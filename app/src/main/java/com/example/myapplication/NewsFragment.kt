@@ -30,6 +30,7 @@ import com.moengage.core.MoECoreHelper
 import com.moengage.core.Properties
 import com.moengage.core.analytics.MoEAnalyticsHelper
 import com.moengage.core.enableAdIdTracking
+import com.moengage.core.model.AppStatus
 import com.moengage.inapp.MoEInAppHelper
 import com.moengage.inapp.listeners.OnClickActionListener
 import com.moengage.inapp.model.ClickData
@@ -58,8 +59,8 @@ class NewsFragment : Fragment() {
         enableAdIdTracking(requireActivity())
 
         MoEPushHelper.getInstance().requestPushPermission(requireActivity())
-//        MoEPushHelper.getInstance().requestPushPermission(requireActivity())
 
+//        MoEAnalyticsHelper.setAppStatus(requireActivity(), AppStatus.UPDATE)
         binding.customWebView.setOnClickListener {
             startActivity(Intent(requireActivity(), CustomWebView::class.java))
         }
@@ -71,6 +72,8 @@ class NewsFragment : Fragment() {
         binding.demoAct.setOnClickListener {
 //            startActivity(Intent(requireActivity(), DemoAct::class.java))
             startActivity(Intent(requireActivity(), TestActivity::class.java))
+
+//            MoEAnalyticsHelper.trackUserPushPreference(requireActivity(),false)
         }
 
 //        FirebaseMessaging.getInstance().token.addOnCompleteListener { task ->
@@ -94,7 +97,7 @@ class NewsFragment : Fragment() {
 //            MoEHelper.getInstance(requireActivity()).setUniqueId("chd1")
 //            MoEAnalyticsHelper.setUniqueId(requireActivity(), "delhi1")
 
-            MoEAnalyticsHelper.setUniqueId(requireActivity(),"gross")
+            MoEAnalyticsHelper.identifyUser(requireActivity(),"gross")
 
 //            lifecycleScope.launch(Dispatchers.IO) {
 //                val c = MoEAnalyticsHelper.getUserIdentities(
@@ -171,21 +174,22 @@ class NewsFragment : Fragment() {
         super.onResume()
 
         Log.d(Utils.MOENGAGE_TAG, "news fragment onresume: resumed callback")
-        MoEInAppHelper.getInstance().setInAppContext(setOf("news", "shell"))
+//        MoEInAppHelper.getInstance().setInAppContext(setOf("myeyes"))
 //        MoEInAppHelper.getInstance().showInApp(requireActivity())
-        MoEInAppHelper.getInstance().showNudge(requireActivity())
+//        MoEInAppHelper.getInstance().showNudge(requireActivity())
 
-        MoEInAppHelper.getInstance().setClickActionListener(object : OnClickActionListener {
-            override fun onClick(clickData: ClickData): Boolean {
-                Log.d("moengage onclick", "onClick in-app data: $clickData ")
 
-                val c: NavigationAction = clickData.action as NavigationAction
-                val d = c.navigationUrl
-                Log.d("moengage onclick", "onClick click data: $d")
-                return false
-            }
-
-        })
+//        MoEInAppHelper.getInstance().setClickActionListener(object : OnClickActionListener {
+//            override fun onClick(clickData: ClickData): Boolean {
+//                Log.d("moengage onclick", "onClick in-app data: $clickData ")
+//
+//                val c: NavigationAction = clickData.action as NavigationAction
+//                val d = c.navigationUrl
+//                Log.d("moengage onclick", "onClick click data: $d")
+//                return true
+//            }
+//
+//        })
 
 //        MoEInAppHelper.getInstance()
 //            .getSelfHandledInApp(requireActivity(), object : SelfHandledAvailableListener {

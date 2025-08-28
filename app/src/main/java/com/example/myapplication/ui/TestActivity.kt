@@ -13,6 +13,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.example.myapplication.Utils
 import com.example.myapplication.databinding.TestActivityBinding
+import com.moengage.inapp.MoEInAppHelper
+import com.moengage.inapp.listeners.OnClickActionListener
+import com.moengage.inapp.model.ClickData
+import com.moengage.inapp.model.actions.NavigationAction
 import com.moengage.pushbase.MoEPushHelper
 
 
@@ -87,6 +91,18 @@ class TestActivity() : AppCompatActivity() {
         super.onStart()
 
         Log.d("starttf", "on start called in tf: ")
+
+//        MoEInAppHelper.getInstance().setClickActionListener(object : OnClickActionListener {
+//            override fun onClick(clickData: ClickData): Boolean {
+//                Log.d("moengage onclick", "onClick in-app data: $clickData ")
+//
+//                val c: NavigationAction = clickData.action as NavigationAction
+//                val d = c.navigationUrl
+//                Log.d("moengage onclick", "onClick click data: $d")
+//                return true
+//            }
+//
+//        })
 //        MoEInAppHelper.getInstance().showInApp(this)
 //        moEngage =
 //            MoEngage.Builder(application, "Z1UDNSWJALFR3UTPWWMCSF5Z", DataCenter.DATA_CENTER_1)

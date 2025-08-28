@@ -36,6 +36,7 @@ class MainActivity : BaseActivityCompat() {
 
         Log.d(Utils.MOENGAGE_TAG, "main act onStart: started callback")
 
+//        MoEInAppHelper.getInstance().showInApp(this)
 //        MoEInAppHelper.getInstance().setInAppContext(setOf("news", "shell"))
 //        MoEInAppHelper.getInstance().showNudge(this)
 

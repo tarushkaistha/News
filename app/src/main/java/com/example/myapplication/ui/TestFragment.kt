@@ -9,6 +9,9 @@ import androidx.fragment.app.Fragment
 import com.example.myapplication.Utils
 import com.example.myapplication.databinding.FragmentTestBinding
 import com.moengage.inapp.MoEInAppHelper
+import com.moengage.inapp.listeners.OnClickActionListener
+import com.moengage.inapp.model.ClickData
+import com.moengage.inapp.model.actions.NavigationAction
 
 class TestFragment : Fragment() {
 
@@ -32,8 +35,20 @@ class TestFragment : Fragment() {
     override fun onResume() {
         super.onResume()
 
-        MoEInAppHelper.getInstance().setInAppContext(setOf("new", "shel"))
-        MoEInAppHelper.getInstance().showNudge(requireActivity())
+//        MoEInAppHelper.getInstance().setInAppContext(setOf("new", "shel"))
+//        MoEInAppHelper.getInstance().showNudge(requireActivity())
+
+//        MoEInAppHelper.getInstance().setClickActionListener(object : OnClickActionListener {
+//            override fun onClick(clickData: ClickData): Boolean {
+//                Log.d("moengage onclick", "onClick in-app data: $clickData ")
+//
+//                val c: NavigationAction = clickData.action as NavigationAction
+//                val d = c.navigationUrl
+//                Log.d("moengage onclick", "onClick click data: $d")
+//                return true
+//            }
+//
+//        })
     }
 
     override fun onStop() {

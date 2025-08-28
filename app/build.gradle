@@ -77,8 +77,8 @@ dependencies {
     implementation(moengage.core)
 //    implementation(moengage.richNotification)
     implementation(moengage.inapp)
-//    implementation("com.moengage:moe-android-sdk:12.10.02")
-//    implementation("com.moengage:inapp:7.1.1")
+//    implementation("com.moengage:moe-android-sdk:12.8.00")
+//    implementation("com.moengage:inapp:6.7.0")
 
 //    implementation("com.moengage:geofence:3.3.2")
 

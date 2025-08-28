@@ -18,7 +18,7 @@ class DemoAct : AppCompatActivity() {
         super.onStart()
 
 //        MoEInAppHelper.getInstance().setInAppContext(setOf("hey","hellos"))
-        MoEInAppHelper.getInstance().showNudge(this)
+//        MoEInAppHelper.getInstance().showNudge(this)
     }
 
     override fun onStop() {

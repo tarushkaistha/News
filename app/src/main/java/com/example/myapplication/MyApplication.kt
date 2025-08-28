@@ -59,9 +59,6 @@ class MyApplication : Application(), LifecycleObserver {
 
 
         MoEngage.initialiseDefaultInstance(moEngage)
-
-//        disableIntegrationValidator()
-
 //        createCustomNotificationChannel("General Notification","General Notification")
 
 //        MoEPushHelper.getInstance().registerMessageListener(CustomPushMessageListener())
