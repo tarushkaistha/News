@@ -75,14 +75,20 @@ dependencies {
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.0.0")
     implementation 'com.facebook.shimmer:shimmer:0.5.0'
     implementation(moengage.core)
-//    implementation(moengage.richNotification)
+    implementation(moengage.richNotification)
     implementation(moengage.inapp)
-//    implementation("com.moengage:moe-android-sdk:12.8.00")
-//    implementation("com.moengage:inapp:6.7.0")
+//    implementation(moengage.pushAmp)
+
+//    implementation("com.moengage:moe-android-sdk:14.00.01")
+//    implementation("com.moengage:inapp:9.0.0")
+
+//    implementation("com.moengage:encrypted-storage:3.0.0")
+//    implementation("com.moengage:security:4.0.0")
+//    implementation("com.moengage:push-amp:6.0.0")
 
 //    implementation("com.moengage:geofence:3.3.2")
 
-//    implementation("com.moengage:rich-notification:4.7.2")
+//    implementation("com.moengage:rich-notification:6.0.0")
 
 //    implementation("com.moengage:realtime-trigger:2.5.2")
     implementation("com.google.android.gms:play-services-ads-identifier:18.0.1")

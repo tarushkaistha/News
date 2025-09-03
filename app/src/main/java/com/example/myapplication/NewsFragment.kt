@@ -98,6 +98,13 @@ class NewsFragment : Fragment() {
 //            MoEAnalyticsHelper.setUniqueId(requireActivity(), "delhi1")
 
             MoEAnalyticsHelper.identifyUser(requireActivity(),"gross")
+//            MoEAnalyticsHelper.setUniqueId(requireActivity(),"bakwas")
+//
+//            MoEAnalyticsHelper.setFirstName(requireActivity(),"taarush")
+//            MoEAnalyticsHelper.setLastName(requireActivity(),"taarush")
+//            MoEAnalyticsHelper.setUserName(requireActivity(),"taarush")
+//            MoEAnalyticsHelper.setMobileNumber(requireActivity(),"9015004529")
+//            MoEAnalyticsHelper.setEmailId(requireActivity(),"taarush@gmal.com")
 
 //            lifecycleScope.launch(Dispatchers.IO) {
 //                val c = MoEAnalyticsHelper.getUserIdentities(
@@ -161,7 +168,7 @@ class NewsFragment : Fragment() {
             property.addDateIso("attributeDateIsoTomorrow", "2025-06-19T21:12:00Z")
             property.addAttribute("myDate", Date())
 
-            MoEAnalyticsHelper.trackEvent(requireActivity(), "date_event", property)
+            MoEAnalyticsHelper.trackEvent(requireActivity(), "huber", property)
 
 
         }
