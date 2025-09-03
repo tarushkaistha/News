@@ -13,10 +13,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.example.myapplication.Utils
 import com.example.myapplication.databinding.TestActivityBinding
-import com.moengage.inapp.MoEInAppHelper
-import com.moengage.inapp.listeners.OnClickActionListener
-import com.moengage.inapp.model.ClickData
-import com.moengage.inapp.model.actions.NavigationAction
+//import com.moengage.inapp.MoEInAppHelper
+//import com.moengage.inapp.listeners.OnClickActionListener
+//import com.moengage.inapp.model.ClickData
+//import com.moengage.inapp.model.actions.NavigationAction
 import com.moengage.pushbase.MoEPushHelper
 
 

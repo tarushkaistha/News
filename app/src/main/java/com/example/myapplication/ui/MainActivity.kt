@@ -9,7 +9,7 @@ import com.example.myapplication.R
 import com.example.myapplication.Utils
 import com.example.myapplication.databinding.ActivityMainBinding
 import com.moengage.core.MoEngage
-import com.moengage.inapp.MoEInAppHelper
+//import com.moengage.inapp.MoEInAppHelper
 
 class MainActivity : BaseActivityCompat() {
     private lateinit var binding: ActivityMainBinding

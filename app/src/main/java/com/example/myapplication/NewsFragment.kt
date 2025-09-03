@@ -31,10 +31,11 @@ import com.moengage.core.Properties
 import com.moengage.core.analytics.MoEAnalyticsHelper
 import com.moengage.core.enableAdIdTracking
 import com.moengage.core.model.AppStatus
-import com.moengage.inapp.MoEInAppHelper
-import com.moengage.inapp.listeners.OnClickActionListener
-import com.moengage.inapp.model.ClickData
-import com.moengage.inapp.model.actions.NavigationAction
+import com.moengage.geofence.MoEGeofenceHelper
+//import com.moengage.inapp.MoEInAppHelper
+//import com.moengage.inapp.listeners.OnClickActionListener
+//import com.moengage.inapp.model.ClickData
+//import com.moengage.inapp.model.actions.NavigationAction
 import com.moengage.pushbase.MoEPushHelper
 import org.json.JSONObject
 import java.util.Date
@@ -57,7 +58,6 @@ class NewsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         enableAdIdTracking(requireActivity())
-
         MoEPushHelper.getInstance().requestPushPermission(requireActivity())
 
 //        MoEAnalyticsHelper.setAppStatus(requireActivity(), AppStatus.UPDATE)
@@ -97,7 +97,7 @@ class NewsFragment : Fragment() {
 //            MoEHelper.getInstance(requireActivity()).setUniqueId("chd1")
 //            MoEAnalyticsHelper.setUniqueId(requireActivity(), "delhi1")
 
-            MoEAnalyticsHelper.identifyUser(requireActivity(),"gross")
+//            MoEAnalyticsHelper.identifyUser(requireActivity(),"gross")
 //            MoEAnalyticsHelper.setUniqueId(requireActivity(),"bakwas")
 //
 //            MoEAnalyticsHelper.setFirstName(requireActivity(),"taarush")
@@ -231,7 +231,7 @@ class NewsFragment : Fragment() {
     override fun onPause() {
         super.onPause()
         Log.d(Utils.MOENGAGE_TAG, "news fragment onpause: paused callback")
-        MoEInAppHelper.getInstance().resetInAppContext()
+//        MoEInAppHelper.getInstance().resetInAppContext()
     }
 
 }

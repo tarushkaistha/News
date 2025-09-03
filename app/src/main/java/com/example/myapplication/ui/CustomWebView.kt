@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.Utils
 import com.example.myapplication.databinding.ActivityCustomWebViewBinding
 import com.moengage.core.internal.global.GlobalCache
-import com.moengage.inapp.MoEInAppHelper
+//import com.moengage.inapp.MoEInAppHelper
 
 class CustomWebView : AppCompatActivity() {
     private lateinit var binding: ActivityCustomWebViewBinding
@@ -42,7 +42,7 @@ class CustomWebView : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
 
-        MoEInAppHelper.getInstance().setInAppContext(setOf("news"))
+//        MoEInAppHelper.getInstance().setInAppContext(setOf("news"))
 //        MoEInAppHelper.getInstance().showInApp(this)
     }
 

@@ -8,10 +8,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.myapplication.Utils
 import com.example.myapplication.databinding.FragmentTestBinding
-import com.moengage.inapp.MoEInAppHelper
-import com.moengage.inapp.listeners.OnClickActionListener
-import com.moengage.inapp.model.ClickData
-import com.moengage.inapp.model.actions.NavigationAction
+//import com.moengage.inapp.MoEInAppHelper
+//import com.moengage.inapp.listeners.OnClickActionListener
+//import com.moengage.inapp.model.ClickData
+//import com.moengage.inapp.model.actions.NavigationAction
 
 class TestFragment : Fragment() {
 
@@ -55,12 +55,12 @@ class TestFragment : Fragment() {
         super.onStop()
 
         Log.d(Utils.MOENGAGE_TAG, "test fragemnt onstop: stop callback")
-        MoEInAppHelper.getInstance().resetInAppContext()
+//        MoEInAppHelper.getInstance().resetInAppContext()
     }
 
     override fun onPause() {
         super.onPause()
         Log.d(Utils.MOENGAGE_TAG, "test fragment onpause: paused callback")
-        MoEInAppHelper.getInstance().resetInAppContext()
+//        MoEInAppHelper.getInstance().resetInAppContext()
     }
 }

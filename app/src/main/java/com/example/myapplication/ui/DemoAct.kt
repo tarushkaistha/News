@@ -3,7 +3,7 @@ package com.example.myapplication.ui
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.databinding.ActivityDemoBinding
-import com.moengage.inapp.MoEInAppHelper
+//import com.moengage.inapp.MoEInAppHelper
 
 class DemoAct : AppCompatActivity() {
 
