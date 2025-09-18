@@ -25,6 +25,7 @@ import com.moengage.core.config.LogConfig
 //import com.moengage.core.config.MoEngageEnvironmentConfig
 import com.moengage.core.config.NotificationConfig
 import com.moengage.core.disableDataTracking
+import com.moengage.core.disableIntegrationValidator
 //import com.moengage.core.disableIntegrationValidator
 //import com.moengage.core.model.environment.MoEngageEnvironment
 import com.moengage.pushbase.MoEPushHelper
@@ -64,6 +65,7 @@ class MyApplication : Application(), LifecycleObserver {
 //        createCustomNotificationChannel("General Notification","General Notification")
 
         MoEPushHelper.getInstance().registerMessageListener(CustomPushMessageListener())
+
 
 //        MoEGeofenceHelper.getInstance().addListener(object : OnGeofenceHitListener {
 //            override fun geofenceHit(geofenceData: GeofenceData): Boolean {

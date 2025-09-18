@@ -12,6 +12,7 @@ package com.example.myapplication
 //import com.moengage.inapp.listeners.SelfHandledAvailableListener
 //import com.moengage.inapp.model.SelfHandledCampaignData
 //import com.moe.pushlibrary.MoEHelper
+import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
@@ -25,19 +26,13 @@ import androidx.navigation.fragment.findNavController
 import com.example.myapplication.databinding.NewsFragmentBinding
 import com.example.myapplication.ui.CustomWebView
 import com.example.myapplication.ui.TestActivity
-import com.example.myapplication.ui.TestFragment
 import com.moengage.core.MoECoreHelper
-import com.moengage.core.Properties
 import com.moengage.core.analytics.MoEAnalyticsHelper
 import com.moengage.core.enableAdIdTracking
-import com.moengage.core.model.AppStatus
 import com.moengage.inapp.MoEInAppHelper
-import com.moengage.inapp.listeners.OnClickActionListener
-import com.moengage.inapp.model.ClickData
-import com.moengage.inapp.model.actions.NavigationAction
+import com.moengage.inapp.listeners.SelfHandledCampaignsAvailableListener
+import com.moengage.inapp.model.SelfHandledCampaignsData
 import com.moengage.pushbase.MoEPushHelper
-import org.json.JSONObject
-import java.util.Date
 
 
 class NewsFragment : Fragment() {
@@ -57,6 +52,7 @@ class NewsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         enableAdIdTracking(requireActivity())
+
 
         MoEPushHelper.getInstance().requestPushPermission(requireActivity())
 
@@ -94,17 +90,8 @@ class NewsFragment : Fragment() {
 
         binding.loginBtn.setOnClickListener {
 
-//            MoEHelper.getInstance(requireActivity()).setUniqueId("chd1")
-//            MoEAnalyticsHelper.setUniqueId(requireActivity(), "delhi1")
 
-            MoEAnalyticsHelper.identifyUser(requireActivity(),"gross")
-//            MoEAnalyticsHelper.setUniqueId(requireActivity(),"bakwas")
-//
-//            MoEAnalyticsHelper.setFirstName(requireActivity(),"taarush")
-//            MoEAnalyticsHelper.setLastName(requireActivity(),"taarush")
-//            MoEAnalyticsHelper.setUserName(requireActivity(),"taarush")
-//            MoEAnalyticsHelper.setMobileNumber(requireActivity(),"9015004529")
-//            MoEAnalyticsHelper.setEmailId(requireActivity(),"taarush@gmal.com")
+            MoEAnalyticsHelper.identifyUser(requireActivity(), "faang")
 
 //            lifecycleScope.launch(Dispatchers.IO) {
 //                val c = MoEAnalyticsHelper.getUserIdentities(
@@ -118,8 +105,6 @@ class NewsFragment : Fragment() {
 //            MoEAnalyticsHelper.setEmailId(requireActivity(),"tarush@yahoo.com")
         }
 
-//        MoEAnalyticsHelper.setUniqueId(requireActivity(), "UID 10")
-
         binding.logoutBtn.setOnClickListener {
             MoECoreHelper.logoutUser(requireActivity())
 
@@ -129,51 +114,8 @@ class NewsFragment : Fragment() {
 
         binding.trackCustomEvent.setOnClickListener {
 
-//            MoEPushHelper.getInstance().pushPermissionResponse(requireActivity(), false)
-
-            val mapOfCountry = hashMapOf<String, String>()
-//
-//            mapOfCountry["USA"] = "Charlotte"
-//            mapOfCountry["India"] = "Bangalore"
-//
-//            println("my map of country : $mapOfCountry")
-//
-//            val arrayMapOfCountry = arrayListOf(mapOfCountry)
-
-//            val intArray = JSONArray()
-//            intArray.put(1)
-//            intArray.put(2)
-//
-////            println("my array map of country : ${arrayMapOfCountry[0]}")
-//
-//            val obj = JSONObject()
-//            obj.put("usa", "charlotte")
-//            obj.put("india", "chandigarh")
-//
-//
-//            val arrayOfCountry = JSONArray()
-//            arrayOfCountry.put(obj)
-
-//            val jsonObject = JSONObject().put("kaistha", JSONArray(listOf("tony", "iron")))
-            val jsonObject = JSONObject().apply {
-                put("packagesAvailable", 7)
-                put("countryName", "global")
-            }
-            val property = Properties()
-//            property.addAttribute(jsonObject.toString(), jsonObject.toString())
-//            MoEAnalyticsHelper.trackEvent(requireActivity(), "BSDK", property)
-
-//            property.addAttribute("attributeDate", Date())
-//            property.addDateIso("attributeDateIso", "2022-02-10T21:12:00Z")
-            property.addDateIso("attributeDateIsoTomorrow", "2025-06-19T21:12:00Z")
-            property.addAttribute("myDate", Date())
-
-            MoEAnalyticsHelper.trackEvent(requireActivity(), "huber", property)
-
 
         }
-
-//        MoEPushHelper.getInstance().requestPushPermission(requireActivity())
 
     }
 
@@ -211,15 +153,25 @@ class NewsFragment : Fragment() {
 //            })
 
 
-//        MoEInAppHelper.getInstance().getSelfHandledInApps(requireActivity(), object : SelfHandledCampaignsAvailableListener{
-//            override fun onCampaignsAvailable(campaigns: SelfHandledCampaignsData?) {
-//                Log.d(Utils.MOENGAGE_TAG, "multi sh in-app: $campaigns")
-//            }
-//
-//        })
+        MoEInAppHelper.getInstance().getSelfHandledInApps(
+            requireActivity(),
+            object : SelfHandledCampaignsAvailableListener {
+                override fun onCampaignsAvailable(campaigns: SelfHandledCampaignsData?) {
+                    Log.d(Utils.MOENGAGE_TAG, "multi sh in-app: $campaigns")
+                }
+
+            })
 
     }
 
+    private fun setMoEngageUserParams(context: Context?, params: Map<String, Any>) {
+        context ?: return
+        params.forEach {
+            MoEAnalyticsHelper.setUserAttribute(
+                context, attributeName = it.key, attributeValue = it.value
+            )
+        }
+    }
 
     override fun onStop() {
         super.onStop()
