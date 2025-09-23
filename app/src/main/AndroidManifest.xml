@@ -6,7 +6,7 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
-    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM"/>
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
@@ -22,6 +22,12 @@
         android:theme="@style/Theme.MyApplication"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
+
+<!--        <activity-->
+<!--            android:name="com.moe.pushlibrary.activities.MoEActivity"-->
+<!--            android:label="@string/moe_core_rich_landing_title"-->
+<!--            android:parentActivityName=".ui.Abc" />-->
+
         <activity
             android:name=".ui.DemoAct"
             android:exported="true" />
@@ -84,13 +90,13 @@
             android:configChanges="orientation"
             android:exported="true" />
 
-<!--         <service-->
-<!--         android:name="com.moengage.firebase.MoEFireBaseMessagingService"-->
-<!--         android:exported="false">-->
-<!--         <intent-filter>-->
-<!--         <action android:name="com.google.firebase.MESSAGING_EVENT" />-->
-<!--         </intent-filter>-->
-<!--         </service>-->
+        <!--         <service-->
+        <!--         android:name="com.moengage.firebase.MoEFireBaseMessagingService"-->
+        <!--         android:exported="false">-->
+        <!--         <intent-filter>-->
+        <!--         <action android:name="com.google.firebase.MESSAGING_EVENT" />-->
+        <!--         </intent-filter>-->
+        <!--         </service>-->
 
 
         <service
@@ -121,51 +127,51 @@
             <!-- tools:node="remove" /> -->
         </provider>
 
-<!--        <provider-->
-<!--            android:name="androidx.core.content.FileProvider"-->
-<!--            android:authorities="${applicationId}.provider"-->
-<!--            android:exported="false"-->
-<!--            android:grantUriPermissions="true"-->
-<!--            tools:replace="android:authorities">-->
-<!--            <meta-data-->
-<!--                android:name="android.support.FILE_PROVIDER_PATHS"-->
-<!--                android:resource="@xml/provider_paths"-->
-<!--                tools:replace="android:resource" />-->
-<!--        </provider>-->
-<!--        <provider-->
-<!--            android:name="androidx.core.content.FileProvider"-->
-<!--            android:authorities="${applicationId}.provider"-->
-<!--            android:exported="false"-->
-<!--            android:grantUriPermissions="true"-->
-<!--            tools:replace="android:authorities"-->
-<!--            >-->
-<!--            <meta-data-->
-<!--                android:name="android.support.FILE_PROVIDER_PATHS"-->
-<!--                android:resource="@xml/provider_paths"-->
-<!--                tools:replace="android:resource" />-->
-<!--        </provider>-->
+        <!--        <provider-->
+        <!--            android:name="androidx.core.content.FileProvider"-->
+        <!--            android:authorities="${applicationId}.provider"-->
+        <!--            android:exported="false"-->
+        <!--            android:grantUriPermissions="true"-->
+        <!--            tools:replace="android:authorities">-->
+        <!--            <meta-data-->
+        <!--                android:name="android.support.FILE_PROVIDER_PATHS"-->
+        <!--                android:resource="@xml/provider_paths"-->
+        <!--                tools:replace="android:resource" />-->
+        <!--        </provider>-->
+        <!--        <provider-->
+        <!--            android:name="androidx.core.content.FileProvider"-->
+        <!--            android:authorities="${applicationId}.provider"-->
+        <!--            android:exported="false"-->
+        <!--            android:grantUriPermissions="true"-->
+        <!--            tools:replace="android:authorities"-->
+        <!--            >-->
+        <!--            <meta-data-->
+        <!--                android:name="android.support.FILE_PROVIDER_PATHS"-->
+        <!--                android:resource="@xml/provider_paths"-->
+        <!--                tools:replace="android:resource" />-->
+        <!--        </provider>-->
 
-<!--        <provider-->
-<!--            android:name="androidx.core.content.FileProvider"-->
-<!--            android:authorities="${applicationId}.moengage.provider"-->
-<!--            android:exported="false"-->
-<!--            android:grantUriPermissions="true">-->
-<!--            <meta-data-->
-<!--                android:name="android.support.FILE_PROVIDER_PATHS"-->
-<!--                android:resource="@xml/file_path" />-->
-<!--        </provider>-->
+        <!--        <provider-->
+        <!--            android:name="androidx.core.content.FileProvider"-->
+        <!--            android:authorities="${applicationId}.moengage.provider"-->
+        <!--            android:exported="false"-->
+        <!--            android:grantUriPermissions="true">-->
+        <!--            <meta-data-->
+        <!--                android:name="android.support.FILE_PROVIDER_PATHS"-->
+        <!--                android:resource="@xml/file_path" />-->
+        <!--        </provider>-->
 
-<!--        <provider-->
-<!--            android:name="androidx.core.content.FileProvider"-->
-<!--            android:authorities="${applicationId}.provider;${applicationId}.moengage.provider"-->
-<!--            android:exported="false"-->
-<!--            android:grantUriPermissions="true"-->
-<!--            tools:replace="android:authorities">-->
-<!--            <meta-data-->
-<!--                android:name="android.support.FILE_PROVIDER_PATHS"-->
-<!--                android:resource="@xml/sampleapp_file_path"-->
-<!--                tools:replace="android:resource" />-->
-<!--        </provider>-->
+        <!--        <provider-->
+        <!--            android:name="androidx.core.content.FileProvider"-->
+        <!--            android:authorities="${applicationId}.provider;${applicationId}.moengage.provider"-->
+        <!--            android:exported="false"-->
+        <!--            android:grantUriPermissions="true"-->
+        <!--            tools:replace="android:authorities">-->
+        <!--            <meta-data-->
+        <!--                android:name="android.support.FILE_PROVIDER_PATHS"-->
+        <!--                android:resource="@xml/sampleapp_file_path"-->
+        <!--                tools:replace="android:resource" />-->
+        <!--        </provider>-->
     </application>
 
 </manifest>

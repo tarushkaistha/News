@@ -15,4 +15,5 @@
     <string name="my_card_inbox">My Cards Feed</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="moe_core_rich_landing_title">My web view</string>
 </resources>

@@ -53,7 +53,6 @@ class NewsFragment : Fragment() {
 
         enableAdIdTracking(requireActivity())
 
-
         MoEPushHelper.getInstance().requestPushPermission(requireActivity())
 
 //        MoEAnalyticsHelper.setAppStatus(requireActivity(), AppStatus.UPDATE)
@@ -91,7 +90,8 @@ class NewsFragment : Fragment() {
         binding.loginBtn.setOnClickListener {
 
 
-            MoEAnalyticsHelper.identifyUser(requireActivity(), "faang")
+            MoEAnalyticsHelper.identifyUser(requireActivity(), "testuser1")
+//            MoEAnalyticsHelper.identifyUser(requireActivity(), "testuser2","N479J9GSMH8OE6E4IPE5G7NV")
 
 //            lifecycleScope.launch(Dispatchers.IO) {
 //                val c = MoEAnalyticsHelper.getUserIdentities(
@@ -154,8 +154,7 @@ class NewsFragment : Fragment() {
 
 
         MoEInAppHelper.getInstance().getSelfHandledInApps(
-            requireActivity(),
-            object : SelfHandledCampaignsAvailableListener {
+            requireActivity(), object : SelfHandledCampaignsAvailableListener {
                 override fun onCampaignsAvailable(campaigns: SelfHandledCampaignsData?) {
                     Log.d(Utils.MOENGAGE_TAG, "multi sh in-app: $campaigns")
                 }
