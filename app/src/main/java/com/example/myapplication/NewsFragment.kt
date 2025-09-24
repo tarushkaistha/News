@@ -26,12 +26,12 @@ import com.example.myapplication.databinding.NewsFragmentBinding
 import com.example.myapplication.ui.CustomWebView
 import com.example.myapplication.ui.TestActivity
 import com.example.myapplication.ui.TestFragment
+import com.moe.pushlibrary.MoEHelper
 import com.moengage.core.MoECoreHelper
 import com.moengage.core.Properties
 import com.moengage.core.analytics.MoEAnalyticsHelper
 import com.moengage.core.enableAdIdTracking
 import com.moengage.core.model.AppStatus
-import com.moengage.geofence.MoEGeofenceHelper
 //import com.moengage.inapp.MoEInAppHelper
 //import com.moengage.inapp.listeners.OnClickActionListener
 //import com.moengage.inapp.model.ClickData
@@ -94,7 +94,7 @@ class NewsFragment : Fragment() {
 
         binding.loginBtn.setOnClickListener {
 
-//            MoEHelper.getInstance(requireActivity()).setUniqueId("chd1")
+            MoEHelper.getInstance(requireActivity()).setUniqueId("singhara")
 //            MoEAnalyticsHelper.setUniqueId(requireActivity(), "delhi1")
 
 //            MoEAnalyticsHelper.identifyUser(requireActivity(),"gross")

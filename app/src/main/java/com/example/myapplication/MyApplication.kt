@@ -21,7 +21,6 @@ import androidx.lifecycle.LifecycleObserver
 import com.moengage.core.DataCenter
 import com.moengage.core.LogLevel
 import com.moengage.core.MoEngage
-import com.moengage.core.config.GeofenceConfig
 import com.moengage.core.config.LogConfig
 import com.moengage.core.config.NotificationConfig
 import kotlinx.coroutines.DelicateCoroutinesApi
@@ -50,7 +49,7 @@ class MyApplication : Application(), LifecycleObserver {
                     R.drawable.no_internet_connection,
                     R.drawable.ic_launcher_foreground,
                 )
-            ).configureGeofence(GeofenceConfig(true))
+            )
 //            .configureMoEngageEnvironment(MoEngageEnvironmentConfig(MoEngageEnvironment.LIVE))
 //            .configureFcm(FcmConfig(false))
 

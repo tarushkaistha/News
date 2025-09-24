@@ -79,16 +79,15 @@ dependencies {
 //    implementation(moengage.inapp)
 //    implementation(moengage.pushAmp)
 
-    implementation("com.moengage:moe-android-sdk:12.3.02")
+//    implementation("com.moengage:moe-android-sdk:12.3.02")
+    implementation("com.moengage:moe-android-sdk:12.10.02")
 //    implementation("com.moengage:inapp:9.0.0")
 
 //    implementation("com.moengage:encrypted-storage:3.0.0")
 //    implementation("com.moengage:security:4.0.0")
 //    implementation("com.moengage:push-amp:6.0.0")
-
-    implementation("com.moengage:geofence:2.1.1")
-
-//    implementation("com.moengage:rich-notification:6.0.0")
+//    implementation("com.moengage:rich-notification:4.0.1")
+    implementation("com.moengage:rich-notification:4.7.2")
 
 //    implementation("com.moengage:realtime-trigger:2.5.2")
     implementation("com.google.android.gms:play-services-ads-identifier:18.0.1")
