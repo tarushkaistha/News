@@ -21,6 +21,7 @@ import androidx.lifecycle.LifecycleObserver
 import com.moengage.core.DataCenter
 import com.moengage.core.LogLevel
 import com.moengage.core.MoEngage
+import com.moengage.core.config.DataSyncConfig
 import com.moengage.core.config.LogConfig
 import com.moengage.core.config.NotificationConfig
 import kotlinx.coroutines.DelicateCoroutinesApi
@@ -46,8 +47,9 @@ class MyApplication : Application(), LifecycleObserver {
             MoEngage.Builder(this, "Z1UDNSWJALFR3UTPWWMCSF5Z", DataCenter.DATA_CENTER_1)
                 .configureLogs(LogConfig(LogLevel.VERBOSE, true)).configureNotificationMetaData(
                     NotificationConfig(
-                        R.drawable.no_internet_connection,
-                        R.drawable.ic_launcher_foreground,
+                        smallIcon = R.drawable.no_internet_connection,
+                        largeIcon = R.drawable.ic_launcher_foreground,
+                        -1,false,false,true
                     )
                 )
 //            .configureMoEngageEnvironment(MoEngageEnvironmentConfig(MoEngageEnvironment.LIVE))
@@ -70,7 +72,7 @@ class MyApplication : Application(), LifecycleObserver {
 
 
         MoEngage.initialiseDefaultInstance(moEngage)
-//        MoEngage.initialiseInstance(moEngageTwo)
+//       MoEngage.initialiseInstance(moEngageTwo)
 
 //        createCustomNotificationChannel("General Notification","General Notification")
 

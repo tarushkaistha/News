@@ -30,7 +30,9 @@ import com.moengage.core.MoECoreHelper
 import com.moengage.core.analytics.MoEAnalyticsHelper
 import com.moengage.core.enableAdIdTracking
 import com.moengage.inapp.MoEInAppHelper
+import com.moengage.inapp.listeners.InAppLifeCycleListener
 import com.moengage.inapp.listeners.SelfHandledCampaignsAvailableListener
+import com.moengage.inapp.model.InAppData
 import com.moengage.inapp.model.SelfHandledCampaignsData
 import com.moengage.pushbase.MoEPushHelper
 
@@ -90,7 +92,8 @@ class NewsFragment : Fragment() {
         binding.loginBtn.setOnClickListener {
 
 
-            MoEAnalyticsHelper.identifyUser(requireActivity(), "testuser1")
+            MoEAnalyticsHelper.identifyUser(requireActivity(), "testuser4")
+            MoEAnalyticsHelper.setEmailId(requireActivity(),"peto@gmail.com")
 //            MoEAnalyticsHelper.identifyUser(requireActivity(), "testuser2","N479J9GSMH8OE6E4IPE5G7NV")
 
 //            lifecycleScope.launch(Dispatchers.IO) {
@@ -127,7 +130,16 @@ class NewsFragment : Fragment() {
 //        MoEInAppHelper.getInstance().showInApp(requireActivity())
 //        MoEInAppHelper.getInstance().showNudge(requireActivity())
 
-
+//        MoEInAppHelper.getInstance().addInAppLifeCycleListener(object : InAppLifeCycleListener{
+//            override fun onShown(inAppData: InAppData) {
+//                TODO("Not yet implemented")
+//            }
+//
+//            override fun onDismiss(inAppData: InAppData) {
+//                TODO("Not yet implemented")
+//            }
+//
+//        })
 //        MoEInAppHelper.getInstance().setClickActionListener(object : OnClickActionListener {
 //            override fun onClick(clickData: ClickData): Boolean {
 //                Log.d("moengage onclick", "onClick in-app data: $clickData ")
