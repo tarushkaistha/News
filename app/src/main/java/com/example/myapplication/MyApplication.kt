@@ -44,14 +44,9 @@ class MyApplication : Application(), LifecycleObserver {
     @RequiresApi(Build.VERSION_CODES.O)
     fun initMoEngage() {
         val moEngage: MoEngage =
-            MoEngage.Builder(this, "Z1UDNSWJALFR3UTPWWMCSF5Z", DataCenter.DATA_CENTER_1)
-                .configureLogs(LogConfig(LogLevel.VERBOSE, true)).configureNotificationMetaData(
-                    NotificationConfig(
-                        smallIcon = R.drawable.no_internet_connection,
-                        largeIcon = R.drawable.ic_launcher_foreground,
-                        -1,false,false,true
-                    )
-                )
+            MoEngage.Builder(this, "Z1UDNSWJALFR3UTPWWMCSF5Z")
+                .configureLogs(LogConfig(LogLevel.VERBOSE, true))
+                .setDataCenter(DataCenter.DATA_CENTER_1)
 //            .configureMoEngageEnvironment(MoEngageEnvironmentConfig(MoEngageEnvironment.LIVE))
 //            .configureFcm(FcmConfig(false))
 
@@ -71,7 +66,7 @@ class MyApplication : Application(), LifecycleObserver {
 //                .build()
 
 
-        MoEngage.initialiseDefaultInstance(moEngage)
+        MoEngage.initialise(moEngage)
 //       MoEngage.initialiseInstance(moEngageTwo)
 
 //        createCustomNotificationChannel("General Notification","General Notification")

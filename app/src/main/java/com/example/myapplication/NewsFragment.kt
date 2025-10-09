@@ -27,8 +27,10 @@ import com.example.myapplication.databinding.NewsFragmentBinding
 import com.example.myapplication.ui.CustomWebView
 import com.example.myapplication.ui.TestActivity
 import com.moengage.core.MoECoreHelper
+import com.moengage.core.MoEngage
 import com.moengage.core.analytics.MoEAnalyticsHelper
 import com.moengage.core.enableAdIdTracking
+import com.moengage.core.internal.model.MoEAttribute
 import com.moengage.inapp.MoEInAppHelper
 import com.moengage.inapp.listeners.InAppLifeCycleListener
 import com.moengage.inapp.listeners.SelfHandledCampaignsAvailableListener
@@ -92,8 +94,6 @@ class NewsFragment : Fragment() {
         binding.loginBtn.setOnClickListener {
 
 
-            MoEAnalyticsHelper.identifyUser(requireActivity(), "testuser4")
-            MoEAnalyticsHelper.setEmailId(requireActivity(),"peto@gmail.com")
 //            MoEAnalyticsHelper.identifyUser(requireActivity(), "testuser2","N479J9GSMH8OE6E4IPE5G7NV")
 
 //            lifecycleScope.launch(Dispatchers.IO) {

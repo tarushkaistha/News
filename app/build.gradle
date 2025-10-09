@@ -74,15 +74,15 @@ dependencies {
     implementation("com.google.firebase:firebase-crashlytics")
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.0.0")
     implementation 'com.facebook.shimmer:shimmer:0.5.0'
-    implementation(moengage.core)
+//    implementation(moengage.core)
 //            {
 //        exclude(group = "com.moengage", module = "sdk-debugger")
 //            }
-    implementation(moengage.richNotification)
-    implementation(moengage.inapp)
+//    implementation(moengage.richNotification)
+//    implementation(moengage.inapp)
 //    implementation(moengage.pushAmp)
 
-//    implementation("com.moengage:moe-android-sdk:14.03.03")
+    implementation("com.moengage:moe-android-sdk:11.3.01")
 //    implementation("com.moengage:inapp:9.3.0")
 
 //    implementation("com.moengage:encrypted-storage:3.0.0")
@@ -91,7 +91,7 @@ dependencies {
 
 //    implementation("com.moengage:geofence:3.3.2")
 
-    implementation("com.moengage:rich-notification:6.2.0")
+//    implementation("com.moengage:rich-notification:6.2.0")
 
 //    implementation("com.moengage:realtime-trigger:2.5.2")
     implementation("com.google.android.gms:play-services-ads-identifier:18.0.1")
