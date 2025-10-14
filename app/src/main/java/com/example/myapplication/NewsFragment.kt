@@ -46,7 +46,7 @@ class NewsFragment : Fragment() {
         });
 
         binding.loginBtn.setOnClickListener {
-            MoEAnalyticsHelper.setUniqueId(requireActivity(), "cartswheel")
+            MoEAnalyticsHelper.setUniqueId(requireActivity(), "flyingwheel")
         }
 
         binding.testAct.setOnClickListener {

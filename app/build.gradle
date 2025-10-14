@@ -8,12 +8,12 @@ plugins {
 
 android {
     namespace 'com.example.myapplication'
-    compileSdk 34
+    compileSdk 35
 
     defaultConfig {
         applicationId "com.example.myapplication"
-        minSdk 21
-        targetSdk 34
+        minSdk 23
+        targetSdk 35
         versionCode 3
         versionName "1.45"
 
@@ -85,8 +85,8 @@ dependencies {
     implementation("com.google.android.gms:play-services-ads-identifier:18.0.1")
     implementation 'com.google.android.gms:play-services-location:21.3.0'
 //    implementation(moengage.integrationVerifier)
-    implementation(moengage.inboxUi)
-    implementation(moengage.inboxCore)
+//    implementation(moengage.inboxUi)
+//    implementation(moengage.inboxCore)
 //    implementation(moengage.geofence)
 //    implementation(moengage.pushAmpPlus)
 
