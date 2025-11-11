@@ -65,7 +65,7 @@ class NewsFragment : Fragment() {
 //        startActivity(Intent(ACTION_REQUEST_SCHEDULE_EXACT_ALARM))
 
         binding.loginBtn.setOnClickListener {
-            MoEAnalyticsHelper.setUniqueId(requireActivity(), "SAT")
+            MoEAnalyticsHelper.setUniqueId(requireActivity(), "tarique")
 
 //            MoEAnalyticsHelper.identifyUser(requireActivity(), "formula2")
 
@@ -112,7 +112,7 @@ class NewsFragment : Fragment() {
 
             val property = Properties()
             property.addAttribute("city", "aus")
-            MoEAnalyticsHelper.trackEvent(requireActivity(), "City_Event", property)
+            MoEAnalyticsHelper.trackEvent(requireActivity(), "Fabric", property)
 
 //            property.addAttribute("country","india")
 //
